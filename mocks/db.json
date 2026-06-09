@@ -1,0 +1,10 @@
+{
+  "sectores": [
+    { "id": "entrada_01", "nombre": "Acceso Dragones", "tipo": "acceso", "accesible": true },
+    { "id": "oficina_01", "nombre": "Secretaría", "tipo": "oficina", "accesible": true },
+    { "id": "aula_01", "nombre": "Aula 1", "tipo": "aula", "accesible": true }
+  ],
+  "recorridos": [
+    { "id": "ruta_01", "origen_id": "entrada_01", "destino_id": "oficina_01", "accesible": true }
+  ]
+}
