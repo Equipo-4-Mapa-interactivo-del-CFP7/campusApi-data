@@ -11,7 +11,7 @@ Descargar desde `/mnt/user-data/outputs/`:
 ├── JIRA_ISSUE_31_EVENTOS.md
 ├── JIRA_ISSUE_32_ESTRUCTURA.md
 ├── 31_EVENTOS.feature
-└── Pabellon.java
+└── Sector.java
 ```
 
 ---
@@ -27,7 +27,7 @@ campusApi-data/
 ├── JIRA_ISSUE_31_EVENTOS.md ← Aquí
 ├── JIRA_ISSUE_32_ESTRUCTURA.md ← Aquí
 ├── 31_EVENTOS.feature ← Aquí
-├── Pabellon.java ← Aquí
+├── Sector.java ← Aquí
 ├── README.md
 ├── pom.xml
 └── ... (resto del repo)
@@ -67,7 +67,7 @@ Deberías ver:
 - ✅ Rama `main` actualizada
 - ✅ Nuevo commit: "feat(sprint-1): Data layer..."
 - ✅ Nueva carpeta: `docs/sprint-1/` con 3 archivos
-- ✅ Nueva carpeta: `src/main/java/com/campusmap/model/` con Pabellon.java
+- ✅ Nueva carpeta: `src/main/java/com/campusmap/model/` con Sector.java
 - ✅ Nueva carpeta: `src/test/resources/features/` con 31_EVENTOS.feature
 
 ---
@@ -110,7 +110,7 @@ Tú dices:
 "Sí. Repos actualizado con:
 - 15 métricas completas (conectadas con 4 personas UX)
 - 10 eventos core + Gherkin features
-- Entity Pabellon base para Backend
+- Entity Sector base para Backend
 
 Todo en docs/sprint-1/ + src/
 GitHub issues #21, #31, #32 listos para validar"
