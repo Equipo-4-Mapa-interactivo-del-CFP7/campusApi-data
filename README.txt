@@ -9,7 +9,7 @@ CONTENIDO:
 ✅ 31_EVENTOS.md           (10 eventos)
 ✅ 32_ESTRUCTURA.md        (8 entities)
 ✅ 31_EVENTOS.feature      (4 Gherkin features)
-✅ Pabellon.java           (Entity base)
+✅ Sector.java           (Entity base)
 ✅ SCRIPT_PARA_TU_REPO.sh  (Script automático)
 ✅ INSTRUCCIONES_FINALES.md (Guía paso a paso)
 
@@ -24,7 +24,7 @@ PASOS RÁPIDOS:
    ├── 31_EVENTOS.md
    ├── 32_ESTRUCTURA.md
    ├── 31_EVENTOS.feature
-   ├── Pabellon.java
+   ├── Sector.java
    └── SCRIPT_PARA_TU_REPO.sh
    └── INSTRUCCIONES_FINALES.md
 

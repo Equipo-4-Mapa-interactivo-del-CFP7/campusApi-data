@@ -76,11 +76,11 @@ echo ""
 # 5. COPIAR ENTITIES JAVA
 echo "📋 Paso 4: Copiar Entities Java..."
 
-if [ -f "Pabellon.java" ]; then
-  cp Pabellon.java src/main/java/com/campusmap/model/
-  echo "✅ Pabellon.java"
+if [ -f "Sector.java" ]; then
+  cp Sector.java src/main/java/com/campusmap/model/
+  echo "✅ Sector.java"
 else
-  echo "⚠️  Pabellon.java no encontrado"
+  echo "⚠️  Sector.java no encontrado"
 fi
 
 echo ""
@@ -108,7 +108,7 @@ git commit -m "feat(sprint-1): Data layer - Métricas, eventos, entities
   * 4 scenarios (paola, maria, federico, camilo)
   
 - src/main/java/com/campusmap/model/: Entities
-  * Pabellon.java base para relaciones
+  * Sector.java base para relaciones
 
 Status: READY FOR VALIDATION + CODE
 Author: angelgabrieldaq
@@ -143,7 +143,7 @@ echo "   docs/sprint-1/21-METRICAS.md"
 echo "   docs/sprint-1/31-EVENTOS.md"
 echo "   docs/sprint-1/32-ESTRUCTURA.md"
 echo "   src/test/resources/features/"
-echo "   src/main/java/com/campusmap/model/Pabellon.java"
+echo "   src/main/java/com/campusmap/model/Sector.java"
 echo ""
 echo "🔗 GitHub repo: $(git remote get-url origin)"
 echo ""

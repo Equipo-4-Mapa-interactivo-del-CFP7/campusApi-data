@@ -11,7 +11,7 @@ Feature: Paola busca aula sin perder tiempo
     And ingresa "Aula 301"
     And presiona buscar
     Then obtiene respuesta en menos de 2 segundos
-    And ve texto claro: "Pabellón 1, Lado Derecho, Pasillo 3"
+    And ve texto claro: "Sector 1, Lado Derecho, Pasillo 3"
     And ve aula enfrentada: "302"
     And NO necesita hacer scroll
     And NO ve campos innecesarios
@@ -49,7 +49,7 @@ Feature: María verifica accesibilidad (Certeza)
     And María CONFÍA en que puede ir
 
   Scenario: Consulta accesibilidad = NO ACCESIBLE
-    Given María está en Pabellón 3
+    Given María está en Sector 3
     When consulta "¿Puedo acceder a Aula 501?"
     Then respuesta es CERTEZA: "NO ACCESIBLE"
     And motivo: "Escaleras sin rampa alternativa"
@@ -109,7 +109,7 @@ Feature: Camilo no se satura de información
     Then respuesta tiene MÁXIMO 5 campos:
       | Campo | Contenido |
       | Nombre | Aula 301 |
-      | Ubicación | Pabellón 1, Lado Derecho, Pasillo 3 |
+      | Ubicación | Sector 1, Lado Derecho, Pasillo 3 |
       | Disponibilidad | 09:00-12:00 Gastronomía |
       | Baño cercano | 15m, patio |
       | Acceso | Rampa disponible |
