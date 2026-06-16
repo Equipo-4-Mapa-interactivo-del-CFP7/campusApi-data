@@ -20,3 +20,13 @@
   }
 }
 ```
+
+```json
+{
+  "evento": "ficha_consultada",
+  "timestamp": "ISO-8601",
+  "payload": {
+    "espacio_id": "string"
+  }
+}
+```
