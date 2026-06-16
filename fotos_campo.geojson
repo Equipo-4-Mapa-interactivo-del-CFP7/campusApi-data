@@ -1,0 +1,617 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "archivo": "IMG_0660.HEIC",
+        "rumbo": 217,
+        "fecha": "2026-06-12T13:31:47",
+        "sector_id": null,
+        "cartel": null,
+        "nota": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4408638888889,
+          -34.5509916666667
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "archivo": "IMG_0661.HEIC",
+        "rumbo": 316,
+        "fecha": "2026-06-12T13:33:03",
+        "sector_id": null,
+        "cartel": null,
+        "nota": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4413416666667,
+          -34.5505027777778
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "archivo": "IMG_0662.HEIC",
+        "rumbo": 267,
+        "fecha": "2026-06-12T13:33:19",
+        "sector_id": null,
+        "cartel": null,
+        "nota": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4413805555556,
+          -34.5504444444444
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "archivo": "IMG_0663.HEIC",
+        "rumbo": 139,
+        "fecha": "2026-06-12T13:33:40",
+        "sector_id": null,
+        "cartel": null,
+        "nota": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4414555555556,
+          -34.5504694444444
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "archivo": "IMG_0664.HEIC",
+        "rumbo": 198,
+        "fecha": "2026-06-12T13:33:56",
+        "sector_id": null,
+        "cartel": null,
+        "nota": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4413694444444,
+          -34.5504944444444
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "archivo": "IMG_0665.HEIC",
+        "rumbo": 150,
+        "fecha": "2026-06-12T13:34:38",
+        "sector_id": null,
+        "cartel": null,
+        "nota": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4410888888889,
+          -34.5508638888889
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "archivo": "IMG_0667.HEIC",
+        "rumbo": 110,
+        "fecha": "2026-06-12T13:35:33",
+        "sector_id": null,
+        "cartel": null,
+        "nota": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.44115,
+          -34.5511472222222
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "archivo": "IMG_0668.HEIC",
+        "rumbo": 101,
+        "fecha": "2026-06-12T13:35:37",
+        "sector_id": null,
+        "cartel": null,
+        "nota": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4411472222222,
+          -34.5511388888889
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "archivo": "IMG_0669.HEIC",
+        "rumbo": 341,
+        "fecha": "2026-06-12T13:35:57",
+        "sector_id": null,
+        "cartel": null,
+        "nota": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4413,
+          -34.551175
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "archivo": "IMG_0670.HEIC",
+        "rumbo": 325,
+        "fecha": "2026-06-12T13:37:09",
+        "sector_id": null,
+        "cartel": null,
+        "nota": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4416861111111,
+          -34.5511777777778
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "archivo": "IMG_0671.HEIC",
+        "rumbo": 359,
+        "fecha": "2026-06-12T13:37:24",
+        "sector_id": null,
+        "cartel": null,
+        "nota": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4417083333333,
+          -34.5511166666667
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "archivo": "IMG_0673.HEIC",
+        "rumbo": 117,
+        "fecha": "2026-06-12T13:46:24",
+        "sector_id": null,
+        "cartel": null,
+        "nota": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4414222222222,
+          -34.5512555555556
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "archivo": "IMG_0674.HEIC",
+        "rumbo": 108,
+        "fecha": "2026-06-12T13:47:56",
+        "sector_id": null,
+        "cartel": null,
+        "nota": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4419638888889,
+          -34.5516611111111
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "archivo": "IMG_0675.HEIC",
+        "rumbo": 224,
+        "fecha": "2026-06-12T14:41:18",
+        "sector_id": null,
+        "cartel": null,
+        "nota": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.441925,
+          -34.5510666666667
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "archivo": "IMG_0676.HEIC",
+        "rumbo": 41,
+        "fecha": "2026-06-12T14:47:06",
+        "sector_id": null,
+        "cartel": null,
+        "nota": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4418055555556,
+          -34.5518138888889
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "archivo": "IMG_0677.HEIC",
+        "rumbo": 334,
+        "fecha": "2026-06-12T14:48:05",
+        "sector_id": null,
+        "cartel": null,
+        "nota": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4416583333333,
+          -34.5515666666667
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "archivo": "IMG_0678.HEIC",
+        "rumbo": 325,
+        "fecha": "2026-06-12T14:48:08",
+        "sector_id": null,
+        "cartel": null,
+        "nota": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.44165,
+          -34.5515722222222
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "archivo": "IMG_0679.HEIC",
+        "rumbo": 65,
+        "fecha": "2026-06-12T14:48:17",
+        "sector_id": null,
+        "cartel": null,
+        "nota": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4416777777778,
+          -34.5515861111111
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "archivo": "IMG_0680.HEIC",
+        "rumbo": 135,
+        "fecha": "2026-06-12T14:48:20",
+        "sector_id": null,
+        "cartel": null,
+        "nota": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4416472222222,
+          -34.5515944444444
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "archivo": "IMG_0681.HEIC",
+        "rumbo": 330,
+        "fecha": "2026-06-12T14:48:39",
+        "sector_id": null,
+        "cartel": null,
+        "nota": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4415861111111,
+          -34.5515166666667
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "archivo": "IMG_0682.HEIC",
+        "rumbo": 45,
+        "fecha": "2026-06-12T14:54:57",
+        "sector_id": null,
+        "cartel": null,
+        "nota": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.44135,
+          -34.551575
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "archivo": "IMG_0683.HEIC",
+        "rumbo": 212,
+        "fecha": "2026-06-12T14:57:04",
+        "sector_id": null,
+        "cartel": null,
+        "nota": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4408527777778,
+          -34.5519861111111
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "archivo": "IMG_0684.HEIC",
+        "rumbo": 85,
+        "fecha": "2026-06-12T14:57:07",
+        "sector_id": null,
+        "cartel": null,
+        "nota": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4408555555556,
+          -34.5519861111111
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "archivo": "IMG_0685.HEIC",
+        "rumbo": 58,
+        "fecha": "2026-06-12T14:57:31",
+        "sector_id": null,
+        "cartel": null,
+        "nota": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4406583333333,
+          -34.5521388888889
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "archivo": "IMG_0686.HEIC",
+        "rumbo": 225,
+        "fecha": "2026-06-12T14:59:31",
+        "sector_id": null,
+        "cartel": null,
+        "nota": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4403611111111,
+          -34.5529722222222
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "archivo": "IMG_0687.HEIC",
+        "rumbo": 193,
+        "fecha": "2026-06-12T14:59:40",
+        "sector_id": null,
+        "cartel": null,
+        "nota": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4402916666667,
+          -34.5530388888889
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "archivo": "IMG_0688.HEIC",
+        "rumbo": 147,
+        "fecha": "2026-06-12T15:01:53",
+        "sector_id": null,
+        "cartel": null,
+        "nota": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4407583333333,
+          -34.5528972222222
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "archivo": "IMG_0689.HEIC",
+        "rumbo": 98,
+        "fecha": "2026-06-12T15:03:53",
+        "sector_id": null,
+        "cartel": null,
+        "nota": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4409611111111,
+          -34.5525638888889
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "archivo": "IMG_0690.HEIC",
+        "rumbo": 99,
+        "fecha": "2026-06-12T15:04:03",
+        "sector_id": null,
+        "cartel": null,
+        "nota": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4409555555556,
+          -34.5525666666667
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "archivo": "IMG_0691.HEIC",
+        "rumbo": 147,
+        "fecha": "2026-06-12T15:04:31",
+        "sector_id": null,
+        "cartel": null,
+        "nota": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4407611111111,
+          -34.5523861111111
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "archivo": "IMG_0692.HEIC",
+        "rumbo": 233,
+        "fecha": "2026-06-12T15:04:54",
+        "sector_id": null,
+        "cartel": null,
+        "nota": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4408861111111,
+          -34.5522083333333
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "archivo": "IMG_0693.HEIC",
+        "rumbo": 87,
+        "fecha": "2026-06-12T15:05:07",
+        "sector_id": null,
+        "cartel": null,
+        "nota": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4409305555556,
+          -34.5521277777778
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "archivo": "IMG_0694.HEIC",
+        "rumbo": 41,
+        "fecha": "2026-06-12T15:06:22",
+        "sector_id": null,
+        "cartel": null,
+        "nota": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4411055555556,
+          -34.5513444444444
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "archivo": "IMG_0695.HEIC",
+        "rumbo": 344,
+        "fecha": "2026-06-12T15:06:56",
+        "sector_id": null,
+        "cartel": null,
+        "nota": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.4413305555556,
+          -34.5511972222222
+        ]
+      }
+    }
+  ]
+}
