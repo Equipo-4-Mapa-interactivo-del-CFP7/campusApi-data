@@ -11,4 +11,4 @@ name,accesible,barrera
 "ruta accesible rampa entrada sector 2 y 3 hasta entrada principal",true,
 "ruta accesible (ripio y asfalto sector 1 a sector 2 y 3)",true,ripio
 "ruta no accesible por escalon hacia sectores 2 y tres",false,escalon
-"salida caminando desde porche derecho sectores 2 y 3 caminando sin rampa(tiene en cuenta rampancentral pero en la entrada hay desnivel",false,desnivel
+"salida caminando desde porche derecho sectores 2 y 3 caminando sin rampa(tiene en cuenta rampancentral pero en la entrada hay desnivel",false,ripio
