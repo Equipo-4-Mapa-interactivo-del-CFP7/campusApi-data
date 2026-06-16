@@ -1,0 +1,14 @@
+name,accesible,barrera
+"aaceso dragones accesible derecho",true,
+"entrada accesible dragones (unir connlas entradas)",true,
+"ruta_accesible_dragones_izq_incomp",true,
+"ruta de conexion cfp7 con parking de dragones para conectar salida con echeverria accesblr, falta unir",true,
+"echeverria desde el centro a la entrada",true,
+"echeverria hasta entrada de juramento y dragones cartel pab A",true,
+"entrada desde echeverria y dragnos (2) hasta el cfp",true,
+"Ruta_Accesible_ Ramsay_Silla_de_ruedas",true,
+"ruta accesible desde entrada cfp7 hasta porche izquierdo por rampa",true,
+"ruta accesible rampa entrada sector 2 y 3 hasta entrada principal",true,
+"ruta accesible (ripio y asfalto sector 1 a sector 2 y 3)",true,ripio
+"ruta no accesible por escalon hacia sectores 2 y tres",false,escalon
+"salida caminando desde porche derecho sectores 2 y 3 caminando sin rampa(tiene en cuenta rampancentral pero en la entrada hay desnivel",false,desnivel
