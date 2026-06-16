@@ -54,7 +54,8 @@ Cada Feature:
   "properties": {
     "name": "string (nombre humano del track)",
     "seg": "int | null (numero de segmento si el track tenia varios)",
-    "accesible": "boolean | null (true=apto silla, false=barrera, null=ruta general sin clasificar)",
+    "accesible": "boolean (true=apto silla de ruedas, false=barrera fisica)",
+    "barrera": "string | null (tipo de barrera: escalon, desnivel, ripio; null si no hay)",
     "incompleto": "boolean (track parcial, completar en proxima visita)",
     "puntos": "int (cantidad de vertices)"
   },
@@ -63,9 +64,9 @@ Cada Feature:
 ```
 Convencion de pintado sugerida para Front:
 - `accesible: true`  -> verde (ruta apta silla de ruedas)
-- `accesible: false` -> rojo/naranja (barrera fisica documentada)
-- `accesible: null`  -> gris (ruta general, no clasificada para silla)
+- `accesible: false` -> rojo/naranja (barrera fisica; ver campo `barrera` para el tipo)
 - `incompleto: true` -> linea punteada (independiente del color)
+- ripio: `accesible: true` + `barrera: ripio` -> pintar verde (es transitable) pero mostrar aviso de ripio
 
 ## 4. Ruta Exterior (capa de mapa - asset estatico)
 Las rutas del campus relevadas por GPS. NO es una tabla relacional: es un GeoJSON estatico que el Frontend carga como overlay del mapa y pinta por accesibilidad. Sin FK con `sector` ni `recorrido`. Fuente: 13 tracks GPX relevados en campo (visita 12-06-2026).
@@ -79,7 +80,8 @@ Cada Feature:
   "properties": {
     "name": "string (nombre humano del track)",
     "seg": "int | null (numero de segmento si el track tenia varios)",
-    "accesible": "boolean | null (true=apto silla, false=barrera, null=ruta general sin clasificar)",
+    "accesible": "boolean (true=apto silla de ruedas, false=barrera fisica)",
+    "barrera": "string | null (tipo de barrera: escalon, desnivel, ripio; null si no hay)",
     "incompleto": "boolean (track parcial, completar en proxima visita)",
     "puntos": "int (cantidad de vertices)"
   },
@@ -88,6 +90,6 @@ Cada Feature:
 ```
 Convencion de pintado sugerida para Front:
 - `accesible: true`  -> verde (ruta apta silla de ruedas)
-- `accesible: false` -> rojo/naranja (barrera fisica documentada)
-- `accesible: null`  -> gris (ruta general, no clasificada para silla)
+- `accesible: false` -> rojo/naranja (barrera fisica; ver campo `barrera` para el tipo)
 - `incompleto: true` -> linea punteada (independiente del color)
+- ripio: `accesible: true` + `barrera: ripio` -> pintar verde (es transitable) pero mostrar aviso de ripio
