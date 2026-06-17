@@ -1,0 +1,50 @@
+{
+  "_meta": {
+    "descripcion": "Punto de ancla GPS por sector para montar los planos SVG indoor (MagicPlan) sobre el mapa exterior. Precision: ancla simple (un punto por sector), suficiente para orientacion MVP. NO es georreferenciacion completa del plano.",
+    "fuente": "Fotos de campo georreferenciadas (visita 12-06-2026), identificadas en sitio por relevamiento.",
+    "error_gps": "+/- 5 m aproximado (GPS de celular)",
+    "fecha": "2026-06-17"
+  },
+  "anclas": [
+    {
+      "sector": "Sector 1",
+      "lat": -34.5510666666667,
+      "lon": -58.441925,
+      "fuente_foto": "IMG_0675.HEIC",
+      "estado": "confirmado",
+      "nota": "Entrada Sector 1, zona de ripio accesible"
+    },
+    {
+      "sector": "Sector 2 y 3",
+      "lat": -34.5511166666667,
+      "lon": -58.4417083333333,
+      "fuente_foto": "IMG_0671.HEIC",
+      "estado": "confirmado",
+      "nota": "Entrada Sectores 2 y 3. Rampa izquierda accesible; rampa central con ripio no accesible"
+    },
+    {
+      "sector": "Patio comunicante sector 2 y 3",
+      "lat": null,
+      "lon": null,
+      "fuente_foto": null,
+      "estado": "pendiente",
+      "nota": "Anclar en tercer relevamiento"
+    },
+    {
+      "sector": "Exterior entre sector 1 y 2",
+      "lat": null,
+      "lon": null,
+      "fuente_foto": null,
+      "estado": "pendiente",
+      "nota": "Anclar en tercer relevamiento"
+    },
+    {
+      "sector": "Cpf7 frente",
+      "lat": null,
+      "lon": null,
+      "fuente_foto": null,
+      "estado": "pendiente",
+      "nota": "Anclar en tercer relevamiento"
+    }
+  ]
+}
