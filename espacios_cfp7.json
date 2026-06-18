@@ -1,0 +1,72 @@
+{
+  "_meta": {
+    "descripcion": "Espacios canonicos del CFP7. Fuente de verdad para tabla 'espacio' (back) y fichas/buscador (front).",
+    "fecha_relevamiento": "2026-06-12",
+    "fuentes": {
+      "membresia_y_nombres": "Documento oficial de la institucion (SECTORES PARA SENALETICA). Canonico.",
+      "medidas_pasillos": "Oficial (cinta de la institucion) canonica. MagicPlan como cross-check.",
+      "areas_salas": "MagicPlan donde existe medicion individual; null donde no."
+    },
+    "nota_marcas": "Las marcas S1/S2/S3 de los planos MagicPlan son IDs de escaneo, NO numeros de sector. Ignorar.",
+    "numeracion": "Sector 1 = talleres (Electricidad/Herreria/Climatizacion/Serigrafia). 2 = Carpinteria/bicicletas. 3 = administrativo. 4 = aulas/gastronomia.",
+    "ley962_umbral_pasillo_m": 2.00,
+    "ley962_ref": "Art. 7.6.1.1 / 7.6.2.1 - ancho minimo corredor educativo",
+    "hallazgo_central": "Los 5 pasillos de circulacion internos estan bajo los 2.00 m. Red de circulacion no conforme.",
+    "desnivel": {"entre": ["Sector 1", "Sectores 2/3/4"], "ruta_accesible": "rampa", "ruta_no_accesible": "escalon"},
+    "pendiente": ["Asignar cual bano S1/S4 es cual (Caballeros/Damas/Profesoras/Profesores)", "Medir areas individuales de talleres S1 y aulas S4", "GPS de anclas faltantes"]
+  },
+  "espacios": [
+    {"id": "s1_electricidad", "sector": 1, "nombre": "Electricidad", "tipo": "taller", "ubicacion": "interior", "area_m2": null},
+    {"id": "s1_herreria", "sector": 1, "nombre": "Herreria", "tipo": "taller", "ubicacion": "interior", "area_m2": null},
+    {"id": "s1_climatizacion", "sector": 1, "nombre": "Climatizacion", "tipo": "taller", "ubicacion": "interior", "area_m2": null},
+    {"id": "s1_serigrafia", "sector": 1, "nombre": "Serigrafia", "tipo": "taller", "ubicacion": "afuera", "area_m2": null},
+    {"id": "s1_bano_grande", "sector": 1, "nombre": "Bano Sector 1 (grande)", "tipo": "bano", "ubicacion": "interior", "area_m2": 16.58, "ancho_m": 4.64, "largo_m": 3.95, "accesible_viable": "verificar", "nota": "Caballeros o Damas (asignacion pendiente). Superficie suficiente."},
+    {"id": "s1_bano_chico", "sector": 1, "nombre": "Bano Sector 1 (chico)", "tipo": "bano", "ubicacion": "interior", "area_m2": 3.05, "ancho_m": 1.62, "largo_m": 1.88, "accesible_viable": false, "nota": "Inviable como accesible: sin radio de giro."},
+    {"id": "s2_carpinteria", "sector": 2, "nombre": "Carpinteria", "tipo": "taller", "ubicacion": "interior", "area_m2": 137.39, "ancho_m": 8.43, "largo_m": 16.32},
+    {"id": "s2_taller_bicicletas", "sector": 2, "nombre": "Taller de bicicleteria", "tipo": "taller", "ubicacion": "interior", "area_m2": 83.10, "ancho_m": 3.81, "largo_m": 21.84},
+    {"id": "s3_informes_regencia", "sector": 3, "nombre": "Informes - Regencia", "tipo": "oficina", "ubicacion": "interior", "area_m2": null},
+    {"id": "s3_secretaria_direccion", "sector": 3, "nombre": "Secretaria - Direccion", "tipo": "oficina", "ubicacion": "interior", "area_m2": null},
+    {"id": "s3_oficina_estudiantes", "sector": 3, "nombre": "Oficina de estudiantes", "tipo": "oficina", "ubicacion": "interior", "area_m2": null},
+    {"id": "s3_sala_personal", "sector": 3, "nombre": "Sala de personal", "tipo": "oficina", "ubicacion": "interior", "area_m2": null},
+    {"id": "s3_talleres_dinamicos", "sector": 3, "nombre": "Area de talleres dinamicos", "tipo": "taller", "ubicacion": "interior", "area_m2": null},
+    {"id": "s3_lab_informatica_a", "sector": 3, "nombre": "Laboratorio de Informatica A", "tipo": "laboratorio", "ubicacion": "interior", "area_m2": null},
+    {"id": "s3_lab_informatica_b", "sector": 3, "nombre": "Laboratorio de Informatica B", "tipo": "laboratorio", "ubicacion": "interior", "area_m2": null},
+    {"id": "s3_archivo_institucional", "sector": 3, "nombre": "Archivo institucional", "tipo": "oficina", "ubicacion": "interior", "area_m2": null},
+    {"id": "s3_espacio_tecnologico", "sector": 3, "nombre": "Espacio tecnologico multidisciplinar", "tipo": "taller", "ubicacion": "afuera", "area_m2": null},
+    {"id": "s4_aula_1", "sector": 4, "nombre": "Aula 1", "tipo": "aula", "ubicacion": "interior", "area_m2": null},
+    {"id": "s4_aula_2", "sector": 4, "nombre": "Aula 2", "tipo": "aula", "ubicacion": "interior", "area_m2": null},
+    {"id": "s4_aula_3_sum", "sector": 4, "nombre": "Aula 3 - SUM", "tipo": "aula", "ubicacion": "interior", "area_m2": null},
+    {"id": "s4_aula_4", "sector": 4, "nombre": "Aula 4", "tipo": "aula", "ubicacion": "interior", "area_m2": null},
+    {"id": "s4_aula_5", "sector": 4, "nombre": "Aula 5", "tipo": "aula", "ubicacion": "interior", "area_m2": null},
+    {"id": "s4_gastronomia_a", "sector": 4, "nombre": "Gastronomia A", "tipo": "taller", "ubicacion": "interior", "area_m2": null},
+    {"id": "s4_gastronomia_b", "sector": 4, "nombre": "Gastronomia B", "tipo": "taller", "ubicacion": "interior", "area_m2": null},
+    {"id": "s4_gastronomia_c", "sector": 4, "nombre": "Gastronomia C", "tipo": "taller", "ubicacion": "interior", "area_m2": null},
+    {"id": "s4_preceptoria_eps", "sector": 4, "nombre": "Preceptoria EPS", "tipo": "oficina", "ubicacion": "interior", "area_m2": null},
+    {"id": "s4_eps_ifts", "sector": 4, "nombre": "EPS - IFTS N5", "tipo": "oficina", "ubicacion": "interior", "area_m2": null},
+    {"id": "s4_bano_grande", "sector": 4, "nombre": "Bano Sector 4 (grande)", "tipo": "bano", "ubicacion": "interior", "area_m2": 23.47, "ancho_m": 5.93, "largo_m": 4.46, "accesible_viable": "verificar", "nota": "Candidato fuerte a box accesible. Uno de los 4 banos S4 (asignacion pendiente)."},
+    {"id": "s4_bano_mediano", "sector": 4, "nombre": "Bano Sector 4 (mediano)", "tipo": "bano", "ubicacion": "interior", "area_m2": 15.90, "ancho_m": 5.93, "largo_m": 3.48, "accesible_viable": "verificar"}
+  ],
+  "pasillos": [
+    {"id": "p_s1", "sector": 1, "nombre": "Pasillo principal Sector 1", "largo_m": 21.0, "ancho_oficial_m": 1.67, "ancho_magicplan_m": 1.75, "cumple_ley962": false, "barrera": "ancho_insuficiente"},
+    {"id": "p_s3_principal", "sector": 3, "nombre": "Pasillo principal Sector 3", "largo_m": 24.0, "ancho_oficial_m": 1.50, "ancho_magicplan_m": null, "cumple_ley962": false, "barrera": "ancho_insuficiente"},
+    {"id": "p_s3_lateral", "sector": 3, "nombre": "Pasillo lateral Sector 3 (al patio)", "largo_m": 6.14, "ancho_oficial_m": 1.47, "ancho_magicplan_m": null, "cumple_ley962": false, "barrera": "ancho_insuficiente"},
+    {"id": "p_s4_principal", "sector": 4, "nombre": "Pasillo principal Sector 4", "largo_m": 31.78, "ancho_oficial_m": 1.58, "ancho_magicplan_m": 1.61, "cumple_ley962": false, "barrera": "ancho_insuficiente"},
+    {"id": "p_s4_lockers", "sector": 4, "nombre": "Pasillo lateral Sector 4 (lockers)", "largo_m": 6.0, "ancho_oficial_m": 1.08, "ancho_sin_lockers_m": 1.58, "ancho_magicplan_m": null, "cumple_ley962": false, "barrera": "ancho_insuficiente", "nota": "PEOR CASO: 1.08 m con lockers colocados."}
+  ],
+  "zonas_medidas_magicplan": [
+    {"id": "z_s3_grupo_direccion", "sector": 3, "agrupa": "Direccion, Secretaria, Sala personal, Inf B, Of. estudiantes", "area_m2": 88.62, "ancho_m": 7.03, "largo_m": 12.61},
+    {"id": "z_s3_grupo_informes", "sector": 3, "agrupa": "Informes, Lab Inf A, Sala personal, Talleres dinamicos", "area_m2": 112.44, "ancho_m": 6.98, "largo_m": 16.12},
+    {"id": "z_s3_grupo_tecnologico", "sector": 3, "agrupa": "Lab informatica, Of. estudiantes, Esp. tecnologico", "area_m2": 72.33, "ancho_m": 7.01, "largo_m": 10.33},
+    {"id": "z_s3_hall", "sector": 3, "agrupa": "Hall / patio cubierto (circulacion ancha)", "area_m2": 46.47, "ancho_m": 7.69, "largo_m": 23.93}
+  ],
+  "patios": [
+    {"id": "patio_com_3_4", "nombre": "Patio comunicante Sector 3 y 4", "area_m2": 161.74, "ancho_m": 8.40, "largo_m": 28.52},
+    {"id": "patio_entre_2_3", "nombre": "Patio entre Sector 2 y 3", "area_m2": 157.57, "ancho_m": 14.50, "largo_m": 24.20},
+    {"id": "frente", "nombre": "CFP7 frente", "area_m2": 61.97, "ancho_m": 15.81, "largo_m": 3.92}
+  ],
+  "puertas_a_revisar": [
+    {"sector": 4, "id_pdf": 48, "ancho_m": 0.65, "nota": "< 0.80 m"},
+    {"sector": 4, "id_pdf": 53, "ancho_m": 0.64, "nota": "< 0.80 m"},
+    {"sector": 4, "id_pdf": 54, "ancho_m": 0.68, "nota": "< 0.80 m"}
+  ]
+}
