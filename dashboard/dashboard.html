@@ -3,34 +3,42 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Dashboard CFP7 - Uso y Accesibilidad</title>
-<!-- Chart.js 4 via CDN (cdnjs) -->
+<title>Dashboard de uso y accesibilidad — CFP N°7</title>
+<!-- Chart.js 4 local (sin CDN, sin build) -->
 <script src="chart.umd.js"></script>
 <style>
   :root {
     --azul: #14324a;
     --azul-claro: #1e4a6d;
+    --azul-vibrante: #1e6ef5;
+    --azul-vibrante-claro: #4a9eff;
     --naranja: #d97706;
-    --bg: #f4f6f8;
+    --amarillo: #eab308;
+    --verde: #16a34a;
+    --rojo: #dc2626;
+    --gris-pendiente: #cbd5e1;
+    --bg: #eef2f7;
     --card-bg: #ffffff;
     --texto: #1f2937;
     --texto-suave: #6b7280;
     --borde: #e2e8f0;
+    --sombra: 0 10px 30px rgba(20, 50, 74, 0.1);
   }
 
   * { box-sizing: border-box; }
 
   body {
     margin: 0;
-    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
     background: var(--bg);
     color: var(--texto);
   }
 
   header {
-    background: var(--azul);
+    background: linear-gradient(135deg, var(--azul-vibrante), var(--azul-vibrante-claro));
+    box-shadow: 0 4px 20px rgba(30, 110, 245, 0.25);
     color: #fff;
-    padding: 20px 32px;
+    padding: 28px 36px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -40,23 +48,26 @@
 
   header h1 {
     margin: 0;
-    font-size: 1.4rem;
-    font-weight: 600;
+    font-size: 1.75rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
   }
 
   .badge-demo {
-    background: var(--naranja);
+    background: rgba(255, 255, 255, 0.22);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(6px);
     color: #fff;
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 0.05em;
-    padding: 6px 12px;
+    padding: 6px 14px;
     border-radius: 999px;
     text-transform: uppercase;
   }
 
   main {
-    padding: 24px 32px 48px;
+    padding: 28px 32px 56px;
     max-width: 1200px;
     margin: 0 auto;
   }
@@ -67,7 +78,7 @@
     border: 1px solid #fca5a5;
     color: #991b1b;
     padding: 16px 20px;
-    border-radius: 8px;
+    border-radius: 12px;
     margin-bottom: 24px;
     line-height: 1.5;
   }
@@ -79,23 +90,52 @@
     font-family: Consolas, monospace;
   }
 
+  .controles {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--card-bg);
+    border: 1px solid rgba(20, 50, 74, 0.06);
+    box-shadow: var(--sombra);
+    border-radius: 14px;
+    padding: 14px 20px;
+    margin-bottom: 24px;
+  }
+
+  .controles label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--azul);
+  }
+
+  .controles select {
+    font-family: inherit;
+    font-size: 0.85rem;
+    padding: 6px 10px;
+    border-radius: 8px;
+    border: 1px solid var(--borde);
+    color: var(--texto);
+    background: #fff;
+  }
+
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
-    gap: 20px;
+    gap: 24px;
   }
 
   .card {
     background: var(--card-bg);
-    border: 1px solid var(--borde);
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(20, 50, 74, 0.06);
+    border-radius: 18px;
+    padding: 28px;
+    box-shadow: var(--sombra);
   }
 
   .card h2 {
-    margin: 0 0 4px;
-    font-size: 1rem;
+    margin: 0 0 6px;
+    font-size: 1.15rem;
+    font-weight: 700;
     color: var(--azul);
   }
 
@@ -118,6 +158,117 @@
     margin-top: 8px;
   }
 
+  .completitud-layout {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin: 8px 0 14px;
+  }
+
+  .completitud-dona-wrap {
+    position: relative;
+    width: 110px;
+    height: 110px;
+    flex-shrink: 0;
+  }
+
+  .completitud-numero {
+    flex: 1;
+  }
+
+  .indicador-valor {
+    text-align: left;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--azul);
+    margin: 0;
+    line-height: 1.1;
+  }
+
+  .indicador-fraccion {
+    text-align: left;
+    font-size: 0.85rem;
+    color: var(--texto-suave);
+    margin: 4px 0 0;
+  }
+
+  .indicador-texto {
+    text-align: center;
+    font-size: 0.78rem;
+    color: var(--texto-suave);
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .detalle-completitud {
+    margin-top: 14px;
+  }
+
+  .detalle-completitud summary {
+    cursor: pointer;
+    color: var(--azul);
+    font-weight: 600;
+    font-size: 0.82rem;
+    outline: none;
+  }
+
+  .detalle-seccion {
+    margin-top: 10px;
+  }
+
+  .detalle-titulo {
+    margin: 0 0 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--texto);
+  }
+
+  .lista-detalle {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-height: 220px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .lista-detalle li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    font-size: 0.82rem;
+  }
+
+  .lista-detalle-pendiente li {
+    justify-content: flex-start;
+    color: var(--texto-suave);
+    font-size: 0.78rem;
+  }
+
+  .chip {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #fff;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .chip-verde {
+    background: var(--verde);
+  }
+
+  .chip-roja {
+    background: var(--rojo);
+  }
+
   footer {
     text-align: center;
     color: var(--texto-suave);
@@ -136,7 +287,7 @@
 <body>
 
 <header>
-  <h1>Dashboard CFP7 - Uso y Accesibilidad</h1>
+  <h1>Dashboard de uso y accesibilidad — CFP N°7</h1>
   <span class="badge-demo">Datos sintéticos demo</span>
 </header>
 
@@ -148,39 +299,97 @@
     incluya cabeceras CORS abiertas.
   </div>
 
-  <div id="cargando" class="cargando">Cargando datos desde la API�?�</div>
+  <div id="cargando" class="cargando">Cargando datos desde la API...</div>
 
-  <div id="contenido" class="grid" style="display: none;">
-    <div class="card">
-      <h2>Top 5 espacios más buscados</h2>
-      <p class="subtitulo">Eventos con tipo_evento = "espacio_buscado", agrupados por espacio</p>
-      <div class="card-canvas-wrap">
-        <canvas id="chart-top-buscados"></canvas>
-      </div>
+  <div id="contenido" style="display: none;">
+    <div class="controles">
+      <label for="filtro-sector">Filtrar por sector:</label>
+      <select id="filtro-sector">
+        <option value="todos">Todos</option>
+        <option value="1">Sector 1</option>
+        <option value="2">Sector 2</option>
+        <option value="3">Sector 3</option>
+        <option value="4">Sector 4</option>
+      </select>
     </div>
 
-    <div class="card">
-      <h2>% de recorridos con accesibilidad requerida</h2>
-      <p class="subtitulo">Eventos con tipo_evento = "recorrido_iniciado"</p>
-      <div class="card-canvas-wrap">
-        <canvas id="chart-accesibilidad"></canvas>
+    <div class="grid">
+      <div class="card">
+        <h2>Top 5 espacios más buscados</h2>
+        <p class="subtitulo">Eventos con tipo_evento = "espacio_buscado", agrupados por espacio</p>
+        <div class="card-canvas-wrap">
+          <canvas id="chart-top-buscados"></canvas>
+        </div>
       </div>
-      <div id="kpi2-valor" class="kpi2-valor"></div>
-    </div>
 
-    <div class="card">
-      <h2>Reportes por espacio</h2>
-      <p class="subtitulo">Colección /reportes agrupada por espacio_id (mapa de calor de incidencias)</p>
-      <div class="card-canvas-wrap">
-        <canvas id="chart-reportes"></canvas>
+      <div class="card">
+        <h2>% de recorridos con accesibilidad requerida</h2>
+        <p class="subtitulo">Eventos con tipo_evento = "recorrido_iniciado"</p>
+        <div class="card-canvas-wrap">
+          <canvas id="chart-accesibilidad"></canvas>
+        </div>
+        <div id="kpi2-valor" class="kpi2-valor"></div>
       </div>
-    </div>
 
-    <div class="card">
-      <h2>Top 5 fichas consultadas</h2>
-      <p class="subtitulo">Eventos con tipo_evento = "ficha_consultada", agrupados por espacio</p>
-      <div class="card-canvas-wrap">
-        <canvas id="chart-top-fichas"></canvas>
+      <div class="card">
+        <h2>Reportes por espacio</h2>
+        <p class="subtitulo">Colección /reportes agrupada por espacio_id (mapa de calor de incidencias)</p>
+        <div class="card-canvas-wrap">
+          <canvas id="chart-reportes"></canvas>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Top 5 fichas consultadas</h2>
+        <p class="subtitulo">Eventos con tipo_evento = "ficha_consultada", agrupados por espacio</p>
+        <div class="card-canvas-wrap">
+          <canvas id="chart-top-fichas"></canvas>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Reportes por estado</h2>
+        <p class="subtitulo">Colección /reportes agrupada por estado de atención</p>
+        <div class="card-canvas-wrap">
+          <canvas id="chart-reportes-estado"></canvas>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Reportes por tipo</h2>
+        <p class="subtitulo">Colección /reportes agrupada por tipo de incidencia</p>
+        <div class="card-canvas-wrap">
+          <canvas id="chart-reportes-tipo"></canvas>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Completitud del relevamiento</h2>
+        <p class="subtitulo">Espacios con dato de accesibilidad confirmado (no nulo)</p>
+
+        <div class="completitud-layout">
+          <div class="completitud-dona-wrap">
+            <canvas id="chart-completitud-dona"></canvas>
+          </div>
+          <div class="completitud-numero">
+            <div id="completitud-valor" class="indicador-valor"></div>
+            <div id="completitud-fraccion" class="indicador-fraccion"></div>
+          </div>
+        </div>
+
+        <p class="indicador-texto">Los espacios sin dato se marcan pendientes, no se asumen accesibles.</p>
+
+        <details class="detalle-completitud">
+          <summary>Ver detalle</summary>
+          <div class="detalle-seccion">
+            <p class="detalle-titulo">Confirmados (<span id="detalle-confirmados-total"></span>)</p>
+            <ul id="detalle-confirmados-lista" class="lista-detalle"></ul>
+          </div>
+          <div class="detalle-seccion">
+            <p class="detalle-titulo">Pendientes de relevamiento (<span id="detalle-pendientes-total"></span>)</p>
+            <ul id="detalle-pendientes-lista" class="lista-detalle lista-detalle-pendiente"></ul>
+          </div>
+        </details>
       </div>
     </div>
   </div>
@@ -194,10 +403,21 @@
   // ==========================================
   // Configuración
   // ==========================================
+  // Cambiar si el dashboard se sirve desde el front
   const API_BASE = "http://localhost:3001";
   const COLOR_AZUL = "#14324a";
   const COLOR_AZUL_CLARO = "#1e4a6d";
+  const COLOR_AZUL_VIBRANTE = "#1e6ef5";
   const COLOR_NARANJA = "#d97706";
+  const COLOR_AMARILLO = "#eab308";
+  const COLOR_VERDE = "#16a34a";
+  const COLOR_GRIS_PENDIENTE = "#cbd5e1";
+
+  // Estado en memoria: datos crudos (sin filtrar) cargados una sola vez desde la API
+  let cache = null;
+
+  // Instancias de Chart.js activas por canvas, para poder destruirlas antes de re-renderizar
+  const instanciasChart = {};
 
   // ==========================================
   // Utilidades
@@ -233,6 +453,23 @@
       }));
   }
 
+  // Filtra una lista de eventos o reportes por el sector del espacio al que refieren.
+  // sectorFiltro es "todos" o un string numérico ("1".."4"); campoId es el nombre del campo que guarda el slug del espacio.
+  function filtrarPorSector(items, mapaSector, campoId, sectorFiltro) {
+    if (sectorFiltro === "todos") return items;
+    const sectorNum = Number(sectorFiltro);
+    return items.filter((item) => mapaSector[item[campoId]] === sectorNum);
+  }
+
+  // Crea (o recrea) un Chart.js en el canvas indicado, destruyendo la instancia previa si existe.
+  // Necesario porque el filtro de sector re-renderiza todos los gráficos sobre los mismos canvas.
+  function crearChart(canvasId, config) {
+    if (instanciasChart[canvasId]) {
+      instanciasChart[canvasId].destroy();
+    }
+    instanciasChart[canvasId] = new Chart(document.getElementById(canvasId), config);
+  }
+
   // ==========================================
   // Render de gráficos
   // ==========================================
@@ -241,7 +478,7 @@
     const conteo = contarPorEntidad(eventos, "espacio_buscado");
     const top5 = armarTopN(conteo, mapaEspacios, 5);
 
-    new Chart(document.getElementById("chart-top-buscados"), {
+    crearChart("chart-top-buscados", {
       type: "bar",
       data: {
         labels: top5.map((d) => d.nombre),
@@ -267,9 +504,9 @@
     const totalRecorridos = recorridos.length;
     const accesibles = recorridos.filter((e) => e.requiere_accesibilidad === true).length;
     const noAccesibles = totalRecorridos - accesibles;
-    const porcentaje = totalRecorridos > 0 ? ((accesibles * 100) / totalRecorridos) : 0;
+    const porcentaje = totalRecorridos > 0 ? (accesibles * 100) / totalRecorridos : 0;
 
-    new Chart(document.getElementById("chart-accesibilidad"), {
+    crearChart("chart-accesibilidad", {
       type: "doughnut",
       data: {
         labels: ["Requiere accesibilidad", "No requiere"],
@@ -302,7 +539,7 @@
         cantidad,
       }));
 
-    new Chart(document.getElementById("chart-reportes"), {
+    crearChart("chart-reportes", {
       type: "bar",
       data: {
         labels: ordenado.map((d) => d.nombre),
@@ -328,7 +565,7 @@
     const conteo = contarPorEntidad(eventos, "ficha_consultada");
     const top5 = armarTopN(conteo, mapaEspacios, 5);
 
-    new Chart(document.getElementById("chart-top-fichas"), {
+    crearChart("chart-top-fichas", {
       type: "bar",
       data: {
         labels: top5.map((d) => d.nombre),
@@ -349,6 +586,142 @@
     });
   }
 
+  function renderReportesPorEstado(reportes) {
+    const categorias = ["PENDIENTE", "EN_REVISION", "RESUELTO"];
+    const etiquetas = ["Pendiente", "En revisión", "Resuelto"];
+    const colores = [COLOR_NARANJA, COLOR_AMARILLO, COLOR_VERDE];
+    const conteo = { PENDIENTE: 0, EN_REVISION: 0, RESUELTO: 0 };
+    for (const reporte of reportes) {
+      if (conteo.hasOwnProperty(reporte.estado)) conteo[reporte.estado]++;
+    }
+
+    crearChart("chart-reportes-estado", {
+      type: "doughnut",
+      data: {
+        labels: etiquetas,
+        datasets: [
+          {
+            data: categorias.map((c) => conteo[c]),
+            backgroundColor: colores,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { position: "bottom" } },
+      },
+    });
+  }
+
+  function renderReportesPorTipo(reportes) {
+    const categorias = ["ACCESO_BLOQUEADO", "PROBLEMA_SENALETICA", "BARRERA_FISICA", "DIFICULTAD_ORIENTACION"];
+    const etiquetas = ["Acceso bloqueado", "Problema de señalética", "Barrera física", "Dificultad de orientación"];
+    const colores = [COLOR_AZUL, COLOR_AMARILLO, COLOR_NARANJA, COLOR_AZUL_CLARO];
+    const conteo = Object.fromEntries(categorias.map((c) => [c, 0]));
+    for (const reporte of reportes) {
+      if (conteo.hasOwnProperty(reporte.tipo)) conteo[reporte.tipo]++;
+    }
+
+    crearChart("chart-reportes-tipo", {
+      type: "bar",
+      data: {
+        labels: etiquetas,
+        datasets: [
+          {
+            label: "Reportes",
+            data: categorias.map((c) => conteo[c]),
+            backgroundColor: colores,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: { y: { beginAtZero: true, ticks: { precision: 0 } } },
+      },
+    });
+  }
+
+  function renderCompletitud(espacios) {
+    const total = espacios.length;
+    const confirmados = espacios
+      .filter((e) => e.accesible !== null && e.accesible !== undefined)
+      .sort((a, b) => a.nombre.localeCompare(b.nombre));
+    const pendientes = espacios
+      .filter((e) => e.accesible === null || e.accesible === undefined)
+      .sort((a, b) => a.nombre.localeCompare(b.nombre));
+    const porcentaje = total > 0 ? (confirmados.length * 100) / total : 0;
+
+    document.getElementById("completitud-valor").textContent = `${porcentaje.toFixed(0)}%`;
+    document.getElementById("completitud-fraccion").textContent = `(${confirmados.length} de ${total} espacios)`;
+
+    crearChart("chart-completitud-dona", {
+      type: "doughnut",
+      data: {
+        labels: ["Confirmados", "Pendientes"],
+        datasets: [
+          {
+            data: [confirmados.length, pendientes.length],
+            backgroundColor: [COLOR_AZUL_VIBRANTE, COLOR_GRIS_PENDIENTE],
+            borderWidth: 0,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        cutout: "68%",
+        plugins: { legend: { display: false } },
+      },
+    });
+
+    document.getElementById("detalle-confirmados-total").textContent = confirmados.length;
+    const listaConfirmados = document.getElementById("detalle-confirmados-lista");
+    listaConfirmados.innerHTML = "";
+    for (const espacio of confirmados) {
+      const li = document.createElement("li");
+      const nombre = document.createElement("span");
+      nombre.textContent = espacio.nombre;
+      const chip = document.createElement("span");
+      chip.className = espacio.accesible ? "chip chip-verde" : "chip chip-roja";
+      chip.textContent = espacio.accesible ? "accesible" : "no accesible";
+      li.appendChild(nombre);
+      li.appendChild(chip);
+      listaConfirmados.appendChild(li);
+    }
+
+    document.getElementById("detalle-pendientes-total").textContent = pendientes.length;
+    const listaPendientes = document.getElementById("detalle-pendientes-lista");
+    listaPendientes.innerHTML = "";
+    for (const espacio of pendientes) {
+      const li = document.createElement("li");
+      li.textContent = espacio.nombre;
+      listaPendientes.appendChild(li);
+    }
+  }
+
+  // ==========================================
+  // Orquestación: filtra el cache por sector y vuelve a dibujar todo
+  // ==========================================
+  function renderTodo(sectorFiltro) {
+    const { eventos, espacios, reportes, mapaEspacios, mapaSector } = cache;
+
+    const eventosFiltrados = filtrarPorSector(eventos, mapaSector, "entidad_id", sectorFiltro);
+    const reportesFiltrados = filtrarPorSector(reportes, mapaSector, "espacio_id", sectorFiltro);
+    const espaciosFiltrados =
+      sectorFiltro === "todos" ? espacios : espacios.filter((e) => e.sector === Number(sectorFiltro));
+
+    renderTopBuscados(eventosFiltrados, mapaEspacios);
+    renderAccesibilidad(eventosFiltrados);
+    renderReportesPorEspacio(reportesFiltrados, mapaEspacios);
+    renderTopFichas(eventosFiltrados, mapaEspacios);
+    renderReportesPorEstado(reportesFiltrados);
+    renderReportesPorTipo(reportesFiltrados);
+    renderCompletitud(espaciosFiltrados);
+  }
+
   // ==========================================
   // Inicialización
   // ==========================================
@@ -360,25 +733,31 @@
         obtenerJson("/reportes"),
       ]);
 
-      // Mapa id de espacio (slug) -> nombre legible
+      // Mapas slug -> nombre legible y slug -> sector, resueltos una sola vez
       const mapaEspacios = {};
+      const mapaSector = {};
       for (const espacio of espacios) {
         mapaEspacios[espacio.id] = espacio.nombre;
+        mapaSector[espacio.id] = espacio.sector;
       }
 
-      renderTopBuscados(eventos, mapaEspacios);
-      renderAccesibilidad(eventos);
-      renderReportesPorEspacio(reportes, mapaEspacios);
-      renderTopFichas(eventos, mapaEspacios);
+      cache = { eventos, espacios, reportes, mapaEspacios, mapaSector };
+
+      renderTodo("todos");
 
       document.getElementById("cargando").style.display = "none";
-      document.getElementById("contenido").style.display = "grid";
+      document.getElementById("contenido").style.display = "block";
     } catch (error) {
       console.error("Error al cargar el dashboard:", error);
       document.getElementById("cargando").style.display = "none";
       document.getElementById("estado-error").style.display = "block";
     }
   }
+
+  document.getElementById("filtro-sector").addEventListener("change", (evento) => {
+    if (!cache) return;
+    renderTodo(evento.target.value);
+  });
 
   iniciar();
 </script>

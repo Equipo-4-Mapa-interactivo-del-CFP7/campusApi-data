@@ -4,8 +4,9 @@
     "fuente_espacios": "espacios_cfp7.json (relevamiento 2026-06-12)",
     "AMENDA_CONTRATO": "tipo agrega 'taller' al enum. Broadcast a Back/Front/QA antes de mergear.",
     "mapeo_tipos": "taller->taller (NUEVO) | bano->servicio | laboratorio->aula | oficina->oficina | aula->aula",
-    "ADVERTENCIA_accesible": "PLACEHOLDER para testear UI salvo s1_bano_chico (confirmado false). Real depende de #169.",
-    "eventos_telemetria_nota": "DATOS SINTETICOS DEMO - generados 2026-07-14 para dashboard S10. NO son datos de campo."
+    "ADVERTENCIA_accesible": "accesible=null salvo los 6 confirmados por relevamiento de campo (s1_bano_chico y los 5 pasillos, todos false). El resto queda pendiente del 3er relevamiento (#169); NO se asume true ni false.",
+    "eventos_telemetria_nota": "DATOS SINTETICOS DEMO - generados 2026-07-14 para dashboard S10. NO son datos de campo.",
+    "cambios_2026_07_15": "Se agrego columna sector a espacios (fuente: espacios_cfp7.json; acceso_frente sin sector confirmado). Se agregaron 5 pasillos como espacios punto_de_paso (accesible=false, dato real de relevamiento). Coleccion reportes reemplazada: 6 reportes reales de 02_seed_reportes.sql (barreras Ley 962 + bano s1_bano_chico) mas 3 reportes sinteticos [DEMO] de senaletica/orientacion, con estados variados (PENDIENTE/EN_REVISION/RESUELTO) para poblar el grafico de estados."
   },
   "espacios": [
     {
@@ -13,48 +14,55 @@
       "nombre": "Acceso principal (frente)",
       "tipo": "acceso",
       "descripcion": "Entrada al CFP7 por el frente. Nodo origen de recorridos.",
-      "accesible": true
+      "sector": null,
+      "accesible": null
     },
     {
       "id": "s1_electricidad",
       "nombre": "Electricidad",
       "tipo": "taller",
       "descripcion": "Taller de Electricidad, Sector 1 (planta baja, entrada de ripio).",
-      "accesible": true
+      "sector": 1,
+      "accesible": null
     },
     {
       "id": "s1_herreria",
       "nombre": "Herreria",
       "tipo": "taller",
       "descripcion": "Taller de Herreria, Sector 1 (planta baja).",
-      "accesible": true
+      "sector": 1,
+      "accesible": null
     },
     {
       "id": "s1_climatizacion",
       "nombre": "Climatizacion",
       "tipo": "taller",
       "descripcion": "Taller de Climatizacion, Sector 1 (planta baja).",
-      "accesible": true
+      "sector": 1,
+      "accesible": null
     },
     {
       "id": "s1_serigrafia",
       "nombre": "Serigrafia",
       "tipo": "taller",
       "descripcion": "Taller de Serigrafia, Sector 1 (exterior).",
-      "accesible": true
+      "sector": 1,
+      "accesible": null
     },
     {
       "id": "s1_bano_grande",
       "nombre": "Bano Sector 1 (grande)",
       "tipo": "servicio",
       "descripcion": "Bano Sector 1, 16.58 m2. Asignacion pendiente.",
-      "accesible": false
+      "sector": 1,
+      "accesible": null
     },
     {
       "id": "s1_bano_chico",
       "nombre": "Bano Sector 1 (chico)",
       "tipo": "servicio",
       "descripcion": "Bano chico Sector 1, 3.05 m2. Sin radio de giro: inviable accesible.",
+      "sector": 1,
       "accesible": false
     },
     {
@@ -62,160 +70,223 @@
       "nombre": "Carpinteria",
       "tipo": "taller",
       "descripcion": "Taller de Carpinteria, Sector 2 (nivel elevado, acceso por rampa).",
-      "accesible": true
+      "sector": 2,
+      "accesible": null
     },
     {
       "id": "s2_taller_bicicletas",
       "nombre": "Taller de bicicleteria",
       "tipo": "taller",
       "descripcion": "Taller de bicicleteria, Sector 2.",
-      "accesible": true
+      "sector": 2,
+      "accesible": null
     },
     {
       "id": "s3_informes_regencia",
       "nombre": "Informes - Regencia",
       "tipo": "oficina",
       "descripcion": "Informes y Regencia, Sector 3.",
-      "accesible": true
+      "sector": 3,
+      "accesible": null
     },
     {
       "id": "s3_secretaria_direccion",
       "nombre": "Secretaria - Direccion",
       "tipo": "oficina",
       "descripcion": "Secretaria y Direccion, Sector 3.",
-      "accesible": true
+      "sector": 3,
+      "accesible": null
     },
     {
       "id": "s3_oficina_estudiantes",
       "nombre": "Oficina de estudiantes",
       "tipo": "oficina",
       "descripcion": "Oficina de estudiantes, Sector 3.",
-      "accesible": true
+      "sector": 3,
+      "accesible": null
     },
     {
       "id": "s3_sala_personal",
       "nombre": "Sala de personal",
       "tipo": "oficina",
       "descripcion": "Sala de personal, Sector 3.",
-      "accesible": true
+      "sector": 3,
+      "accesible": null
     },
     {
       "id": "s3_talleres_dinamicos",
       "nombre": "Area de talleres dinamicos",
       "tipo": "taller",
       "descripcion": "Area de talleres dinamicos, Sector 3.",
-      "accesible": true
+      "sector": 3,
+      "accesible": null
     },
     {
       "id": "s3_lab_informatica_a",
       "nombre": "Laboratorio de Informatica A",
       "tipo": "aula",
       "descripcion": "Laboratorio de Informatica A, Sector 3.",
-      "accesible": true
+      "sector": 3,
+      "accesible": null
     },
     {
       "id": "s3_lab_informatica_b",
       "nombre": "Laboratorio de Informatica B",
       "tipo": "aula",
       "descripcion": "Laboratorio de Informatica B, Sector 3.",
-      "accesible": true
+      "sector": 3,
+      "accesible": null
     },
     {
       "id": "s3_archivo_institucional",
       "nombre": "Archivo institucional",
       "tipo": "oficina",
       "descripcion": "Archivo institucional, Sector 3.",
-      "accesible": true
+      "sector": 3,
+      "accesible": null
     },
     {
       "id": "s3_espacio_tecnologico",
       "nombre": "Espacio tecnologico multidisciplinar",
       "tipo": "taller",
       "descripcion": "Espacio tecnologico, Sector 3 (exterior).",
-      "accesible": true
+      "sector": 3,
+      "accesible": null
     },
     {
       "id": "s4_aula_1",
       "nombre": "Aula 1",
       "tipo": "aula",
       "descripcion": "Aula 1, Sector 4.",
-      "accesible": true
+      "sector": 4,
+      "accesible": null
     },
     {
       "id": "s4_aula_2",
       "nombre": "Aula 2",
       "tipo": "aula",
       "descripcion": "Aula 2, Sector 4.",
-      "accesible": true
+      "sector": 4,
+      "accesible": null
     },
     {
       "id": "s4_aula_3_sum",
       "nombre": "Aula 3 - SUM",
       "tipo": "aula",
       "descripcion": "Aula 3 / SUM, Sector 4.",
-      "accesible": true
+      "sector": 4,
+      "accesible": null
     },
     {
       "id": "s4_aula_4",
       "nombre": "Aula 4",
       "tipo": "aula",
       "descripcion": "Aula 4, Sector 4. Acceso con barrera (placeholder).",
-      "accesible": false
+      "sector": 4,
+      "accesible": null
     },
     {
       "id": "s4_aula_5",
       "nombre": "Aula 5",
       "tipo": "aula",
       "descripcion": "Aula 5, Sector 4. Proxima al pasillo de lockers (1.08 m).",
-      "accesible": false
+      "sector": 4,
+      "accesible": null
     },
     {
       "id": "s4_gastronomia_a",
       "nombre": "Gastronomia A",
       "tipo": "taller",
       "descripcion": "Taller de Gastronomia A, Sector 4.",
-      "accesible": true
+      "sector": 4,
+      "accesible": null
     },
     {
       "id": "s4_gastronomia_b",
       "nombre": "Gastronomia B",
       "tipo": "taller",
       "descripcion": "Taller de Gastronomia B, Sector 4.",
-      "accesible": true
+      "sector": 4,
+      "accesible": null
     },
     {
       "id": "s4_gastronomia_c",
       "nombre": "Gastronomia C",
       "tipo": "taller",
       "descripcion": "Taller de Gastronomia C, Sector 4.",
-      "accesible": false
+      "sector": 4,
+      "accesible": null
     },
     {
       "id": "s4_preceptoria_eps",
       "nombre": "Preceptoria EPS",
       "tipo": "oficina",
       "descripcion": "Preceptoria EPS, Sector 4.",
-      "accesible": true
+      "sector": 4,
+      "accesible": null
     },
     {
       "id": "s4_eps_ifts",
       "nombre": "EPS - IFTS N5",
       "tipo": "oficina",
       "descripcion": "EPS / IFTS N5, Sector 4.",
-      "accesible": true
+      "sector": 4,
+      "accesible": null
     },
     {
       "id": "s4_bano_grande",
       "nombre": "Bano Sector 4 (grande)",
       "tipo": "servicio",
       "descripcion": "Bano Sector 4, 23.47 m2. Candidato fuerte a box accesible.",
-      "accesible": true
+      "sector": 4,
+      "accesible": null
     },
     {
       "id": "s4_bano_mediano",
       "nombre": "Bano Sector 4 (mediano)",
       "tipo": "servicio",
       "descripcion": "Bano Sector 4, 15.90 m2.",
+      "sector": 4,
+      "accesible": null
+    },
+    {
+      "id": "p_s1",
+      "nombre": "Pasillo principal Sector 1",
+      "tipo": "punto_de_paso",
+      "descripcion": "Pasillo principal Sector 1. Ancho 1.67 m (bajo el minimo Ley 962 de 2.00 m). Largo 21 m.",
+      "sector": 1,
+      "accesible": false
+    },
+    {
+      "id": "p_s3_principal",
+      "nombre": "Pasillo principal Sector 3",
+      "tipo": "punto_de_paso",
+      "descripcion": "Pasillo principal Sector 3. Ancho 1.50 m (bajo el minimo Ley 962 de 2.00 m). Largo 24 m.",
+      "sector": 3,
+      "accesible": false
+    },
+    {
+      "id": "p_s3_lateral",
+      "nombre": "Pasillo lateral Sector 3 (al patio)",
+      "tipo": "punto_de_paso",
+      "descripcion": "Pasillo lateral Sector 3, hacia el patio. Ancho 1.47 m (bajo el minimo Ley 962 de 2.00 m). Largo 6.14 m.",
+      "sector": 3,
+      "accesible": false
+    },
+    {
+      "id": "p_s4_principal",
+      "nombre": "Pasillo principal Sector 4",
+      "tipo": "punto_de_paso",
+      "descripcion": "Pasillo principal Sector 4. Ancho 1.58 m (bajo el minimo Ley 962 de 2.00 m). Largo 31.78 m.",
+      "sector": 4,
+      "accesible": false
+    },
+    {
+      "id": "p_s4_lockers",
+      "nombre": "Pasillo lateral Sector 4 (lockers)",
+      "tipo": "punto_de_paso",
+      "descripcion": "Pasillo lateral Sector 4 (lockers). Ancho 1.08 m con lockers colocados (bajo el minimo Ley 962 de 2.00 m). Largo 6 m.",
+      "sector": 4,
       "accesible": false
     }
   ],
@@ -324,31 +395,75 @@
   "reportes": [
     {
       "id": "rep_1",
-      "espacio_id": "s4_aula_4",
-      "tipo_incidencia": "acceso_bloqueado",
-      "descripcion": "La puerta del aula estaba cerrada con llave en horario de clase.",
-      "imagen_evidencia_url": null
+      "espacio_id": "p_s1",
+      "tipo": "BARRERA_FISICA",
+      "descripcion": "Relevamiento de campo: ancho 1.67 m, bajo el minimo de 2.00 m para corredores educativos (Ley 962 CABA art. 7.6.1.1). Largo 21.0 m.",
+      "estado": "PENDIENTE",
+      "fecha_creacion": "2026-06-12T10:00:00"
     },
     {
       "id": "rep_2",
-      "espacio_id": "s3_secretaria_direccion",
-      "tipo_incidencia": "senaletica",
-      "descripcion": "No hay cartel que indique donde queda Secretaria.",
-      "imagen_evidencia_url": null
+      "espacio_id": "p_s3_principal",
+      "tipo": "BARRERA_FISICA",
+      "descripcion": "Relevamiento de campo: ancho 1.50 m, bajo el minimo de 2.00 m para corredores educativos (Ley 962 CABA art. 7.6.1.1). Largo 24.0 m.",
+      "estado": "EN_REVISION",
+      "fecha_creacion": "2026-06-12T10:00:00"
     },
     {
       "id": "rep_3",
-      "espacio_id": "s4_aula_5",
-      "tipo_incidencia": "barrera_fisica",
-      "descripcion": "El pasillo de lockers queda muy angosto, no pasa una silla de ruedas.",
-      "imagen_evidencia_url": null
+      "espacio_id": "p_s3_lateral",
+      "tipo": "BARRERA_FISICA",
+      "descripcion": "Relevamiento de campo: ancho 1.47 m, bajo el minimo de 2.00 m para corredores educativos (Ley 962 CABA art. 7.6.1.1). Largo 6.14 m.",
+      "estado": "PENDIENTE",
+      "fecha_creacion": "2026-06-12T10:00:00"
     },
     {
       "id": "rep_4",
+      "espacio_id": "p_s4_principal",
+      "tipo": "BARRERA_FISICA",
+      "descripcion": "Relevamiento de campo: ancho 1.58 m, bajo el minimo de 2.00 m para corredores educativos (Ley 962 CABA art. 7.6.1.1). Largo 31.78 m.",
+      "estado": "EN_REVISION",
+      "fecha_creacion": "2026-06-12T10:00:00"
+    },
+    {
+      "id": "rep_5",
+      "espacio_id": "p_s4_lockers",
+      "tipo": "BARRERA_FISICA",
+      "descripcion": "Relevamiento de campo: ancho 1.08 m, bajo el minimo de 2.00 m para corredores educativos (Ley 962 CABA art. 7.6.1.1). Largo 6.0 m.",
+      "estado": "PENDIENTE",
+      "fecha_creacion": "2026-06-12T10:00:00"
+    },
+    {
+      "id": "rep_6",
+      "espacio_id": "s1_bano_chico",
+      "tipo": "BARRERA_FISICA",
+      "descripcion": "Relevamiento de campo: bano no accesible (confirmado en 2do relevamiento).",
+      "estado": "RESUELTO",
+      "fecha_creacion": "2026-06-12T10:00:00"
+    },
+    {
+      "id": "rep_7",
+      "espacio_id": "s3_secretaria_direccion",
+      "tipo": "PROBLEMA_SENALETICA",
+      "descripcion": "[DEMO] No hay cartel que indique donde queda Secretaria.",
+      "estado": "PENDIENTE",
+      "fecha_creacion": "2026-07-10T11:00:00"
+    },
+    {
+      "id": "rep_8",
       "espacio_id": "acceso_frente",
-      "tipo_incidencia": "orientacion",
-      "descripcion": "Desde la entrada no se entiende para que lado queda cada sector.",
-      "imagen_evidencia_url": null
+      "tipo": "DIFICULTAD_ORIENTACION",
+      "descripcion": "[DEMO] Desde la entrada no se entiende para que lado queda cada sector.",
+      "estado": "EN_REVISION",
+      "fecha_creacion": "2026-07-11T15:30:00"
+    },
+    {
+      "id": "rep_9",
+      "espacio_id": "s4_gastronomia_c",
+      "tipo": "PROBLEMA_SENALETICA",
+      "descripcion": "[DEMO] Falta senalizacion que oriente hacia el sector de Gastronomia desde el patio.",
+      "estado": "RESUELTO",
+      "fecha_creacion": "2026-07-12T09:15:00"
     }
   ],
   "eventos_telemetria": [
@@ -1303,6 +1418,13 @@
       "requiere_accesibilidad": false,
       "fecha_creacion": "2026-07-14T12:00:00",
       "id": 136
+    },
+    {
+      "tipo_evento": "ficha_consultada",
+      "entidad_id": "s2_carpinteria",
+      "requiere_accesibilidad": false,
+      "fecha_creacion": "2026-07-14T19:00:00",
+      "id": 137
     }
   ]
 }
