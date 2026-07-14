@@ -1461,9 +1461,9 @@
                              },
                              {
                                  "id":  "ruta_ext_06",
-                                 "nombre":  "Sector 1 a Sectores 2, 3 y 4 (ripio y asfalto)",
-                                 "accesible":  false,
-                                 "barrera":  "ripio (a verificar en 3ra visita)"
+                                 "nombre":  "Sector 1 a Sectores 2, 3 y 4 (accesible por rampa izquierda; ripio leve al salir de S1)",
+                                 "accesible":  true,
+                                 "barrera":  null
                              },
                              {
                                  "id":  "ruta_ext_07",
