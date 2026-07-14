@@ -200,6 +200,13 @@
     line-height: 1.4;
   }
 
+  .nota-sin-filtro {
+    font-size: 0.78rem;
+    font-style: italic;
+    color: var(--texto-suave);
+    margin: 0 0 12px;
+  }
+
   .detalle-completitud {
     margin-top: 14px;
   }
@@ -391,6 +398,27 @@
           </div>
         </details>
       </div>
+
+      <div class="card">
+        <h2>Rutas exteriores relevadas</h2>
+        <p class="subtitulo">Tramos GPS relevados en campo, por accesibilidad</p>
+        <p id="rutas-nota-sector" class="nota-sin-filtro" style="display: none;">
+          No aplica filtro por sector (las rutas son exteriores).
+        </p>
+
+        <div class="completitud-layout">
+          <div class="completitud-dona-wrap">
+            <canvas id="chart-rutas-dona"></canvas>
+          </div>
+          <div class="completitud-numero">
+            <div id="rutas-valor" class="indicador-valor"></div>
+            <div id="rutas-fraccion" class="indicador-fraccion"></div>
+          </div>
+        </div>
+
+        <p class="detalle-titulo">Rutas con barrera</p>
+        <ul id="rutas-barrera-lista" class="lista-detalle"></ul>
+      </div>
     </div>
   </div>
 </main>
@@ -411,6 +439,7 @@
   const COLOR_NARANJA = "#d97706";
   const COLOR_AMARILLO = "#eab308";
   const COLOR_VERDE = "#16a34a";
+  const COLOR_ROJO = "#dc2626";
   const COLOR_GRIS_PENDIENTE = "#cbd5e1";
 
   // Estado en memoria: datos crudos (sin filtrar) cargados una sola vez desde la API
@@ -644,7 +673,53 @@
     });
   }
 
-  function renderCompletitud(espacios) {
+  function renderRutasExteriores(rutas, sectorFiltro) {
+    // Las rutas exteriores no pertenecen a ningun sector interior: el total es siempre global.
+    document.getElementById("rutas-nota-sector").style.display = sectorFiltro === "todos" ? "none" : "block";
+
+    const total = rutas.length;
+    const accesibles = rutas.filter((r) => r.accesible === true).length;
+    const conBarrera = rutas.filter((r) => r.accesible === false);
+
+    document.getElementById("rutas-valor").textContent = `${accesibles} de ${total}`;
+    document.getElementById("rutas-fraccion").textContent = "rutas accesibles";
+
+    crearChart("chart-rutas-dona", {
+      type: "doughnut",
+      data: {
+        labels: ["Accesible", "Con barrera"],
+        datasets: [
+          {
+            data: [accesibles, conBarrera.length],
+            backgroundColor: [COLOR_VERDE, COLOR_ROJO],
+            borderWidth: 0,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        cutout: "68%",
+        plugins: { legend: { display: false } },
+      },
+    });
+
+    const listaBarrera = document.getElementById("rutas-barrera-lista");
+    listaBarrera.innerHTML = "";
+    for (const ruta of conBarrera) {
+      const li = document.createElement("li");
+      const nombre = document.createElement("span");
+      nombre.textContent = ruta.nombre;
+      const chip = document.createElement("span");
+      chip.className = "chip chip-roja";
+      chip.textContent = ruta.barrera;
+      li.appendChild(nombre);
+      li.appendChild(chip);
+      listaBarrera.appendChild(li);
+    }
+  }
+
+  function renderCompletitud(espacios, puertas) {
     const total = espacios.length;
     const confirmados = espacios
       .filter((e) => e.accesible !== null && e.accesible !== undefined)
@@ -692,12 +767,17 @@
       listaConfirmados.appendChild(li);
     }
 
-    document.getElementById("detalle-pendientes-total").textContent = pendientes.length;
+    document.getElementById("detalle-pendientes-total").textContent = pendientes.length + puertas.length;
     const listaPendientes = document.getElementById("detalle-pendientes-lista");
     listaPendientes.innerHTML = "";
     for (const espacio of pendientes) {
       const li = document.createElement("li");
       li.textContent = espacio.nombre;
+      listaPendientes.appendChild(li);
+    }
+    for (const puerta of puertas) {
+      const li = document.createElement("li");
+      li.textContent = `Puerta #${puerta.id_pdf} (Sector ${puerta.sector}, ${puerta.ancho_m} m) (puerta)`;
       listaPendientes.appendChild(li);
     }
   }
@@ -706,12 +786,14 @@
   // Orquestación: filtra el cache por sector y vuelve a dibujar todo
   // ==========================================
   function renderTodo(sectorFiltro) {
-    const { eventos, espacios, reportes, mapaEspacios, mapaSector } = cache;
+    const { eventos, espacios, reportes, rutas, puertas, mapaEspacios, mapaSector } = cache;
 
     const eventosFiltrados = filtrarPorSector(eventos, mapaSector, "entidad_id", sectorFiltro);
     const reportesFiltrados = filtrarPorSector(reportes, mapaSector, "espacio_id", sectorFiltro);
     const espaciosFiltrados =
       sectorFiltro === "todos" ? espacios : espacios.filter((e) => e.sector === Number(sectorFiltro));
+    const puertasFiltradas =
+      sectorFiltro === "todos" ? puertas : puertas.filter((p) => p.sector === Number(sectorFiltro));
 
     renderTopBuscados(eventosFiltrados, mapaEspacios);
     renderAccesibilidad(eventosFiltrados);
@@ -719,7 +801,9 @@
     renderTopFichas(eventosFiltrados, mapaEspacios);
     renderReportesPorEstado(reportesFiltrados);
     renderReportesPorTipo(reportesFiltrados);
-    renderCompletitud(espaciosFiltrados);
+    renderCompletitud(espaciosFiltrados, puertasFiltradas);
+    // Las rutas exteriores no se filtran por sector: se muestra siempre el total global.
+    renderRutasExteriores(rutas, sectorFiltro);
   }
 
   // ==========================================
@@ -727,10 +811,12 @@
   // ==========================================
   async function iniciar() {
     try {
-      const [eventos, espacios, reportes] = await Promise.all([
+      const [eventos, espacios, reportes, rutas, puertas] = await Promise.all([
         obtenerJson("/eventos_telemetria"),
         obtenerJson("/espacios"),
         obtenerJson("/reportes"),
+        obtenerJson("/rutas_exteriores"),
+        obtenerJson("/puertas_a_revisar"),
       ]);
 
       // Mapas slug -> nombre legible y slug -> sector, resueltos una sola vez
@@ -741,7 +827,7 @@
         mapaSector[espacio.id] = espacio.sector;
       }
 
-      cache = { eventos, espacios, reportes, mapaEspacios, mapaSector };
+      cache = { eventos, espacios, reportes, rutas, puertas, mapaEspacios, mapaSector };
 
       renderTodo("todos");
 
