@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Dashboard CFP7 â€” KPIs Sprint 5</title>
+<title>Dashboard CFP7 �?" KPIs Sprint 5</title>
 <!-- Chart.js 4 via CDN (cdnjs) -->
 <script src="chart.umd.js"></script>
 <style>
@@ -136,23 +136,23 @@
 <body>
 
 <header>
-  <h1>Dashboard CFP7 â€” KPIs Sprint 5</h1>
-  <span class="badge-demo">Datos sintÃ©ticos demo</span>
+  <h1>Dashboard CFP7 �?" KPIs Sprint 5</h1>
+  <span class="badge-demo">Datos sintéticos demo</span>
 </header>
 
 <main>
   <div id="estado-error">
     <strong>No se pudo conectar con la API.</strong><br />
-    VerificÃ¡ que <code>json-server</code> estÃ© levantado en <code>http://localhost:3001</code>
+    Verificá que <code>json-server</code> esté levantado en <code>http://localhost:3001</code>
     (por ejemplo: <code>json-server --watch mocks/db.json --port 3001</code>) y que la respuesta
     incluya cabeceras CORS abiertas.
   </div>
 
-  <div id="cargando" class="cargando">Cargando datos desde la APIâ€¦</div>
+  <div id="cargando" class="cargando">Cargando datos desde la API�?�</div>
 
   <div id="contenido" class="grid" style="display: none;">
     <div class="card">
-      <h2>Top 5 espacios mÃ¡s buscados</h2>
+      <h2>Top 5 espacios más buscados</h2>
       <p class="subtitulo">Eventos con tipo_evento = "espacio_buscado", agrupados por espacio</p>
       <div class="card-canvas-wrap">
         <canvas id="chart-top-buscados"></canvas>
@@ -170,7 +170,7 @@
 
     <div class="card">
       <h2>Reportes por espacio</h2>
-      <p class="subtitulo">ColecciÃ³n /reportes agrupada por espacio_id (mapa de calor de incidencias)</p>
+      <p class="subtitulo">Colección /reportes agrupada por espacio_id (mapa de calor de incidencias)</p>
       <div class="card-canvas-wrap">
         <canvas id="chart-reportes"></canvas>
       </div>
@@ -187,12 +187,12 @@
 </main>
 
 <footer>
-  campusApi-data Â· Sprint 5 Â· Fuente: json-server (http://localhost:3001)
+  campusApi-data · Sprint 5 · Fuente: json-server (http://localhost:3001)
 </footer>
 
 <script>
   // ==========================================
-  // ConfiguraciÃ³n
+  // Configuración
   // ==========================================
   const API_BASE = "http://localhost:3001";
   const COLOR_AZUL = "#14324a";
@@ -234,7 +234,7 @@
   }
 
   // ==========================================
-  // Render de grÃ¡ficos
+  // Render de gráficos
   // ==========================================
 
   function renderTopBuscados(eventos, mapaEspacios) {
@@ -247,7 +247,7 @@
         labels: top5.map((d) => d.nombre),
         datasets: [
           {
-            label: "BÃºsquedas",
+            label: "Búsquedas",
             data: top5.map((d) => d.cantidad),
             backgroundColor: COLOR_AZUL,
           },
@@ -350,7 +350,7 @@
   }
 
   // ==========================================
-  // InicializaciÃ³n
+  // Inicialización
   // ==========================================
   async function iniciar() {
     try {
