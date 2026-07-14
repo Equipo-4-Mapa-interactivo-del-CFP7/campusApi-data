@@ -1,54 +1,1301 @@
-﻿{
-  "_meta": {
-    "descripcion": "MOCK CANONICO para json-server. QA y Front consumen ESTE. Respeta 32_ESTRUCTURA.md.",
-    "fuente_espacios": "espacios_cfp7.json (relevamiento 2026-06-12)",
-    "AMENDA_CONTRATO": "tipo agrega 'taller' al enum. Broadcast a Back/Front/QA antes de mergear.",
-    "mapeo_tipos": "taller->taller (NUEVO) | bano->servicio | laboratorio->aula | oficina->oficina | aula->aula",
-    "ADVERTENCIA_accesible": "PLACEHOLDER para testear UI salvo s1_bano_chico (confirmado false). Real depende de #169."
-  },
-  "espacios": [
-    {"id":"acceso_frente","nombre":"Acceso principal (frente)","tipo":"acceso","descripcion":"Entrada al CFP7 por el frente. Nodo origen de recorridos.","accesible":true},
-    {"id":"s1_electricidad","nombre":"Electricidad","tipo":"taller","descripcion":"Taller de Electricidad, Sector 1 (planta baja, entrada de ripio).","accesible":true},
-    {"id":"s1_herreria","nombre":"Herreria","tipo":"taller","descripcion":"Taller de Herreria, Sector 1 (planta baja).","accesible":true},
-    {"id":"s1_climatizacion","nombre":"Climatizacion","tipo":"taller","descripcion":"Taller de Climatizacion, Sector 1 (planta baja).","accesible":true},
-    {"id":"s1_serigrafia","nombre":"Serigrafia","tipo":"taller","descripcion":"Taller de Serigrafia, Sector 1 (exterior).","accesible":true},
-    {"id":"s1_bano_grande","nombre":"Bano Sector 1 (grande)","tipo":"servicio","descripcion":"Bano Sector 1, 16.58 m2. Asignacion pendiente.","accesible":false},
-    {"id":"s1_bano_chico","nombre":"Bano Sector 1 (chico)","tipo":"servicio","descripcion":"Bano chico Sector 1, 3.05 m2. Sin radio de giro: inviable accesible.","accesible":false},
-    {"id":"s2_carpinteria","nombre":"Carpinteria","tipo":"taller","descripcion":"Taller de Carpinteria, Sector 2 (nivel elevado, acceso por rampa).","accesible":true},
-    {"id":"s2_taller_bicicletas","nombre":"Taller de bicicleteria","tipo":"taller","descripcion":"Taller de bicicleteria, Sector 2.","accesible":true},
-    {"id":"s3_informes_regencia","nombre":"Informes - Regencia","tipo":"oficina","descripcion":"Informes y Regencia, Sector 3.","accesible":true},
-    {"id":"s3_secretaria_direccion","nombre":"Secretaria - Direccion","tipo":"oficina","descripcion":"Secretaria y Direccion, Sector 3.","accesible":true},
-    {"id":"s3_oficina_estudiantes","nombre":"Oficina de estudiantes","tipo":"oficina","descripcion":"Oficina de estudiantes, Sector 3.","accesible":true},
-    {"id":"s3_sala_personal","nombre":"Sala de personal","tipo":"oficina","descripcion":"Sala de personal, Sector 3.","accesible":true},
-    {"id":"s3_talleres_dinamicos","nombre":"Area de talleres dinamicos","tipo":"taller","descripcion":"Area de talleres dinamicos, Sector 3.","accesible":true},
-    {"id":"s3_lab_informatica_a","nombre":"Laboratorio de Informatica A","tipo":"aula","descripcion":"Laboratorio de Informatica A, Sector 3.","accesible":true},
-    {"id":"s3_lab_informatica_b","nombre":"Laboratorio de Informatica B","tipo":"aula","descripcion":"Laboratorio de Informatica B, Sector 3.","accesible":true},
-    {"id":"s3_archivo_institucional","nombre":"Archivo institucional","tipo":"oficina","descripcion":"Archivo institucional, Sector 3.","accesible":true},
-    {"id":"s3_espacio_tecnologico","nombre":"Espacio tecnologico multidisciplinar","tipo":"taller","descripcion":"Espacio tecnologico, Sector 3 (exterior).","accesible":true},
-    {"id":"s4_aula_1","nombre":"Aula 1","tipo":"aula","descripcion":"Aula 1, Sector 4.","accesible":true},
-    {"id":"s4_aula_2","nombre":"Aula 2","tipo":"aula","descripcion":"Aula 2, Sector 4.","accesible":true},
-    {"id":"s4_aula_3_sum","nombre":"Aula 3 - SUM","tipo":"aula","descripcion":"Aula 3 / SUM, Sector 4.","accesible":true},
-    {"id":"s4_aula_4","nombre":"Aula 4","tipo":"aula","descripcion":"Aula 4, Sector 4. Acceso con barrera (placeholder).","accesible":false},
-    {"id":"s4_aula_5","nombre":"Aula 5","tipo":"aula","descripcion":"Aula 5, Sector 4. Proxima al pasillo de lockers (1.08 m).","accesible":false},
-    {"id":"s4_gastronomia_a","nombre":"Gastronomia A","tipo":"taller","descripcion":"Taller de Gastronomia A, Sector 4.","accesible":true},
-    {"id":"s4_gastronomia_b","nombre":"Gastronomia B","tipo":"taller","descripcion":"Taller de Gastronomia B, Sector 4.","accesible":true},
-    {"id":"s4_gastronomia_c","nombre":"Gastronomia C","tipo":"taller","descripcion":"Taller de Gastronomia C, Sector 4.","accesible":false},
-    {"id":"s4_preceptoria_eps","nombre":"Preceptoria EPS","tipo":"oficina","descripcion":"Preceptoria EPS, Sector 4.","accesible":true},
-    {"id":"s4_eps_ifts","nombre":"EPS - IFTS N5","tipo":"oficina","descripcion":"EPS / IFTS N5, Sector 4.","accesible":true},
-    {"id":"s4_bano_grande","nombre":"Bano Sector 4 (grande)","tipo":"servicio","descripcion":"Bano Sector 4, 23.47 m2. Candidato fuerte a box accesible.","accesible":true},
-    {"id":"s4_bano_mediano","nombre":"Bano Sector 4 (mediano)","tipo":"servicio","descripcion":"Bano Sector 4, 15.90 m2.","accesible":false}
-  ],
-  "recorridos": [
-    {"id":"r_frente_aula1","origen_id":"acceso_frente","destino_id":"s4_aula_1","accesible":true,"tramos":[{"instruccion":"Desde el acceso principal, dirigite a la rampa hacia el nivel superior.","referencia_visual_url":null},{"instruccion":"Subi por la rampa hasta el patio comunicante de los Sectores 3 y 4.","referencia_visual_url":null},{"instruccion":"Tomá el pasillo principal del Sector 4. El Aula 1 esta sobre ese pasillo.","referencia_visual_url":null}]},
-    {"id":"r_frente_carpinteria","origen_id":"acceso_frente","destino_id":"s2_carpinteria","accesible":true,"tramos":[{"instruccion":"Desde el acceso principal, subi por la rampa al nivel elevado.","referencia_visual_url":null},{"instruccion":"Cruza el patio entre Sector 2 y 3.","referencia_visual_url":null},{"instruccion":"Ingresa al Sector 2. La Carpinteria es el taller grande.","referencia_visual_url":null}]},
-    {"id":"r_frente_electricidad","origen_id":"acceso_frente","destino_id":"s1_electricidad","accesible":true,"tramos":[{"instruccion":"Desde el acceso principal, mantenete en planta baja hacia el Sector 1.","referencia_visual_url":null},{"instruccion":"Atencion: la entrada al Sector 1 es de ripio, transitable pero irregular.","referencia_visual_url":null},{"instruccion":"El taller de Electricidad esta sobre el pasillo principal del Sector 1.","referencia_visual_url":null}]},
-    {"id":"r_frente_aula4_no_acc","origen_id":"acceso_frente","destino_id":"s4_aula_4","accesible":false,"tramos":[{"instruccion":"Desde el acceso principal, subi por la escalera al nivel superior.","referencia_visual_url":null},{"instruccion":"BARRERA: este recorrido usa escalon, no apto para silla de ruedas.","referencia_visual_url":null},{"instruccion":"Pasillo principal del Sector 4 hasta el Aula 4.","referencia_visual_url":null}]},
-    {"id":"r_frente_bano_accesible","origen_id":"acceso_frente","destino_id":"s4_bano_grande","accesible":true,"tramos":[{"instruccion":"Desde el acceso principal, usa la rampa al nivel elevado.","referencia_visual_url":null},{"instruccion":"Patio comunicante 3-4 y entra al Sector 4.","referencia_visual_url":null},{"instruccion":"El bano grande del Sector 4 es el candidato a box accesible.","referencia_visual_url":null}]}
-  ],
-  "reportes": [
-    {"id":"rep_1","espacio_id":"s4_aula_4","tipo_incidencia":"acceso_bloqueado","descripcion":"La puerta del aula estaba cerrada con llave en horario de clase.","imagen_evidencia_url":null},
-    {"id":"rep_2","espacio_id":"s3_secretaria_direccion","tipo_incidencia":"senaletica","descripcion":"No hay cartel que indique donde queda Secretaria.","imagen_evidencia_url":null},
-    {"id":"rep_3","espacio_id":"s4_aula_5","tipo_incidencia":"barrera_fisica","descripcion":"El pasillo de lockers queda muy angosto, no pasa una silla de ruedas.","imagen_evidencia_url":null},
-    {"id":"rep_4","espacio_id":"acceso_frente","tipo_incidencia":"orientacion","descripcion":"Desde la entrada no se entiende para que lado queda cada sector.","imagen_evidencia_url":null}
-  ]
+{
+    "_meta":  {
+                  "descripcion":  "MOCK CANONICO para json-server. QA y Front consumen ESTE. Respeta 32_ESTRUCTURA.md.",
+                  "fuente_espacios":  "espacios_cfp7.json (relevamiento 2026-06-12)",
+                  "AMENDA_CONTRATO":  "tipo agrega \u0027taller\u0027 al enum. Broadcast a Back/Front/QA antes de mergear.",
+                  "mapeo_tipos":  "taller-\u003etaller (NUEVO) | bano-\u003eservicio | laboratorio-\u003eaula | oficina-\u003eoficina | aula-\u003eaula",
+                  "ADVERTENCIA_accesible":  "PLACEHOLDER para testear UI salvo s1_bano_chico (confirmado false). Real depende de #169.",
+                  "eventos_telemetria_nota":  "DATOS SINTETICOS DEMO - generados 2026-07-14 para dashboard S10. NO son datos de campo."
+              },
+    "espacios":  [
+                     {
+                         "id":  "acceso_frente",
+                         "nombre":  "Acceso principal (frente)",
+                         "tipo":  "acceso",
+                         "descripcion":  "Entrada al CFP7 por el frente. Nodo origen de recorridos.",
+                         "accesible":  true
+                     },
+                     {
+                         "id":  "s1_electricidad",
+                         "nombre":  "Electricidad",
+                         "tipo":  "taller",
+                         "descripcion":  "Taller de Electricidad, Sector 1 (planta baja, entrada de ripio).",
+                         "accesible":  true
+                     },
+                     {
+                         "id":  "s1_herreria",
+                         "nombre":  "Herreria",
+                         "tipo":  "taller",
+                         "descripcion":  "Taller de Herreria, Sector 1 (planta baja).",
+                         "accesible":  true
+                     },
+                     {
+                         "id":  "s1_climatizacion",
+                         "nombre":  "Climatizacion",
+                         "tipo":  "taller",
+                         "descripcion":  "Taller de Climatizacion, Sector 1 (planta baja).",
+                         "accesible":  true
+                     },
+                     {
+                         "id":  "s1_serigrafia",
+                         "nombre":  "Serigrafia",
+                         "tipo":  "taller",
+                         "descripcion":  "Taller de Serigrafia, Sector 1 (exterior).",
+                         "accesible":  true
+                     },
+                     {
+                         "id":  "s1_bano_grande",
+                         "nombre":  "Bano Sector 1 (grande)",
+                         "tipo":  "servicio",
+                         "descripcion":  "Bano Sector 1, 16.58 m2. Asignacion pendiente.",
+                         "accesible":  false
+                     },
+                     {
+                         "id":  "s1_bano_chico",
+                         "nombre":  "Bano Sector 1 (chico)",
+                         "tipo":  "servicio",
+                         "descripcion":  "Bano chico Sector 1, 3.05 m2. Sin radio de giro: inviable accesible.",
+                         "accesible":  false
+                     },
+                     {
+                         "id":  "s2_carpinteria",
+                         "nombre":  "Carpinteria",
+                         "tipo":  "taller",
+                         "descripcion":  "Taller de Carpinteria, Sector 2 (nivel elevado, acceso por rampa).",
+                         "accesible":  true
+                     },
+                     {
+                         "id":  "s2_taller_bicicletas",
+                         "nombre":  "Taller de bicicleteria",
+                         "tipo":  "taller",
+                         "descripcion":  "Taller de bicicleteria, Sector 2.",
+                         "accesible":  true
+                     },
+                     {
+                         "id":  "s3_informes_regencia",
+                         "nombre":  "Informes - Regencia",
+                         "tipo":  "oficina",
+                         "descripcion":  "Informes y Regencia, Sector 3.",
+                         "accesible":  true
+                     },
+                     {
+                         "id":  "s3_secretaria_direccion",
+                         "nombre":  "Secretaria - Direccion",
+                         "tipo":  "oficina",
+                         "descripcion":  "Secretaria y Direccion, Sector 3.",
+                         "accesible":  true
+                     },
+                     {
+                         "id":  "s3_oficina_estudiantes",
+                         "nombre":  "Oficina de estudiantes",
+                         "tipo":  "oficina",
+                         "descripcion":  "Oficina de estudiantes, Sector 3.",
+                         "accesible":  true
+                     },
+                     {
+                         "id":  "s3_sala_personal",
+                         "nombre":  "Sala de personal",
+                         "tipo":  "oficina",
+                         "descripcion":  "Sala de personal, Sector 3.",
+                         "accesible":  true
+                     },
+                     {
+                         "id":  "s3_talleres_dinamicos",
+                         "nombre":  "Area de talleres dinamicos",
+                         "tipo":  "taller",
+                         "descripcion":  "Area de talleres dinamicos, Sector 3.",
+                         "accesible":  true
+                     },
+                     {
+                         "id":  "s3_lab_informatica_a",
+                         "nombre":  "Laboratorio de Informatica A",
+                         "tipo":  "aula",
+                         "descripcion":  "Laboratorio de Informatica A, Sector 3.",
+                         "accesible":  true
+                     },
+                     {
+                         "id":  "s3_lab_informatica_b",
+                         "nombre":  "Laboratorio de Informatica B",
+                         "tipo":  "aula",
+                         "descripcion":  "Laboratorio de Informatica B, Sector 3.",
+                         "accesible":  true
+                     },
+                     {
+                         "id":  "s3_archivo_institucional",
+                         "nombre":  "Archivo institucional",
+                         "tipo":  "oficina",
+                         "descripcion":  "Archivo institucional, Sector 3.",
+                         "accesible":  true
+                     },
+                     {
+                         "id":  "s3_espacio_tecnologico",
+                         "nombre":  "Espacio tecnologico multidisciplinar",
+                         "tipo":  "taller",
+                         "descripcion":  "Espacio tecnologico, Sector 3 (exterior).",
+                         "accesible":  true
+                     },
+                     {
+                         "id":  "s4_aula_1",
+                         "nombre":  "Aula 1",
+                         "tipo":  "aula",
+                         "descripcion":  "Aula 1, Sector 4.",
+                         "accesible":  true
+                     },
+                     {
+                         "id":  "s4_aula_2",
+                         "nombre":  "Aula 2",
+                         "tipo":  "aula",
+                         "descripcion":  "Aula 2, Sector 4.",
+                         "accesible":  true
+                     },
+                     {
+                         "id":  "s4_aula_3_sum",
+                         "nombre":  "Aula 3 - SUM",
+                         "tipo":  "aula",
+                         "descripcion":  "Aula 3 / SUM, Sector 4.",
+                         "accesible":  true
+                     },
+                     {
+                         "id":  "s4_aula_4",
+                         "nombre":  "Aula 4",
+                         "tipo":  "aula",
+                         "descripcion":  "Aula 4, Sector 4. Acceso con barrera (placeholder).",
+                         "accesible":  false
+                     },
+                     {
+                         "id":  "s4_aula_5",
+                         "nombre":  "Aula 5",
+                         "tipo":  "aula",
+                         "descripcion":  "Aula 5, Sector 4. Proxima al pasillo de lockers (1.08 m).",
+                         "accesible":  false
+                     },
+                     {
+                         "id":  "s4_gastronomia_a",
+                         "nombre":  "Gastronomia A",
+                         "tipo":  "taller",
+                         "descripcion":  "Taller de Gastronomia A, Sector 4.",
+                         "accesible":  true
+                     },
+                     {
+                         "id":  "s4_gastronomia_b",
+                         "nombre":  "Gastronomia B",
+                         "tipo":  "taller",
+                         "descripcion":  "Taller de Gastronomia B, Sector 4.",
+                         "accesible":  true
+                     },
+                     {
+                         "id":  "s4_gastronomia_c",
+                         "nombre":  "Gastronomia C",
+                         "tipo":  "taller",
+                         "descripcion":  "Taller de Gastronomia C, Sector 4.",
+                         "accesible":  false
+                     },
+                     {
+                         "id":  "s4_preceptoria_eps",
+                         "nombre":  "Preceptoria EPS",
+                         "tipo":  "oficina",
+                         "descripcion":  "Preceptoria EPS, Sector 4.",
+                         "accesible":  true
+                     },
+                     {
+                         "id":  "s4_eps_ifts",
+                         "nombre":  "EPS - IFTS N5",
+                         "tipo":  "oficina",
+                         "descripcion":  "EPS / IFTS N5, Sector 4.",
+                         "accesible":  true
+                     },
+                     {
+                         "id":  "s4_bano_grande",
+                         "nombre":  "Bano Sector 4 (grande)",
+                         "tipo":  "servicio",
+                         "descripcion":  "Bano Sector 4, 23.47 m2. Candidato fuerte a box accesible.",
+                         "accesible":  true
+                     },
+                     {
+                         "id":  "s4_bano_mediano",
+                         "nombre":  "Bano Sector 4 (mediano)",
+                         "tipo":  "servicio",
+                         "descripcion":  "Bano Sector 4, 15.90 m2.",
+                         "accesible":  false
+                     }
+                 ],
+    "recorridos":  [
+                       {
+                           "id":  "r_frente_aula1",
+                           "origen_id":  "acceso_frente",
+                           "destino_id":  "s4_aula_1",
+                           "accesible":  true,
+                           "tramos":  [
+                                          {
+                                              "instruccion":  "Desde el acceso principal, dirigite a la rampa hacia el nivel superior.",
+                                              "referencia_visual_url":  null
+                                          },
+                                          {
+                                              "instruccion":  "Subi por la rampa hasta el patio comunicante de los Sectores 3 y 4.",
+                                              "referencia_visual_url":  null
+                                          },
+                                          {
+                                              "instruccion":  "Tomá el pasillo principal del Sector 4. El Aula 1 esta sobre ese pasillo.",
+                                              "referencia_visual_url":  null
+                                          }
+                                      ]
+                       },
+                       {
+                           "id":  "r_frente_carpinteria",
+                           "origen_id":  "acceso_frente",
+                           "destino_id":  "s2_carpinteria",
+                           "accesible":  true,
+                           "tramos":  [
+                                          {
+                                              "instruccion":  "Desde el acceso principal, subi por la rampa al nivel elevado.",
+                                              "referencia_visual_url":  null
+                                          },
+                                          {
+                                              "instruccion":  "Cruza el patio entre Sector 2 y 3.",
+                                              "referencia_visual_url":  null
+                                          },
+                                          {
+                                              "instruccion":  "Ingresa al Sector 2. La Carpinteria es el taller grande.",
+                                              "referencia_visual_url":  null
+                                          }
+                                      ]
+                       },
+                       {
+                           "id":  "r_frente_electricidad",
+                           "origen_id":  "acceso_frente",
+                           "destino_id":  "s1_electricidad",
+                           "accesible":  true,
+                           "tramos":  [
+                                          {
+                                              "instruccion":  "Desde el acceso principal, mantenete en planta baja hacia el Sector 1.",
+                                              "referencia_visual_url":  null
+                                          },
+                                          {
+                                              "instruccion":  "Atencion: la entrada al Sector 1 es de ripio, transitable pero irregular.",
+                                              "referencia_visual_url":  null
+                                          },
+                                          {
+                                              "instruccion":  "El taller de Electricidad esta sobre el pasillo principal del Sector 1.",
+                                              "referencia_visual_url":  null
+                                          }
+                                      ]
+                       },
+                       {
+                           "id":  "r_frente_aula4_no_acc",
+                           "origen_id":  "acceso_frente",
+                           "destino_id":  "s4_aula_4",
+                           "accesible":  false,
+                           "tramos":  [
+                                          {
+                                              "instruccion":  "Desde el acceso principal, subi por la escalera al nivel superior.",
+                                              "referencia_visual_url":  null
+                                          },
+                                          {
+                                              "instruccion":  "BARRERA: este recorrido usa escalon, no apto para silla de ruedas.",
+                                              "referencia_visual_url":  null
+                                          },
+                                          {
+                                              "instruccion":  "Pasillo principal del Sector 4 hasta el Aula 4.",
+                                              "referencia_visual_url":  null
+                                          }
+                                      ]
+                       },
+                       {
+                           "id":  "r_frente_bano_accesible",
+                           "origen_id":  "acceso_frente",
+                           "destino_id":  "s4_bano_grande",
+                           "accesible":  true,
+                           "tramos":  [
+                                          {
+                                              "instruccion":  "Desde el acceso principal, usa la rampa al nivel elevado.",
+                                              "referencia_visual_url":  null
+                                          },
+                                          {
+                                              "instruccion":  "Patio comunicante 3-4 y entra al Sector 4.",
+                                              "referencia_visual_url":  null
+                                          },
+                                          {
+                                              "instruccion":  "El bano grande del Sector 4 es el candidato a box accesible.",
+                                              "referencia_visual_url":  null
+                                          }
+                                      ]
+                       }
+                   ],
+    "reportes":  [
+                     {
+                         "id":  "rep_1",
+                         "espacio_id":  "s4_aula_4",
+                         "tipo_incidencia":  "acceso_bloqueado",
+                         "descripcion":  "La puerta del aula estaba cerrada con llave en horario de clase.",
+                         "imagen_evidencia_url":  null
+                     },
+                     {
+                         "id":  "rep_2",
+                         "espacio_id":  "s3_secretaria_direccion",
+                         "tipo_incidencia":  "senaletica",
+                         "descripcion":  "No hay cartel que indique donde queda Secretaria.",
+                         "imagen_evidencia_url":  null
+                     },
+                     {
+                         "id":  "rep_3",
+                         "espacio_id":  "s4_aula_5",
+                         "tipo_incidencia":  "barrera_fisica",
+                         "descripcion":  "El pasillo de lockers queda muy angosto, no pasa una silla de ruedas.",
+                         "imagen_evidencia_url":  null
+                     },
+                     {
+                         "id":  "rep_4",
+                         "espacio_id":  "acceso_frente",
+                         "tipo_incidencia":  "orientacion",
+                         "descripcion":  "Desde la entrada no se entiende para que lado queda cada sector.",
+                         "imagen_evidencia_url":  null
+                     }
+                 ],
+    "eventos_telemetria":  [
+                               {
+                                   "id":  1,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s1_bano_chico",
+                                   "requiere_accesibilidad":  true,
+                                   "fecha_creacion":  "2026-07-13T09:19:08"
+                               },
+                               {
+                                   "id":  2,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s1_herreria",
+                                   "requiere_accesibilidad":  true,
+                                   "fecha_creacion":  "2026-07-11T09:19:08"
+                               },
+                               {
+                                   "id":  3,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s4_aula_1",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-12T09:19:08"
+                               },
+                               {
+                                   "id":  4,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s3_secretaria_direccion",
+                                   "requiere_accesibilidad":  true,
+                                   "fecha_creacion":  "2026-07-11T09:19:08"
+                               },
+                               {
+                                   "id":  5,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s2_carpinteria",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-09T09:19:08"
+                               },
+                               {
+                                   "id":  6,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s1_serigrafia",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-14T09:19:08"
+                               },
+                               {
+                                   "id":  7,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s2_taller_bicicletas",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-09T09:19:08"
+                               },
+                               {
+                                   "id":  8,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s1_bano_chico",
+                                   "requiere_accesibilidad":  true,
+                                   "fecha_creacion":  "2026-07-05T09:19:08"
+                               },
+                               {
+                                   "id":  9,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s3_lab_informatica_b",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-14T09:19:08"
+                               },
+                               {
+                                   "id":  10,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s3_secretaria_direccion",
+                                   "requiere_accesibilidad":  true,
+                                   "fecha_creacion":  "2026-07-02T09:19:08"
+                               },
+                               {
+                                   "id":  11,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s1_bano_chico",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-12T09:19:08"
+                               },
+                               {
+                                   "id":  12,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s1_climatizacion",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-06T09:19:08"
+                               },
+                               {
+                                   "id":  13,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s4_aula_3_sum",
+                                   "requiere_accesibilidad":  true,
+                                   "fecha_creacion":  "2026-07-07T09:19:08"
+                               },
+                               {
+                                   "id":  14,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s4_aula_4",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-09T09:19:08"
+                               },
+                               {
+                                   "id":  15,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s1_electricidad",
+                                   "requiere_accesibilidad":  true,
+                                   "fecha_creacion":  "2026-07-14T09:19:08"
+                               },
+                               {
+                                   "id":  16,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s1_electricidad",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-13T09:19:08"
+                               },
+                               {
+                                   "id":  17,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s1_bano_chico",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-10T09:19:08"
+                               },
+                               {
+                                   "id":  18,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s2_carpinteria",
+                                   "requiere_accesibilidad":  true,
+                                   "fecha_creacion":  "2026-07-14T09:19:08"
+                               },
+                               {
+                                   "id":  19,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s1_herreria",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-14T09:19:08"
+                               },
+                               {
+                                   "id":  20,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s1_serigrafia",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-06T09:19:08"
+                               },
+                               {
+                                   "id":  21,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s1_climatizacion",
+                                   "requiere_accesibilidad":  true,
+                                   "fecha_creacion":  "2026-07-09T09:19:08"
+                               },
+                               {
+                                   "id":  22,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s1_serigrafia",
+                                   "requiere_accesibilidad":  true,
+                                   "fecha_creacion":  "2026-07-04T09:19:08"
+                               },
+                               {
+                                   "id":  23,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s1_herreria",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-14T09:19:08"
+                               },
+                               {
+                                   "id":  24,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s3_secretaria_direccion",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-07T09:19:08"
+                               },
+                               {
+                                   "id":  25,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s1_bano_chico",
+                                   "requiere_accesibilidad":  true,
+                                   "fecha_creacion":  "2026-07-03T09:19:08"
+                               },
+                               {
+                                   "id":  26,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s1_bano_chico",
+                                   "requiere_accesibilidad":  true,
+                                   "fecha_creacion":  "2026-07-14T09:19:08"
+                               },
+                               {
+                                   "id":  27,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s1_herreria",
+                                   "requiere_accesibilidad":  true,
+                                   "fecha_creacion":  "2026-07-02T09:19:08"
+                               },
+                               {
+                                   "id":  28,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s4_eps_ifts",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-09T09:19:08"
+                               },
+                               {
+                                   "id":  29,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s1_climatizacion",
+                                   "requiere_accesibilidad":  true,
+                                   "fecha_creacion":  "2026-07-09T09:19:08"
+                               },
+                               {
+                                   "id":  30,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s1_bano_grande",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-03T09:19:08"
+                               },
+                               {
+                                   "id":  31,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s1_bano_chico",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-10T09:19:08"
+                               },
+                               {
+                                   "id":  32,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s4_bano_grande",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-04T09:19:08"
+                               },
+                               {
+                                   "id":  33,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s2_carpinteria",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-01T09:19:08"
+                               },
+                               {
+                                   "id":  34,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s1_herreria",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-12T09:19:08"
+                               },
+                               {
+                                   "id":  35,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s2_carpinteria",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-10T09:19:08"
+                               },
+                               {
+                                   "id":  36,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s3_sala_personal",
+                                   "requiere_accesibilidad":  true,
+                                   "fecha_creacion":  "2026-07-13T09:19:08"
+                               },
+                               {
+                                   "id":  37,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s1_bano_grande",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-07T09:19:08"
+                               },
+                               {
+                                   "id":  38,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s3_informes_regencia",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-05T09:19:08"
+                               },
+                               {
+                                   "id":  39,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s3_sala_personal",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-07T09:19:08"
+                               },
+                               {
+                                   "id":  40,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s1_serigrafia",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-14T09:19:08"
+                               },
+                               {
+                                   "id":  41,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "acceso_frente",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-14T09:19:08"
+                               },
+                               {
+                                   "id":  42,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s1_serigrafia",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-14T09:19:08"
+                               },
+                               {
+                                   "id":  43,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s1_herreria",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-09T09:19:08"
+                               },
+                               {
+                                   "id":  44,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s1_climatizacion",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-13T09:19:08"
+                               },
+                               {
+                                   "id":  45,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s1_bano_grande",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-10T09:19:08"
+                               },
+                               {
+                                   "id":  46,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s4_gastronomia_a",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-14T09:19:08"
+                               },
+                               {
+                                   "id":  47,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s1_serigrafia",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-02T09:19:08"
+                               },
+                               {
+                                   "id":  48,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s1_climatizacion",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-03T09:19:08"
+                               },
+                               {
+                                   "id":  49,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s1_bano_chico",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-06T09:19:08"
+                               },
+                               {
+                                   "id":  50,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s1_electricidad",
+                                   "requiere_accesibilidad":  true,
+                                   "fecha_creacion":  "2026-07-10T09:19:08"
+                               },
+                               {
+                                   "id":  51,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s1_herreria",
+                                   "requiere_accesibilidad":  true,
+                                   "fecha_creacion":  "2026-07-11T09:19:08"
+                               },
+                               {
+                                   "id":  52,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s3_sala_personal",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-04T09:19:08"
+                               },
+                               {
+                                   "id":  53,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "acceso_frente",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-12T09:19:08"
+                               },
+                               {
+                                   "id":  54,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s1_bano_grande",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-07T09:19:08"
+                               },
+                               {
+                                   "id":  55,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s4_gastronomia_b",
+                                   "requiere_accesibilidad":  true,
+                                   "fecha_creacion":  "2026-07-06T09:19:08"
+                               },
+                               {
+                                   "id":  56,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s1_serigrafia",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-08T09:19:08"
+                               },
+                               {
+                                   "id":  57,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s1_climatizacion",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-08T09:19:08"
+                               },
+                               {
+                                   "id":  58,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "acceso_frente",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-03T09:19:08"
+                               },
+                               {
+                                   "id":  59,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "acceso_frente",
+                                   "requiere_accesibilidad":  true,
+                                   "fecha_creacion":  "2026-07-14T09:19:08"
+                               },
+                               {
+                                   "id":  60,
+                                   "tipo_evento":  "espacio_buscado",
+                                   "entidad_id":  "s2_carpinteria",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-04T09:19:08"
+                               },
+                               {
+                                   "id":  61,
+                                   "tipo_evento":  "recorrido_iniciado",
+                                   "entidad_id":  "s2_carpinteria",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-06T09:19:09"
+                               },
+                               {
+                                   "id":  62,
+                                   "tipo_evento":  "recorrido_iniciado",
+                                   "entidad_id":  "s4_aula_1",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-13T09:19:09"
+                               },
+                               {
+                                   "id":  63,
+                                   "tipo_evento":  "recorrido_iniciado",
+                                   "entidad_id":  "s4_aula_4",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-01T09:19:09"
+                               },
+                               {
+                                   "id":  64,
+                                   "tipo_evento":  "recorrido_iniciado",
+                                   "entidad_id":  "s4_aula_1",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-12T09:19:09"
+                               },
+                               {
+                                   "id":  65,
+                                   "tipo_evento":  "recorrido_iniciado",
+                                   "entidad_id":  "s4_bano_grande",
+                                   "requiere_accesibilidad":  true,
+                                   "fecha_creacion":  "2026-07-07T09:19:09"
+                               },
+                               {
+                                   "id":  66,
+                                   "tipo_evento":  "recorrido_iniciado",
+                                   "entidad_id":  "s4_aula_4",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-01T09:19:09"
+                               },
+                               {
+                                   "id":  67,
+                                   "tipo_evento":  "recorrido_iniciado",
+                                   "entidad_id":  "s4_aula_4",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-04T09:19:09"
+                               },
+                               {
+                                   "id":  68,
+                                   "tipo_evento":  "recorrido_iniciado",
+                                   "entidad_id":  "s4_aula_4",
+                                   "requiere_accesibilidad":  true,
+                                   "fecha_creacion":  "2026-07-10T09:19:09"
+                               },
+                               {
+                                   "id":  69,
+                                   "tipo_evento":  "recorrido_iniciado",
+                                   "entidad_id":  "s4_aula_1",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-03T09:19:09"
+                               },
+                               {
+                                   "id":  70,
+                                   "tipo_evento":  "recorrido_iniciado",
+                                   "entidad_id":  "s2_carpinteria",
+                                   "requiere_accesibilidad":  true,
+                                   "fecha_creacion":  "2026-07-02T09:19:09"
+                               },
+                               {
+                                   "id":  71,
+                                   "tipo_evento":  "recorrido_iniciado",
+                                   "entidad_id":  "s4_bano_grande",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-12T09:19:09"
+                               },
+                               {
+                                   "id":  72,
+                                   "tipo_evento":  "recorrido_iniciado",
+                                   "entidad_id":  "s4_aula_1",
+                                   "requiere_accesibilidad":  true,
+                                   "fecha_creacion":  "2026-07-11T09:19:09"
+                               },
+                               {
+                                   "id":  73,
+                                   "tipo_evento":  "recorrido_iniciado",
+                                   "entidad_id":  "s1_electricidad",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-06T09:19:09"
+                               },
+                               {
+                                   "id":  74,
+                                   "tipo_evento":  "recorrido_iniciado",
+                                   "entidad_id":  "s1_electricidad",
+                                   "requiere_accesibilidad":  true,
+                                   "fecha_creacion":  "2026-07-09T09:19:09"
+                               },
+                               {
+                                   "id":  75,
+                                   "tipo_evento":  "recorrido_iniciado",
+                                   "entidad_id":  "s4_bano_grande",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-02T09:19:09"
+                               },
+                               {
+                                   "id":  76,
+                                   "tipo_evento":  "recorrido_iniciado",
+                                   "entidad_id":  "s4_aula_1",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-01T09:19:09"
+                               },
+                               {
+                                   "id":  77,
+                                   "tipo_evento":  "recorrido_iniciado",
+                                   "entidad_id":  "s4_bano_grande",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-08T09:19:09"
+                               },
+                               {
+                                   "id":  78,
+                                   "tipo_evento":  "recorrido_iniciado",
+                                   "entidad_id":  "s4_aula_1",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-01T09:19:09"
+                               },
+                               {
+                                   "id":  79,
+                                   "tipo_evento":  "recorrido_iniciado",
+                                   "entidad_id":  "s1_electricidad",
+                                   "requiere_accesibilidad":  true,
+                                   "fecha_creacion":  "2026-07-06T09:19:09"
+                               },
+                               {
+                                   "id":  80,
+                                   "tipo_evento":  "recorrido_iniciado",
+                                   "entidad_id":  "s4_aula_4",
+                                   "requiere_accesibilidad":  true,
+                                   "fecha_creacion":  "2026-07-06T09:19:09"
+                               },
+                               {
+                                   "id":  81,
+                                   "tipo_evento":  "recorrido_iniciado",
+                                   "entidad_id":  "s1_electricidad",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-05T09:19:09"
+                               },
+                               {
+                                   "id":  82,
+                                   "tipo_evento":  "recorrido_iniciado",
+                                   "entidad_id":  "s2_carpinteria",
+                                   "requiere_accesibilidad":  true,
+                                   "fecha_creacion":  "2026-07-03T09:19:09"
+                               },
+                               {
+                                   "id":  83,
+                                   "tipo_evento":  "recorrido_iniciado",
+                                   "entidad_id":  "s1_electricidad",
+                                   "requiere_accesibilidad":  true,
+                                   "fecha_creacion":  "2026-07-07T09:19:09"
+                               },
+                               {
+                                   "id":  84,
+                                   "tipo_evento":  "recorrido_iniciado",
+                                   "entidad_id":  "s4_bano_grande",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-12T09:19:09"
+                               },
+                               {
+                                   "id":  85,
+                                   "tipo_evento":  "recorrido_iniciado",
+                                   "entidad_id":  "s4_bano_grande",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-03T09:19:09"
+                               },
+                               {
+                                   "id":  86,
+                                   "tipo_evento":  "recorrido_iniciado",
+                                   "entidad_id":  "s4_aula_4",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-12T09:19:09"
+                               },
+                               {
+                                   "id":  87,
+                                   "tipo_evento":  "recorrido_iniciado",
+                                   "entidad_id":  "s4_bano_grande",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-14T09:19:09"
+                               },
+                               {
+                                   "id":  88,
+                                   "tipo_evento":  "recorrido_iniciado",
+                                   "entidad_id":  "s4_bano_grande",
+                                   "requiere_accesibilidad":  true,
+                                   "fecha_creacion":  "2026-07-11T09:19:09"
+                               },
+                               {
+                                   "id":  89,
+                                   "tipo_evento":  "recorrido_iniciado",
+                                   "entidad_id":  "s4_aula_4",
+                                   "requiere_accesibilidad":  true,
+                                   "fecha_creacion":  "2026-07-12T09:19:09"
+                               },
+                               {
+                                   "id":  90,
+                                   "tipo_evento":  "recorrido_iniciado",
+                                   "entidad_id":  "s4_aula_1",
+                                   "requiere_accesibilidad":  true,
+                                   "fecha_creacion":  "2026-07-11T09:19:09"
+                               },
+                               {
+                                   "id":  91,
+                                   "tipo_evento":  "ficha_consultada",
+                                   "entidad_id":  "s1_herreria",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-09T09:19:09"
+                               },
+                               {
+                                   "id":  92,
+                                   "tipo_evento":  "ficha_consultada",
+                                   "entidad_id":  "s2_carpinteria",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-05T09:19:09"
+                               },
+                               {
+                                   "id":  93,
+                                   "tipo_evento":  "ficha_consultada",
+                                   "entidad_id":  "s4_bano_grande",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-03T09:19:09"
+                               },
+                               {
+                                   "id":  94,
+                                   "tipo_evento":  "ficha_consultada",
+                                   "entidad_id":  "s2_taller_bicicletas",
+                                   "requiere_accesibilidad":  true,
+                                   "fecha_creacion":  "2026-07-01T09:19:09"
+                               },
+                               {
+                                   "id":  95,
+                                   "tipo_evento":  "ficha_consultada",
+                                   "entidad_id":  "s3_informes_regencia",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-09T09:19:09"
+                               },
+                               {
+                                   "id":  96,
+                                   "tipo_evento":  "ficha_consultada",
+                                   "entidad_id":  "s1_bano_grande",
+                                   "requiere_accesibilidad":  true,
+                                   "fecha_creacion":  "2026-07-08T09:19:09"
+                               },
+                               {
+                                   "id":  97,
+                                   "tipo_evento":  "ficha_consultada",
+                                   "entidad_id":  "s4_aula_1",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-02T09:19:09"
+                               },
+                               {
+                                   "id":  98,
+                                   "tipo_evento":  "ficha_consultada",
+                                   "entidad_id":  "s2_taller_bicicletas",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-14T09:19:09"
+                               },
+                               {
+                                   "id":  99,
+                                   "tipo_evento":  "ficha_consultada",
+                                   "entidad_id":  "s2_taller_bicicletas",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-14T09:19:09"
+                               },
+                               {
+                                   "id":  100,
+                                   "tipo_evento":  "ficha_consultada",
+                                   "entidad_id":  "s4_gastronomia_b",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-05T09:19:09"
+                               },
+                               {
+                                   "id":  101,
+                                   "tipo_evento":  "ficha_consultada",
+                                   "entidad_id":  "s4_aula_5",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-10T09:19:09"
+                               },
+                               {
+                                   "id":  102,
+                                   "tipo_evento":  "ficha_consultada",
+                                   "entidad_id":  "s1_bano_grande",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-14T09:19:09"
+                               },
+                               {
+                                   "id":  103,
+                                   "tipo_evento":  "ficha_consultada",
+                                   "entidad_id":  "s1_bano_chico",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-14T09:19:09"
+                               },
+                               {
+                                   "id":  104,
+                                   "tipo_evento":  "ficha_consultada",
+                                   "entidad_id":  "s2_taller_bicicletas",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-09T09:19:09"
+                               },
+                               {
+                                   "id":  105,
+                                   "tipo_evento":  "ficha_consultada",
+                                   "entidad_id":  "s1_climatizacion",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-06T09:19:09"
+                               },
+                               {
+                                   "id":  106,
+                                   "tipo_evento":  "ficha_consultada",
+                                   "entidad_id":  "s1_electricidad",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-10T09:19:09"
+                               },
+                               {
+                                   "id":  107,
+                                   "tipo_evento":  "ficha_consultada",
+                                   "entidad_id":  "s1_herreria",
+                                   "requiere_accesibilidad":  true,
+                                   "fecha_creacion":  "2026-07-13T09:19:09"
+                               },
+                               {
+                                   "id":  108,
+                                   "tipo_evento":  "ficha_consultada",
+                                   "entidad_id":  "s3_oficina_estudiantes",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-01T09:19:09"
+                               },
+                               {
+                                   "id":  109,
+                                   "tipo_evento":  "ficha_consultada",
+                                   "entidad_id":  "s1_bano_grande",
+                                   "requiere_accesibilidad":  true,
+                                   "fecha_creacion":  "2026-07-06T09:19:09"
+                               },
+                               {
+                                   "id":  110,
+                                   "tipo_evento":  "ficha_consultada",
+                                   "entidad_id":  "s1_serigrafia",
+                                   "requiere_accesibilidad":  true,
+                                   "fecha_creacion":  "2026-07-12T09:19:09"
+                               },
+                               {
+                                   "id":  111,
+                                   "tipo_evento":  "ficha_consultada",
+                                   "entidad_id":  "s4_aula_4",
+                                   "requiere_accesibilidad":  true,
+                                   "fecha_creacion":  "2026-07-01T09:19:09"
+                               },
+                               {
+                                   "id":  112,
+                                   "tipo_evento":  "ficha_consultada",
+                                   "entidad_id":  "s2_taller_bicicletas",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-12T09:19:09"
+                               },
+                               {
+                                   "id":  113,
+                                   "tipo_evento":  "ficha_consultada",
+                                   "entidad_id":  "s4_aula_3_sum",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-02T09:19:09"
+                               },
+                               {
+                                   "id":  114,
+                                   "tipo_evento":  "ficha_consultada",
+                                   "entidad_id":  "s2_taller_bicicletas",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-09T09:19:09"
+                               },
+                               {
+                                   "id":  115,
+                                   "tipo_evento":  "ficha_consultada",
+                                   "entidad_id":  "s3_informes_regencia",
+                                   "requiere_accesibilidad":  true,
+                                   "fecha_creacion":  "2026-07-03T09:19:09"
+                               },
+                               {
+                                   "id":  116,
+                                   "tipo_evento":  "ficha_consultada",
+                                   "entidad_id":  "s1_serigrafia",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-05T09:19:09"
+                               },
+                               {
+                                   "id":  117,
+                                   "tipo_evento":  "ficha_consultada",
+                                   "entidad_id":  "s1_climatizacion",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-01T09:19:09"
+                               },
+                               {
+                                   "id":  118,
+                                   "tipo_evento":  "ficha_consultada",
+                                   "entidad_id":  "s3_secretaria_direccion",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-10T09:19:09"
+                               },
+                               {
+                                   "id":  119,
+                                   "tipo_evento":  "ficha_consultada",
+                                   "entidad_id":  "s2_carpinteria",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-05T09:19:09"
+                               },
+                               {
+                                   "id":  120,
+                                   "tipo_evento":  "ficha_consultada",
+                                   "entidad_id":  "s2_carpinteria",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-04T09:19:09"
+                               },
+                               {
+                                   "id":  121,
+                                   "tipo_evento":  "ficha_consultada",
+                                   "entidad_id":  "s1_bano_chico",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-07T09:19:09"
+                               },
+                               {
+                                   "id":  122,
+                                   "tipo_evento":  "ficha_consultada",
+                                   "entidad_id":  "s3_sala_personal",
+                                   "requiere_accesibilidad":  true,
+                                   "fecha_creacion":  "2026-07-09T09:19:09"
+                               },
+                               {
+                                   "id":  123,
+                                   "tipo_evento":  "ficha_consultada",
+                                   "entidad_id":  "s2_carpinteria",
+                                   "requiere_accesibilidad":  true,
+                                   "fecha_creacion":  "2026-07-07T09:19:09"
+                               },
+                               {
+                                   "id":  124,
+                                   "tipo_evento":  "ficha_consultada",
+                                   "entidad_id":  "s2_carpinteria",
+                                   "requiere_accesibilidad":  true,
+                                   "fecha_creacion":  "2026-07-01T09:19:09"
+                               },
+                               {
+                                   "id":  125,
+                                   "tipo_evento":  "ficha_consultada",
+                                   "entidad_id":  "s2_taller_bicicletas",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-08T09:19:09"
+                               },
+                               {
+                                   "id":  126,
+                                   "tipo_evento":  "ficha_consultada",
+                                   "entidad_id":  "s3_lab_informatica_b",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-13T09:19:09"
+                               },
+                               {
+                                   "id":  127,
+                                   "tipo_evento":  "ficha_consultada",
+                                   "entidad_id":  "s1_bano_chico",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-08T09:19:09"
+                               },
+                               {
+                                   "id":  128,
+                                   "tipo_evento":  "ficha_consultada",
+                                   "entidad_id":  "s1_climatizacion",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-07T09:19:09"
+                               },
+                               {
+                                   "id":  129,
+                                   "tipo_evento":  "ficha_consultada",
+                                   "entidad_id":  "s1_bano_grande",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-02T09:19:09"
+                               },
+                               {
+                                   "id":  130,
+                                   "tipo_evento":  "ficha_consultada",
+                                   "entidad_id":  "s1_bano_grande",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-03T09:19:09"
+                               },
+                               {
+                                   "id":  131,
+                                   "tipo_evento":  "ficha_consultada",
+                                   "entidad_id":  "s2_taller_bicicletas",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-14T09:19:09"
+                               },
+                               {
+                                   "id":  132,
+                                   "tipo_evento":  "ficha_consultada",
+                                   "entidad_id":  "s1_climatizacion",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-06T09:19:09"
+                               },
+                               {
+                                   "id":  133,
+                                   "tipo_evento":  "ficha_consultada",
+                                   "entidad_id":  "s3_archivo_institucional",
+                                   "requiere_accesibilidad":  false,
+                                   "fecha_creacion":  "2026-07-12T09:19:09"
+                               },
+                               {
+                                   "id":  134,
+                                   "tipo_evento":  "ficha_consultada",
+                                   "entidad_id":  "s1_climatizacion",
+                                   "requiere_accesibilidad":  true,
+                                   "fecha_creacion":  "2026-07-09T09:19:09"
+                               },
+                               {
+                                   "id":  135,
+                                   "tipo_evento":  "ficha_consultada",
+                                   "entidad_id":  "s2_taller_bicicletas",
+                                   "requiere_accesibilidad":  true,
+                                   "fecha_creacion":  "2026-07-05T09:19:09"
+                               }
+                           ]
 }

@@ -1,0 +1,387 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dashboard CFP7 â€” KPIs Sprint 5</title>
+<!-- Chart.js 4 via CDN (cdnjs) -->
+<script src="chart.umd.js"></script>
+<style>
+  :root {
+    --azul: #14324a;
+    --azul-claro: #1e4a6d;
+    --naranja: #d97706;
+    --bg: #f4f6f8;
+    --card-bg: #ffffff;
+    --texto: #1f2937;
+    --texto-suave: #6b7280;
+    --borde: #e2e8f0;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--texto);
+  }
+
+  header {
+    background: var(--azul);
+    color: #fff;
+    padding: 20px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  header h1 {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+
+  .badge-demo {
+    background: var(--naranja);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 6px 12px;
+    border-radius: 999px;
+    text-transform: uppercase;
+  }
+
+  main {
+    padding: 24px 32px 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  #estado-error {
+    display: none;
+    background: #fef2f2;
+    border: 1px solid #fca5a5;
+    color: #991b1b;
+    padding: 16px 20px;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+
+  #estado-error code {
+    background: #fee2e2;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: Consolas, monospace;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+    gap: 20px;
+  }
+
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  }
+
+  .card h2 {
+    margin: 0 0 4px;
+    font-size: 1rem;
+    color: var(--azul);
+  }
+
+  .card p.subtitulo {
+    margin: 0 0 16px;
+    font-size: 0.8rem;
+    color: var(--texto-suave);
+  }
+
+  .card-canvas-wrap {
+    position: relative;
+    height: 280px;
+  }
+
+  .kpi2-valor {
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--naranja);
+    margin-top: 8px;
+  }
+
+  footer {
+    text-align: center;
+    color: var(--texto-suave);
+    font-size: 0.75rem;
+    padding: 16px;
+  }
+
+  .cargando {
+    text-align: center;
+    color: var(--texto-suave);
+    padding: 40px;
+    font-size: 0.9rem;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Dashboard CFP7 â€” KPIs Sprint 5</h1>
+  <span class="badge-demo">Datos sintÃ©ticos demo</span>
+</header>
+
+<main>
+  <div id="estado-error">
+    <strong>No se pudo conectar con la API.</strong><br />
+    VerificÃ¡ que <code>json-server</code> estÃ© levantado en <code>http://localhost:3001</code>
+    (por ejemplo: <code>json-server --watch mocks/db.json --port 3001</code>) y que la respuesta
+    incluya cabeceras CORS abiertas.
+  </div>
+
+  <div id="cargando" class="cargando">Cargando datos desde la APIâ€¦</div>
+
+  <div id="contenido" class="grid" style="display: none;">
+    <div class="card">
+      <h2>Top 5 espacios mÃ¡s buscados</h2>
+      <p class="subtitulo">Eventos con tipo_evento = "espacio_buscado", agrupados por espacio</p>
+      <div class="card-canvas-wrap">
+        <canvas id="chart-top-buscados"></canvas>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>% de recorridos con accesibilidad requerida</h2>
+      <p class="subtitulo">Eventos con tipo_evento = "recorrido_iniciado"</p>
+      <div class="card-canvas-wrap">
+        <canvas id="chart-accesibilidad"></canvas>
+      </div>
+      <div id="kpi2-valor" class="kpi2-valor"></div>
+    </div>
+
+    <div class="card">
+      <h2>Reportes por espacio</h2>
+      <p class="subtitulo">ColecciÃ³n /reportes agrupada por espacio_id (mapa de calor de incidencias)</p>
+      <div class="card-canvas-wrap">
+        <canvas id="chart-reportes"></canvas>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Top 5 fichas consultadas</h2>
+      <p class="subtitulo">Eventos con tipo_evento = "ficha_consultada", agrupados por espacio</p>
+      <div class="card-canvas-wrap">
+        <canvas id="chart-top-fichas"></canvas>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  campusApi-data Â· Sprint 5 Â· Fuente: json-server (http://localhost:3001)
+</footer>
+
+<script>
+  // ==========================================
+  // ConfiguraciÃ³n
+  // ==========================================
+  const API_BASE = "http://localhost:3001";
+  const COLOR_AZUL = "#14324a";
+  const COLOR_AZUL_CLARO = "#1e4a6d";
+  const COLOR_NARANJA = "#d97706";
+
+  // ==========================================
+  // Utilidades
+  // ==========================================
+
+  // Trae un endpoint y devuelve el JSON, o lanza si falla
+  async function obtenerJson(ruta) {
+    const respuesta = await fetch(`${API_BASE}${ruta}`);
+    if (!respuesta.ok) {
+      throw new Error(`Respuesta no OK para ${ruta}: ${respuesta.status}`);
+    }
+    return respuesta.json();
+  }
+
+  // Cuenta ocurrencias de eventos por entidad_id, filtrando por tipo_evento
+  function contarPorEntidad(eventos, tipoEvento) {
+    const conteo = {};
+    for (const evento of eventos) {
+      if (evento.tipo_evento !== tipoEvento) continue;
+      conteo[evento.entidad_id] = (conteo[evento.entidad_id] || 0) + 1;
+    }
+    return conteo;
+  }
+
+  // Convierte un mapa {espacio_id: cantidad} en un top N ordenado, resolviendo nombres via mapaEspacios
+  function armarTopN(conteo, mapaEspacios, n) {
+    return Object.entries(conteo)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, n)
+      .map(([id, cantidad]) => ({
+        nombre: mapaEspacios[id] || id,
+        cantidad,
+      }));
+  }
+
+  // ==========================================
+  // Render de grÃ¡ficos
+  // ==========================================
+
+  function renderTopBuscados(eventos, mapaEspacios) {
+    const conteo = contarPorEntidad(eventos, "espacio_buscado");
+    const top5 = armarTopN(conteo, mapaEspacios, 5);
+
+    new Chart(document.getElementById("chart-top-buscados"), {
+      type: "bar",
+      data: {
+        labels: top5.map((d) => d.nombre),
+        datasets: [
+          {
+            label: "BÃºsquedas",
+            data: top5.map((d) => d.cantidad),
+            backgroundColor: COLOR_AZUL,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: { y: { beginAtZero: true, ticks: { precision: 0 } } },
+      },
+    });
+  }
+
+  function renderAccesibilidad(eventos) {
+    const recorridos = eventos.filter((e) => e.tipo_evento === "recorrido_iniciado");
+    const totalRecorridos = recorridos.length;
+    const accesibles = recorridos.filter((e) => e.requiere_accesibilidad === true).length;
+    const noAccesibles = totalRecorridos - accesibles;
+    const porcentaje = totalRecorridos > 0 ? ((accesibles * 100) / totalRecorridos) : 0;
+
+    new Chart(document.getElementById("chart-accesibilidad"), {
+      type: "doughnut",
+      data: {
+        labels: ["Requiere accesibilidad", "No requiere"],
+        datasets: [
+          {
+            data: [accesibles, noAccesibles],
+            backgroundColor: [COLOR_NARANJA, COLOR_AZUL_CLARO],
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { position: "bottom" } },
+      },
+    });
+
+    document.getElementById("kpi2-valor").textContent = `${porcentaje.toFixed(1)}%`;
+  }
+
+  function renderReportesPorEspacio(reportes, mapaEspacios) {
+    const conteo = {};
+    for (const reporte of reportes) {
+      conteo[reporte.espacio_id] = (conteo[reporte.espacio_id] || 0) + 1;
+    }
+    const ordenado = Object.entries(conteo)
+      .sort((a, b) => b[1] - a[1])
+      .map(([id, cantidad]) => ({
+        nombre: mapaEspacios[id] || id,
+        cantidad,
+      }));
+
+    new Chart(document.getElementById("chart-reportes"), {
+      type: "bar",
+      data: {
+        labels: ordenado.map((d) => d.nombre),
+        datasets: [
+          {
+            label: "Reportes",
+            data: ordenado.map((d) => d.cantidad),
+            backgroundColor: COLOR_NARANJA,
+          },
+        ],
+      },
+      options: {
+        indexAxis: "y",
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: { x: { beginAtZero: true, ticks: { precision: 0 } } },
+      },
+    });
+  }
+
+  function renderTopFichas(eventos, mapaEspacios) {
+    const conteo = contarPorEntidad(eventos, "ficha_consultada");
+    const top5 = armarTopN(conteo, mapaEspacios, 5);
+
+    new Chart(document.getElementById("chart-top-fichas"), {
+      type: "bar",
+      data: {
+        labels: top5.map((d) => d.nombre),
+        datasets: [
+          {
+            label: "Fichas consultadas",
+            data: top5.map((d) => d.cantidad),
+            backgroundColor: COLOR_AZUL_CLARO,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: { y: { beginAtZero: true, ticks: { precision: 0 } } },
+      },
+    });
+  }
+
+  // ==========================================
+  // InicializaciÃ³n
+  // ==========================================
+  async function iniciar() {
+    try {
+      const [eventos, espacios, reportes] = await Promise.all([
+        obtenerJson("/eventos_telemetria"),
+        obtenerJson("/espacios"),
+        obtenerJson("/reportes"),
+      ]);
+
+      // Mapa id de espacio (slug) -> nombre legible
+      const mapaEspacios = {};
+      for (const espacio of espacios) {
+        mapaEspacios[espacio.id] = espacio.nombre;
+      }
+
+      renderTopBuscados(eventos, mapaEspacios);
+      renderAccesibilidad(eventos);
+      renderReportesPorEspacio(reportes, mapaEspacios);
+      renderTopFichas(eventos, mapaEspacios);
+
+      document.getElementById("cargando").style.display = "none";
+      document.getElementById("contenido").style.display = "grid";
+    } catch (error) {
+      console.error("Error al cargar el dashboard:", error);
+      document.getElementById("cargando").style.display = "none";
+      document.getElementById("estado-error").style.display = "block";
+    }
+  }
+
+  iniciar();
+</script>
+
+</body>
+</html>
