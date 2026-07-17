@@ -56,7 +56,7 @@ Cada Feature:
     "seg": "int | null (numero de segmento si el track tenia varios)",
     "accesible": "boolean (true=apto silla de ruedas, false=barrera fisica)",
     "barrera": "string | null (tipo de barrera: escalon, desnivel, ripio; null si no hay)",
-    "incompleto": "boolean (track parcial, completar en proxima visita)",
+    "incompleto": "boolean (track parcial: sin completar; sin relevamiento adicional previsto)",
     "puntos": "int (cantidad de vertices)"
   },
   "geometry": { "type": "LineString", "coordinates": [[lon, lat], ...] }
@@ -82,7 +82,7 @@ Cada Feature:
     "seg": "int | null (numero de segmento si el track tenia varios)",
     "accesible": "boolean (true=apto silla de ruedas, false=barrera fisica)",
     "barrera": "string | null (tipo de barrera: escalon, desnivel, ripio; null si no hay)",
-    "incompleto": "boolean (track parcial, completar en proxima visita)",
+    "incompleto": "boolean (track parcial: sin completar; sin relevamiento adicional previsto)",
     "puntos": "int (cantidad de vertices)"
   },
   "geometry": { "type": "LineString", "coordinates": [[lon, lat], ...] }

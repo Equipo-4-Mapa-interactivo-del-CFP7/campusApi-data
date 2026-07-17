@@ -21,6 +21,8 @@ Sector 1 = talleres (Electricidad, Herreria, Climatizacion, Serigrafia). Sector 
 | Pasillo corto Sector 4 | - | 5,94 m | 2,00 m | Cumple (conector ancho) |
 | Hall / patio cubierto Sector 3 | - | 7,69 m | 2,00 m | Cumple (circulacion ancha) |
 **Hallazgo critico:** los cinco ejes de circulacion principales y laterales (Sectores 1, 3 y 4) estan bajo el minimo educativo. Toda la red de circulacion interna es no conforme a obra nueva. El peor caso es el pasillo de lockers del Sector 4 con 1,08 m efectivos. El dato oficial de la institucion confirma y agrava lo relevado por MagicPlan (que no habia capturado los pasillos del Sector 3 ni el de lockers).
+
+Bajo norma Ley 962 (2,00 m) no implica no practicable: 1,08 m permite paso de silla estándar (0,80 m) sin giro. Ver criterio de practicabilidad en RECONCILIACION_V5.md.
 ## Hallazgos - Banos
 | Bano | Area | Lado | Observacion |
 |------|------|------|-------------|
@@ -29,13 +31,12 @@ Sector 1 = talleres (Electricidad, Herreria, Climatizacion, Serigrafia). Sector 
 | Sector 4 (grande) | 23,47 m2 | 5,93 x 4,46 | Area amplia; verificar disposicion de artefactos |
 | Sector 4 (mediano) | 15,90 m2 | 5,93 x 3,48 | Area suficiente; verificar maniobra |
 Nota: el documento oficial lista 2 banos en Sector 1 (Caballeros/Damas) y 4 en Sector 4 (Caballeros/Damas/Profesoras/Profesores). MagicPlan solo midio 2 de Sector 4; la asignacion de cual area corresponde a cual bano queda pendiente. Un area grande NO garantiza accesibilidad: la norma exige el circulo de maniobra de 1,50 m libre Y la disposicion de artefactos (barras, alturas), que se mide in situ.
-## Pendiente para el tercer relevamiento
-Medir en sitio con cinta metrica (no estimar del plano):
-1. Confirmar ancho de los pasillos en varios puntos (ya hay medida oficial de 5 pasillos; validar consistencia).
-2. Luz util de paso de las puertas principales (minimo 0,80 m). Revisar puertas Sector 4 ya detectadas bajo 0,80 m (0,64 / 0,65 / 0,68 m).
-3. Superficie de maniobra real en banos (circulo libre de 1,50 m) y asignacion Caballeros/Damas/Profesoras/Profesores.
-4. Pendiente de las rampas exteriores relevadas (rampa izquierda y central de la entrada al centro).
-5. Altura de los desniveles y escalones (entrada porche, conexion Sector 1 con nivel elevado 2/3/4).
-6. Confirmar la barrera del track 13 (rampa central con ripio no transitable sin asistencia).
+## No se medirá (3er relevamiento cancelado — 2026-07-17)
+1. Confirmar ancho de los pasillos en varios puntos (ya hay medida oficial de 5 pasillos; validar consistencia). → Se toma la medida oficial ya relevada como definitiva; no se vuelve a medir ni validar in situ.
+2. Luz util de paso de las puertas principales (minimo 0,80 m). Revisar puertas Sector 4 ya detectadas bajo 0,80 m (0,64 / 0,65 / 0,68 m). → Se toma como definitivo lo ya detectado (3 puertas de Sector 4 bajo el minimo); no se revisan mas puertas.
+3. Superficie de maniobra real en banos (circulo libre de 1,50 m) y asignacion Caballeros/Damas/Profesoras/Profesores. → Se toma la clasificacion por area ya disponible como definitiva (`s1_bano_chico` insuficiente); la asignacion exacta de recintos por genero queda sin resolver, fuera de alcance MVP.
+4. Pendiente de las rampas exteriores relevadas (rampa izquierda y central de la entrada al centro). → Se mantiene el dato ya relevado (rampa izquierda accesible, rampa central con ripio no accesible); no se remide.
+5. Altura de los desniveles y escalones (entrada porche, conexion Sector 1 con nivel elevado 2/3/4). → No se remide; sin dato de altura exacta, fuera de alcance MVP (el escalon no esta modelado en el grafo de recorridos - ver `RECONCILIACION_V5.md` b.3).
+6. Confirmar la barrera del track 13 (rampa central con ripio no transitable sin asistencia). → Se toma como confirmado el dato ya relevado (ripio no transitable sin asistencia, ver `anclas_sectores.json`); no se vuelve a verificar en campo.
 ## Trazabilidad
 Medidas oficiales: documento de la institucion "Medidas Sectores CFP N7". Cross-check dimensional: reporte MagicPlan "PLANOS CFP7" (PDF, 12-06-2026). Membresia y nombres de sector: documento oficial "Sectores para senaletica". Rutas exteriores y barreras en rutas_exterior.geojson. Espacios en espacios_cfp7.json. Normativa: Ley 962 CABA, Anexo I (modificacion al Codigo de Edificacion).

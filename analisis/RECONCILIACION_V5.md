@@ -12,19 +12,31 @@ Registro de que tomo la v5 de nuestro trabajo, que diferencias quedan registrada
 ## b) Divergencias registradas, no corregidas (decision de acople)
 No se le pide a Back que las corrija en esta pasada. Quedan documentadas para no perderlas.
 
-1. **`accesible = true` global.** Tanto en `espacios` como en `conexiones`, el bit `accesible` esta en `true` en absolutamente todas las filas del seed v5. Esto incluye casos que el canonico marca como no viables:
-   - `s1_bano_chico` (id v5 6): medido 1.62 x 1.88 m, `accesible_viable: false` en el canonico ("sin radio de giro"). En v5 figura accesible.
-   - El pasillo de lockers Sector 4 (id v5 40 / conexion id 41, 1.08 m): es el peor caso de ancho de todo el relevamiento, muy por debajo de Ley 962. En v5 tanto el espacio como la conexion figuran accesible.
-   - En rigor, ninguno de los 5 pasillos internos deberia ser `accesible=true` (todos incumplen Ley 962 por ancho), pero el seed los marca a todos como accesibles.
-   - **Riesgo practico:** cualquier feature de front/dashboard que confie en el campo `accesible` de la API (badges, filtros "solo accesible" fuera del algoritmo de recorridos) va a mostrar informacion optimista e incorrecta hasta que Back lo pueble con la clasificacion real.
+1. **accesible: resuelto parcialmente por criterio de practicabilidad (2026-07-17).** El canonico adopto un criterio derivado de `ancho_m` (>= 0.90 m = practicable; ver seccion "Criterio de practicabilidad" mas abajo). Bajo ese criterio, los 5 pasillos internos (S1 1.67 m, S3 principal 1.50 m, S3 lateral 1.47 m, S4 principal 1.58 m, S4 lockers 1.08 m) dan `accesible=true` - coinciden con el seed v5 en los 5 casos. Deja de ser divergencia.
+   - **Divergencia remanente:** `s1_bano_chico` (id v5 6): medido 1.62 x 1.88 m. En v5 figura `accesible=true`; en el canonico es `false` por **espacio de maniobra interior insuficiente (circulo 1,50 m), no ancho de paso**.
+   - **Riesgo practico:** ahora acotado a este unico espacio (`s1_bano_chico`). Cualquier feature de front/dashboard que confie en el campo `accesible` de la API va a mostrar mal solo ese bano hasta que Back lo pueble con la clasificacion real; el resto de espacios/conexiones ya no presenta el riesgo descripto originalmente.
 2. **Distancias redondeadas.** `conexiones.distancia` en v5 son todos numeros enteros (ej. 8, 5, 3). El doc oficial de medidas y `conexiones_cfp7.json.tramos_interiores` tienen precision decimal (ej. 10.73, 5.96, 0.8, 3.07, 8.67). Se perdio precision en la carga; no afecta el orden de magnitud pero si el detalle metrico si en algun momento se muestra distancia exacta en UI.
 3. **ESCALERA fuera del enum `tipo_transito`.** El canonico documenta un desnivel entre Sector 1 y Sectores 2/3/4 con dos rutas: `rampa` (accesible) y `escalon` (no accesible). El enum v5 (`EXTERIOR, PASILLO, RAMPA, RIPIO`) no tiene un valor para escalon, y en el grafo de conexiones no existe ningun tramo directo interior entre el pasillo de Sector 1 (id 36) y los demas sectores - la unica ruta modelada vuelve a salir por la Entrada Principal CFP7 y entra por el patio (ruta exterior/rampa). **Lectura:** el escalon nunca esta modelado porque el grafo de v5, igual que el canonico, solo representa caminos transitables (rutas por las que se puede circular a pie, con o sin restriccion de accesibilidad) - no todas las conexiones fisicas del edificio. Es consistente, no es un bug; solo hay que tenerlo claro para no buscar un tramo "S1 -> S4 directo" que no va a aparecer.
 
+## Criterio de practicabilidad (2026-07-17)
+
+Para poblar el campo `accesible` en el canonico (`datos/conexiones_cfp7.json`) se adopto un criterio derivado del `ancho_m` ya relevado:
+
+| Ancho | Clasificacion |
+|---|---|
+| >= 1.50 m | Paso y giro (permite ademas girar una silla dentro del propio tramo) |
+| 0.90 m - 1.49 m | Practicable sin giro (permite el paso de una silla estandar, sin espacio para maniobrar/girar en el tramo) |
+| < 0.90 m | No pasa silla estandar |
+
+**Ancho de paso vs espacio de maniobra interior:** son dos cosas distintas. El ancho de paso es el ancho libre de un tramo/corredor por el que se circula; el espacio de maniobra interior es el area libre dentro de un recinto (tipicamente un bano) necesaria para girar una silla de ruedas (circulo de 1,50 m de diametro, Art. 4.8.2.5 Ley 962). Un tramo puede ser practicable por ancho de paso y el recinto al que conduce no tener espacio de maniobra suficiente - es exactamente el caso de `s1_bano_chico` (ver b.1).
+
+Este criterio reemplaza la verificación en campo prevista (3er relevamiento cancelado); los anchos oficiales ya relevados se toman como definitivos.
+
 ## c) Impacto
 
-**En la 3ra visita:** no cambia el listado de pendientes de `PENDIENTES.md` punto 2 (ancho real en varios puntos, luz de paso de puertas, superficie de maniobra en banos, pendiente de rampas, altura de desniveles). Lo que si cambia es el destino de esos datos: antes se pensaba escribirlos directo sobre el slug canonico; ahora, si se quiere que la API los refleje, hay que pasarlos por Back contra los `id` de v5 (via `datos/mapeo_slug_id_v5.json`) porque el `accesible` real de banos y pasillos no esta en el seed actual.
+**Actualización (2026-07-17):** No habrá 3er relevamiento. Los valores derivan de las medidas oficiales existentes según el criterio de practicabilidad.
 
-**Post-MVP:** el filtro "solo accesible" del algoritmo de recorridos (`POST /api/recorridos/calcular`) no usa el bit `accesible`, penaliza por `tipoTransito` (RAMPA < PASILLO < EXTERIOR < RIPIO), asi que el problema de (b.1) no rompe ese endpoint puntual. Si el dashboard llega a mostrar accesibilidad por espacio/conexion (badge, filtro de buscador) tomando el campo `accesible` de `GET /api/espacios` o `/api/conexiones` tal cual viene, va a mostrar mal el bano chico de S1 y el pasillo de lockers. Anotarlo como bloqueante de esa feature especifica, no del MVP entero.
+**Post-MVP:** el filtro "solo accesible" del algoritmo de recorridos (`POST /api/recorridos/calcular`) no usa el bit `accesible`, penaliza por `tipoTransito` (RAMPA < PASILLO < EXTERIOR < RIPIO), asi que el problema de (b.1) no rompe ese endpoint puntual. Si el dashboard llega a mostrar accesibilidad por espacio/conexion (badge, filtro de buscador) tomando el campo `accesible` de `GET /api/espacios` o `/api/conexiones` tal cual viene, va a mostrar mal el bano chico de S1. Anotarlo como bloqueante de esa feature especifica, no del MVP entero.
 
 ## Endpoints GET relevantes para el futuro switch mock -> API real
 Extraidos de los PDF `API Espacios, Conexiones y Recorridos.pdf` y `Cambios API v5.pdf`. El dashboard del demo sigue contra `mocks/db.json` en esta pasada; esto queda como referencia para cuando se haga el switch.

@@ -1,14 +1,14 @@
 # Pendientes - Data CFP7
 Estado de deuda tecnica del equipo de Data. Actualizado: 2026-06-17 (cierre Sprint 3).
 
-## Tercer relevamiento de campo (medir in situ)
-1. Anclas GPS faltantes en `anclas_sectores.json`: Patio comunicante 2-3, Exterior entre sector 1 y 2, Cpf7 frente.
-2. Medidas Ley 962 para confirmar `analisis_ley962.md`:
-   - Ancho real de pasillos angostos (Sector 1 ~1,75 m y Sector 3 ~1,62 m) medido en varios puntos.
-   - Luz util de paso de puertas principales (minimo 0,80 m).
-   - Superficie de maniobra en banos (circulo libre de 1,50 m).
-   - Pendiente de rampas exteriores (rampa izquierda y central de entrada al centro).
-   - Altura de desniveles y escalones.
+## No se medirá (3er relevamiento cancelado — 2026-07-17)
+1. Anclas GPS faltantes en `anclas_sectores.json`: Patio comunicante 2-3, Exterior entre sector 1 y 2, Cpf7 frente. → Quedan 2 anclas confirmadas (Sector 1; Sector 2 y 3). Las 3 faltantes quedan sin ancla GPS: fuera de alcance MVP (no bloquea el mapa indoor, que usa `sector_id`, no coordenada GPS).
+2. Medidas Ley 962 para confirmar `analisis_ley962.md`: → Derivadas del documento oficial ya relevado; no se remediran. Ver "Criterio de practicabilidad" en `RECONCILIACION_V5.md`.
+   - Ancho real de pasillos angostos (Sector 1 ~1,75 m y Sector 3 ~1,62 m) medido en varios puntos. → Se toma el ancho oficial del documento institucional como definitivo; MagicPlan queda como cross-check, no se vuelve a medir.
+   - Luz util de paso de puertas principales (minimo 0,80 m). → No se remide puerta por puerta; ya hay 3 puertas de Sector 4 detectadas bajo el minimo (0,64 / 0,65 / 0,68 m), se toma ese relevamiento como definitivo.
+   - Superficie de maniobra en banos (circulo libre de 1,50 m). → No se remide; se usa la clasificacion ya disponible por area (`s1_bano_chico` confirmado insuficiente, 3,05 m² / 1,62 x 1,88 m; el resto se toma como suficiente por area en `analisis_ley962.md`, sin verificar disposicion de artefactos).
+   - Pendiente de rampas exteriores (rampa izquierda y central de entrada al centro). → No se remide; se mantiene el dato ya relevado (`anclas_sectores.json`: rampa izquierda accesible, rampa central con ripio no accesible).
+   - Altura de desniveles y escalones. → No se remide; sin dato de altura exacta, fuera de alcance MVP (no bloquea el grafo de recorridos, que no modela el escalon - ver `RECONCILIACION_V5.md` b.3).
 
 ## Curaduria de fotos de campo
 3. Definir campo `cartel` (si/no/tipo) en `fotos_campo.geojson` - decision de equipo mirando las fotos.
@@ -17,7 +17,7 @@ Estado de deuda tecnica del equipo de Data. Actualizado: 2026-06-17 (cierre Spri
 ## Coordinacion con Backend
 5. Proponer agregar valor `RIPIO` al enum `TipoTransito` (evidencia: rutas relevadas con barrera ripio).
 6. Alinear modelo: exterior e interior son un continuo (patios comunicantes conectan sectores), no dos sistemas separados. Un solo grafo.
-7. Poblar `Conexion.accesible` del Backend con la clasificacion de terreno (hoy esta vacio/por diseno).
+7. Pasarle a Back el UPDATE de accesible derivado (criterio ancho_m >= 0.90) — ver sql/03_update_accesible_v5.sql (a crear).
 
 ## Coordinacion con Frontend
 8. Avisar que `anclas_sectores.json` esta disponible para montar los SVG indoor sobre el mapa.
