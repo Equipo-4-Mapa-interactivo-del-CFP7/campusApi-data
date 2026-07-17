@@ -32,6 +32,8 @@ Para poblar el campo `accesible` en el canonico (`datos/conexiones_cfp7.json`) s
 
 Este criterio reemplaza la verificación en campo prevista (3er relevamiento cancelado); los anchos oficiales ya relevados se toman como definitivos.
 
+**Decisión de identificadores (2026-07-17):** los ids numéricos de la base v5 son los identificadores oficiales de la aplicación. Los slugs quedan como claves internas de Data (archivo de campo, canónico, GeoJSON): son estables ante re-seeds de la base, mientras que los ids autoincrement pueden cambiar si Back regenera el schema. Todo entregable de Data hacia Back/Front/QA viaja con ids v5; `datos/mapeo_slug_id_v5.json` es el único puente entre ambas capas y se mantiene en este repo.
+
 ## c) Impacto
 
 **Actualización (2026-07-17):** No habrá 3er relevamiento. Los valores derivan de las medidas oficiales existentes según el criterio de practicabilidad.
