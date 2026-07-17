@@ -18,6 +18,8 @@
       "nota": "Puerta 1 de Climatizacion (sin cartel segun doc)",
       "ancho_m": 1.67,
       "cumple_ley962": false,
+      "accesible": true,
+      "criterio_accesible": "derivado_ancho",
       "tipo_transito": "PASILLO_LLANO",
       "fuente": "doc_medidas_oficial"
     },
@@ -32,6 +34,8 @@
       "nota": "Puerta 2 Climatizacion (5,46) + 0,50 al primer bano. Doc: bano de Caballeros; mapeo a recinto pendiente",
       "ancho_m": 1.67,
       "cumple_ley962": false,
+      "accesible": true,
+      "criterio_accesible": "derivado_ancho",
       "tipo_transito": "PASILLO_LLANO",
       "fuente": "doc_medidas_oficial"
     },
@@ -46,6 +50,8 @@
       "nota": "Doc: Caballeros a Damas; mapeo a recintos pendiente",
       "ancho_m": 1.67,
       "cumple_ley962": false,
+      "accesible": true,
+      "criterio_accesible": "derivado_ancho",
       "tipo_transito": "PASILLO_LLANO",
       "fuente": "doc_medidas_oficial"
     },
@@ -60,6 +66,8 @@
       "nota": null,
       "ancho_m": 1.67,
       "cumple_ley962": false,
+      "accesible": true,
+      "criterio_accesible": "derivado_ancho",
       "tipo_transito": "PASILLO_LLANO",
       "fuente": "doc_medidas_oficial"
     },
@@ -74,6 +82,8 @@
       "nota": null,
       "ancho_m": 1.67,
       "cumple_ley962": false,
+      "accesible": true,
+      "criterio_accesible": "derivado_ancho",
       "tipo_transito": "PASILLO_LLANO",
       "fuente": "doc_medidas_oficial"
     },
@@ -88,6 +98,8 @@
       "nota": "Fondo del pasillo S1",
       "ancho_m": 1.67,
       "cumple_ley962": false,
+      "accesible": true,
+      "criterio_accesible": "derivado_ancho",
       "tipo_transito": "PASILLO_LLANO",
       "fuente": "doc_medidas_oficial"
     },
@@ -102,6 +114,8 @@
       "pasillo": "p_s3_principal",
       "ancho_m": 1.5,
       "cumple_ley962": false,
+      "accesible": true,
+      "criterio_accesible": "derivado_ancho",
       "tipo_transito": "PASILLO_LLANO",
       "fuente": "doc_medidas_oficial"
     },
@@ -116,6 +130,8 @@
       "pasillo": "p_s3_principal",
       "ancho_m": 1.5,
       "cumple_ley962": false,
+      "accesible": true,
+      "criterio_accesible": "derivado_ancho",
       "tipo_transito": "PASILLO_LLANO",
       "fuente": "doc_medidas_oficial"
     },
@@ -130,6 +146,8 @@
       "pasillo": "p_s3_principal",
       "ancho_m": 1.5,
       "cumple_ley962": false,
+      "accesible": true,
+      "criterio_accesible": "derivado_ancho",
       "tipo_transito": "PASILLO_LLANO",
       "fuente": "doc_medidas_oficial"
     },
@@ -144,6 +162,8 @@
       "pasillo": "p_s3_principal",
       "ancho_m": 1.5,
       "cumple_ley962": false,
+      "accesible": true,
+      "criterio_accesible": "derivado_ancho",
       "tipo_transito": "PASILLO_LLANO",
       "fuente": "doc_medidas_oficial"
     },
@@ -158,6 +178,8 @@
       "pasillo": "p_s3_principal",
       "ancho_m": 1.5,
       "cumple_ley962": false,
+      "accesible": true,
+      "criterio_accesible": "derivado_ancho",
       "tipo_transito": "PASILLO_LLANO",
       "fuente": "doc_medidas_oficial"
     },
@@ -172,6 +194,8 @@
       "pasillo": "p_s3_principal",
       "ancho_m": 1.5,
       "cumple_ley962": false,
+      "accesible": true,
+      "criterio_accesible": "derivado_ancho",
       "tipo_transito": "PASILLO_LLANO",
       "fuente": "doc_medidas_oficial"
     },
@@ -186,6 +210,8 @@
       "pasillo": "p_s3_principal",
       "ancho_m": 1.5,
       "cumple_ley962": false,
+      "accesible": true,
+      "criterio_accesible": "derivado_ancho",
       "tipo_transito": "PASILLO_LLANO",
       "fuente": "doc_medidas_oficial"
     },
@@ -200,6 +226,8 @@
       "pasillo": "p_s3_principal",
       "ancho_m": 1.5,
       "cumple_ley962": false,
+      "accesible": true,
+      "criterio_accesible": "derivado_ancho",
       "tipo_transito": "PASILLO_LLANO",
       "fuente": "doc_medidas_oficial"
     },
@@ -214,6 +242,8 @@
       "pasillo": "p_s3_principal",
       "ancho_m": 1.5,
       "cumple_ley962": false,
+      "accesible": true,
+      "criterio_accesible": "derivado_ancho",
       "tipo_transito": "PASILLO_LLANO",
       "fuente": "doc_medidas_oficial"
     },
@@ -228,6 +258,8 @@
       "pasillo": "p_s3_lateral",
       "ancho_m": 1.47,
       "cumple_ley962": false,
+      "accesible": true,
+      "criterio_accesible": "derivado_ancho",
       "tipo_transito": "PASILLO_LLANO",
       "fuente": "doc_medidas_oficial"
     },
@@ -242,6 +274,8 @@
       "pasillo": "p_s4_principal",
       "ancho_m": 1.58,
       "cumple_ley962": false,
+      "accesible": true,
+      "criterio_accesible": "derivado_ancho",
       "tipo_transito": "PASILLO_LLANO",
       "fuente": "doc_medidas_oficial"
     },
@@ -256,6 +290,8 @@
       "pasillo": "p_s4_principal",
       "ancho_m": 1.58,
       "cumple_ley962": false,
+      "accesible": true,
+      "criterio_accesible": "derivado_ancho",
       "tipo_transito": "PASILLO_LLANO",
       "fuente": "doc_medidas_oficial"
     },
@@ -270,6 +306,8 @@
       "pasillo": "p_s4_principal",
       "ancho_m": 1.58,
       "cumple_ley962": false,
+      "accesible": true,
+      "criterio_accesible": "derivado_ancho",
       "tipo_transito": "PASILLO_LLANO",
       "fuente": "doc_medidas_oficial"
     },
@@ -284,6 +322,8 @@
       "pasillo": "p_s4_principal",
       "ancho_m": 1.58,
       "cumple_ley962": false,
+      "accesible": true,
+      "criterio_accesible": "derivado_ancho",
       "tipo_transito": "PASILLO_LLANO",
       "fuente": "doc_medidas_oficial"
     },
@@ -298,6 +338,8 @@
       "pasillo": "p_s4_principal",
       "ancho_m": 1.58,
       "cumple_ley962": false,
+      "accesible": true,
+      "criterio_accesible": "derivado_ancho",
       "tipo_transito": "PASILLO_LLANO",
       "fuente": "doc_medidas_oficial"
     },
@@ -312,6 +354,8 @@
       "pasillo": "p_s4_principal",
       "ancho_m": 1.58,
       "cumple_ley962": false,
+      "accesible": true,
+      "criterio_accesible": "derivado_ancho",
       "tipo_transito": "PASILLO_LLANO",
       "fuente": "doc_medidas_oficial"
     },
@@ -326,6 +370,8 @@
       "pasillo": "p_s4_principal",
       "ancho_m": 1.58,
       "cumple_ley962": false,
+      "accesible": true,
+      "criterio_accesible": "derivado_ancho",
       "tipo_transito": "PASILLO_LLANO",
       "fuente": "doc_medidas_oficial"
     },
@@ -340,6 +386,8 @@
       "pasillo": "p_s4_principal",
       "ancho_m": 1.58,
       "cumple_ley962": false,
+      "accesible": true,
+      "criterio_accesible": "derivado_ancho",
       "tipo_transito": "PASILLO_LLANO",
       "fuente": "doc_medidas_oficial"
     },
@@ -354,6 +402,8 @@
       "pasillo": "p_s4_principal",
       "ancho_m": 1.58,
       "cumple_ley962": false,
+      "accesible": true,
+      "criterio_accesible": "derivado_ancho",
       "tipo_transito": "PASILLO_LLANO",
       "fuente": "doc_medidas_oficial"
     },
@@ -368,6 +418,8 @@
       "pasillo": "p_s4_principal",
       "ancho_m": 1.58,
       "cumple_ley962": false,
+      "accesible": true,
+      "criterio_accesible": "derivado_ancho",
       "tipo_transito": "PASILLO_LLANO",
       "fuente": "doc_medidas_oficial"
     },
@@ -382,6 +434,8 @@
       "pasillo": "p_s4_principal",
       "ancho_m": 1.58,
       "cumple_ley962": false,
+      "accesible": true,
+      "criterio_accesible": "derivado_ancho",
       "tipo_transito": "PASILLO_LLANO",
       "fuente": "doc_medidas_oficial"
     },
@@ -396,6 +450,8 @@
       "pasillo": "p_s4_principal",
       "ancho_m": 1.58,
       "cumple_ley962": false,
+      "accesible": true,
+      "criterio_accesible": "derivado_ancho",
       "tipo_transito": "PASILLO_LLANO",
       "fuente": "doc_medidas_oficial"
     },
@@ -410,6 +466,8 @@
       "pasillo": "p_s4_principal",
       "ancho_m": 1.58,
       "cumple_ley962": false,
+      "accesible": true,
+      "criterio_accesible": "derivado_ancho",
       "tipo_transito": "PASILLO_LLANO",
       "fuente": "doc_medidas_oficial"
     },
@@ -424,6 +482,8 @@
       "pasillo": "p_s4_principal",
       "ancho_m": 1.58,
       "cumple_ley962": false,
+      "accesible": true,
+      "criterio_accesible": "derivado_ancho",
       "tipo_transito": "PASILLO_LLANO",
       "fuente": "doc_medidas_oficial"
     },
@@ -438,6 +498,8 @@
       "pasillo": "p_s4_lockers",
       "ancho_m": 1.08,
       "cumple_ley962": false,
+      "accesible": true,
+      "criterio_accesible": "derivado_ancho",
       "tipo_transito": "PASILLO_LLANO",
       "fuente": "doc_medidas_oficial"
     }
