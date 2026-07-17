@@ -1,0 +1,7 @@
+El comando de consola para arrancar la API es el mismo que la versión anterior.
+
+Se debe eliminar (drop) la base de datos anterior e importar la nueva.
+
+Reemplazar el backend-api.jar por el nuevo.
+
+IMPORTANTE: se debe tener lista la nueva base de datos antes de ejecutar la API.

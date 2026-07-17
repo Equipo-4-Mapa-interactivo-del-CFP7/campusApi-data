@@ -2,7 +2,7 @@
 
 **Estado:** PROPUESTO — pendiente de implementación en Back (S10/S11)
 **Owner:** Data (Ángel) · **Implementa:** Back · **Consume:** Front
-**Referencias:** 31_EVENTOS.md (payloads), sql/02_telemetria_y_dashboard.sql (tabla destino)
+**Referencias:** 31_EVENTOS.md (payloads), sql/02_telemetria_y_dashboard.sql (tabla destino), datos/mapeo_slug_id_v5.json (mapeo id v5 ↔ slug)
 
 ## Endpoint
 
@@ -12,7 +12,7 @@
 ```json
 {
   "tipo_evento": "espacio_buscado",
-  "entidad_id": "s4_aula_1",
+  "entidad_id": "18",
   "requiere_accesibilidad": false
 }
 ```
@@ -20,8 +20,11 @@
 | Campo | Tipo | Reglas |
 |---|---|---|
 | tipo_evento | string | Uno de: `espacio_buscado`, `recorrido_iniciado`, `ficha_consultada`. Otro valor → 400. |
-| entidad_id | string | Slug del espacio. En `recorrido_iniciado` es el **destino_id** (el origen no se persiste; ningún KPI lo usa). |
+| entidad_id | string | **Id numérico de la API v5** (ver nota de migración), como string. En `recorrido_iniciado` es el **destino_id** (el origen no se persiste; ningún KPI lo usa). |
 | requiere_accesibilidad | boolean | Opcional, default `false`. Refleja si el filtro de accesibilidad estaba activo al momento del evento. |
+
+### Nota de migración (v5)
+Antes de la v5, `entidad_id` era el **slug** canónico de Data (ej. `s4_aula_1`), pensando en que `espacio.id` en Back fuera ese mismo string. Back liberó la v5 con `espacios.id` como **bigint autoincremental** (ver `recibidos/v5/techlab.sql`), y el equipo decidió acoplarse a esa realidad en vez de pedir un re-modelado: **`entidad_id` pasa a ser el id numérico de la API, como string** (ej. `"18"` para Aula 1). El slug sigue siendo la clave del canónico (`datos/espacios_cfp7.json`); la correspondencia id↔slug para el seed actual está en `datos/mapeo_slug_id_v5.json`. Si Back re-seedea la base, ese mapeo deja de ser válido y hay que regenerarlo.
 
 ### Response
 - `201 Created` — sin body necesario.
@@ -50,5 +53,5 @@ fetch(`${API}/api/eventos`, {
 }).catch(() => {}); // nunca romper la UX por telemetría
 ```
 
-## Pregunta abierta a Back
-La tabla usa `entidad_id VARCHAR(50)` (slug, ej. `s4_aula_1`) y los KPIs joinean contra `espacio.id`. **Confirmar que la PK de `espacio` es el slug** (string) y no un `Long` autoincremental — si es Long, hay que acordar cuál de los dos ajusta.
+## Resuelto (v5)
+La PK de `espacios` es `id` bigint autoincremental, no el slug. Decisión de equipo: Data se acopla — ver "Nota de migración" arriba. El JOIN de los KPIs contra `espacios.id` requiere CAST porque `entidad_id` sigue siendo `VARCHAR` (ver sql/02_telemetria_y_dashboard.sql).
