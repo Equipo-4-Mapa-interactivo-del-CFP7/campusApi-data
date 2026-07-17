@@ -43,3 +43,48 @@ Extraidos de los PDF `API Espacios, Conexiones y Recorridos.pdf` y `Cambios API 
 **Reportes:** los PDF confirman que existen endpoints bajo `/api/reportes` (dominio de Ian/Lilia, no de Jonathan/mapa) pero no detallan rutas ni responses - no incluidos en `API Espacios, Conexiones y Recorridos.pdf`. Pedir el PDF/doc especifico de reportes cuando se planifique ese switch.
 
 Endpoints de escritura (fuera del alcance de esta reconciliacion, documentados en el PDF por si hacen falta mas adelante): `POST /api/espacios`, `PUT /api/espacios/{id}` (segun tabla de roles; el PDF de detalle solo muestra POST para alta), `PATCH /api/espacios/{id}/estado`, `POST /api/conexiones`, `PUT /api/conexiones/{id}` (idem), `PATCH /api/conexiones/{id}/estado`. La discrepancia POST/PUT entre el PDF de detalle y la tabla de roles de "Cambios API v5" no se resolvio - anotar para preguntar a Jonathan si hace falta tocar estos endpoints.
+
+## Adenda: API_DOC.md (rama jhon-2, build 2026-07-15)
+
+Fuente: `API_DOC.md` de la rama `origin/jhon-2` de `campusApi-backend`, commit `9b667b0` ("Se agregó el manejo de estados en espacios y conexiones para el cálculo de recorridos", 2026-07-15). Este documento llegó a la vista indirectamente: alguien del equipo agregó a `campusApi-backend/` un `backend-api.jar` (fat jar Spring Boot, sin trackear en git) cuyo `application.properties` embebido matchea la config de esa rama, lo que permitió ubicar el commit de origen y leer el `API_DOC.md` correspondiente vía `git show`. No se corrió el jar (faltan JDK 25, MySQL local y variables de entorno).
+
+### 1. Contrato de Reportes (llena el hueco marcado en la seccion de Endpoints de arriba)
+
+Formato de respuesta de `Reporte`:
+```json
+{
+  "id": Long,
+  "espacioId": Long,
+  "nombreEspacio": String,
+  "descripcion": String,
+  "estadoReporte": String,
+  "tipoReporte": String,
+  "minutosEstimados": Integer,
+  "fechaVencimiento": String,
+  "fechaCreacion": String
+}
+```
+
+| Metodo | Ruta | Rol requerido | Notas |
+|---|---|---|---|
+| POST | `/api/reportes` | OWNER, ADMIN, PERSONAL | Crea reporte. No permite mas de un reporte activo del mismo `tipoReporte` por espacio. |
+| POST | `/api/reportes/{id}/atender` | OWNER, ADMIN, PERSONAL | Marca atendido y/o edita `minutosEstimados`/`descripcion`. |
+| POST | `/api/reportes/{id}/resolver` | OWNER, ADMIN, PERSONAL | Marca `RESUELTO`. |
+| GET | `/api/reportes/{id}` | OWNER, ADMIN, PERSONAL | Detalle. |
+| GET | `/api/reportes` | OWNER, ADMIN, PERSONAL | Lista paginada (formato Page de Spring), filtros `espacioId`, `estado`, `tipoReporte`, `page`, `size`. |
+
+`estadoReporte` (3 valores segun API_DOC): `PENDIENTE`, `EN_REVISION`, `RESUELTO`.
+
+### 2. Discrepancia a confirmar con Ian/Lilia
+
+`API_DOC.md` (rama jhon-2) documenta `tipoReporte` con **4 valores validos para crear un reporte**: `ACCESO_BLOQUEADO`, `PROBLEMA_SENALETICA`, `BARRERA_FISICA`, `DIFICULTAD_ORIENTACION`. El enum `reportes.tipo` de la v5 (seccion "a" de este documento) tiene **5 valores**, incluyendo `OTROS`. No esta claro si `API_DOC.md` quedo desactualizado respecto al enum real, o si `OTROS` existe en la base pero deliberadamente no se expone como opcion valida al crear un reporte via API. Pendiente de confirmar con Ian/Lilia antes de asumir cualquiera de las dos lecturas.
+
+### 3. Nota de gobernanza
+
+El build del jar corresponde a la rama `jhon-2`, que esta **188 archivos y +6053/-616 lineas adelante de `main`** (incluye `AuditoriaController`, `ReporteController` y el manejo de estados de espacios/conexiones para recorridos, nada de lo cual esta en `main` todavia) y **no esta mergeada**.
+
+**Decision:** el switch del dashboard mock -> API real no se construye contra builds de ramas WIP (por mas que ya circule un jar corriendolas). Se retoma el trabajo de switch cuando `jhon-2` (o el trabajo que contiene) este mergeado a `main`.
+
+### 4. Nota de diseño pendiente
+
+`GET /api/reportes` requiere rol `OWNER`, `ADMIN` o `PERSONAL` (ningun endpoint de reportes es de acceso publico). Un dashboard estatico que hoy consume `mocks/db.json` sin autenticacion no puede consumir este endpoint tal cual: hace falta resolver como el dashboard obtiene y renueva un JWT (login propio, token de servicio, proxy con credenciales fijas, etc.) antes de que el switch de la card de reportes sea viable. Queda como decision de diseño pendiente, no bloqueante para las cards que sí pegan a endpoints publicos (`/api/espacios/mapa`, `/api/conexiones`).
