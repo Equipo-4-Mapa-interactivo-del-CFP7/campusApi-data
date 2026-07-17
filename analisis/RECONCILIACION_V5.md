@@ -75,9 +75,9 @@ Formato de respuesta de `Reporte`:
 
 `estadoReporte` (3 valores segun API_DOC): `PENDIENTE`, `EN_REVISION`, `RESUELTO`.
 
-### 2. Discrepancia a confirmar con Ian/Lilia
+### 2. Decisión sobre tipoReporte
 
-`API_DOC.md` (rama jhon-2) documenta `tipoReporte` con **4 valores validos para crear un reporte**: `ACCESO_BLOQUEADO`, `PROBLEMA_SENALETICA`, `BARRERA_FISICA`, `DIFICULTAD_ORIENTACION`. El enum `reportes.tipo` de la v5 (seccion "a" de este documento) tiene **5 valores**, incluyendo `OTROS`. No esta claro si `API_DOC.md` quedo desactualizado respecto al enum real, o si `OTROS` existe en la base pero deliberadamente no se expone como opcion valida al crear un reporte via API. Pendiente de confirmar con Ian/Lilia antes de asumir cualquiera de las dos lecturas.
+Decisión (2026-07-17): el contrato de datos usa los 4 tipos de API_DOC (ACCESO_BLOQUEADO, PROBLEMA_SENALETICA, BARRERA_FISICA, DIFICULTAD_ORIENTACION). OTROS queda fuera del contrato aunque exista en el enum de la base v5 — no se consulta a Back, no se expone en formularios.
 
 ### 3. Nota de gobernanza
 
