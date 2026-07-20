@@ -78,3 +78,27 @@ export const espaciosSinCoordenadas: EspacioSinCoordenadaV5[] = [
   { id: 41, nombre: "Patio entre Sector 2 y 3", slug: null, sector: "SECTOR_2", coords: null },
   { id: 42, nombre: "Patio comunicante Sector 3 y 4", slug: null, sector: "SECTOR_3", coords: null },
 ];
+
+// Puente temporal label→id para el mock actual; el binding definitivo debe ser por id, no por nombre.
+// Fuente de la comparación: labels visibles del mapa de Front vs. nombre de espacios en
+// recibidos/v5/techlab.sql y datos/espacios_cfp7.json.
+export const labelsFrontAId: Record<string, number | null> = {
+  "Taller de Bicicletas": 8,
+  "Carpintería": 7,
+  "Espacio Tecnológico": 17,
+  "Aula 1": 18,
+  "Aula 2": 19,
+  "Aula 3 - Sum": 20,
+  "Laboratorio de Informática A": 14,
+  "Laboratorio de Informática B": 15,
+  "Área de Talleres Dinámicos": 13,
+  "Buffet": null, // no existe en la base — confirmar con Front si es espacio real no relevado
+  "E.P.S": 27, // a confirmar: asumido EPS - IFTS N5 porque Preceptoría es pin aparte
+  "Preceptoría": 26,
+  "Oficina de Estudiantes": 11,
+  "Sala de personal": 12,
+  "Orientación": null, // no existe en la base — confirmar con Front si es espacio real no relevado
+  "Secretaría Dirección": 10,
+  "Regencia": 9,
+  "Informes": 9,
+};
