@@ -280,6 +280,24 @@
       "largo_m": 3.48,
       "accesible_viable": "verificar",
       "nota": "Doc medidas oficial S4: 4 designaciones (Caballeros/Damas/Profesoras/Profesores) en 2 recintos medidos. Mapeo pendiente de 3ra visita."
+    },
+    {
+      "id": "s4_buffet",
+      "sector": 4,
+      "nombre": "Buffet",
+      "tipo": "buffet",
+      "ubicacion": "interior",
+      "area_m2": null,
+      "origen": "confirmado por Data 2026-07-20, sin relevamiento de medidas"
+    },
+    {
+      "id": "s3_orientacion",
+      "sector": 3,
+      "nombre": "Orientacion",
+      "tipo": "oficina",
+      "ubicacion": "interior",
+      "area_m2": null,
+      "origen": "confirmado por Data 2026-07-20, sin relevamiento de medidas"
     }
   ],
   "pasillos": [
