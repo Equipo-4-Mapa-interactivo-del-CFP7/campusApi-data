@@ -345,48 +345,11 @@
       </div>
 
       <div class="card">
-        <h2>% de recorridos con accesibilidad requerida</h2>
-        <p class="encuadre">Sobre recorridos simulados (dato demo): proporción que requiere ruta accesible.</p>
-        <p class="subtitulo">Eventos con tipo_evento = "recorrido_iniciado"</p>
-        <div class="card-canvas-wrap">
-          <canvas id="chart-accesibilidad"></canvas>
-        </div>
-        <div id="kpi2-valor" class="kpi2-valor"></div>
-      </div>
-
-      <div class="card">
         <h2>Reportes por espacio</h2>
         <p class="encuadre">Incluye barreras reales relevadas (5 pasillos bajo Ley 962 + baño) y reportes de señalización/orientación sintéticos para demostración.</p>
         <p class="subtitulo">Colección /reportes agrupada por espacio_id (mapa de calor de incidencias)</p>
         <div class="card-canvas-wrap">
           <canvas id="chart-reportes"></canvas>
-        </div>
-      </div>
-
-      <div class="card">
-        <h2>Top 5 fichas consultadas</h2>
-        <p class="encuadre">Datos de uso sintéticos para demostración.</p>
-        <p class="subtitulo">Eventos con tipo_evento = "ficha_consultada", agrupados por espacio</p>
-        <div class="card-canvas-wrap">
-          <canvas id="chart-top-fichas"></canvas>
-        </div>
-      </div>
-
-      <div class="card">
-        <h2>Reportes por estado</h2>
-        <p class="encuadre">Incluye barreras reales relevadas (5 pasillos bajo Ley 962 + baño) y reportes de señalización/orientación sintéticos para demostración.</p>
-        <p class="subtitulo">Colección /reportes agrupada por estado de atención</p>
-        <div class="card-canvas-wrap">
-          <canvas id="chart-reportes-estado"></canvas>
-        </div>
-      </div>
-
-      <div class="card">
-        <h2>Reportes por tipo</h2>
-        <p class="encuadre">Incluye barreras reales relevadas (5 pasillos bajo Ley 962 + baño) y reportes de señalización/orientación sintéticos para demostración.</p>
-        <p class="subtitulo">Colección /reportes agrupada por tipo de incidencia</p>
-        <div class="card-canvas-wrap">
-          <canvas id="chart-reportes-tipo"></canvas>
         </div>
       </div>
 
@@ -550,34 +513,6 @@
     });
   }
 
-  function renderAccesibilidad(eventos) {
-    const recorridos = eventos.filter((e) => e.tipo_evento === "recorrido_iniciado");
-    const totalRecorridos = recorridos.length;
-    const accesibles = recorridos.filter((e) => e.requiere_accesibilidad === true).length;
-    const noAccesibles = totalRecorridos - accesibles;
-    const porcentaje = totalRecorridos > 0 ? (accesibles * 100) / totalRecorridos : 0;
-
-    crearChart("chart-accesibilidad", {
-      type: "doughnut",
-      data: {
-        labels: ["Requiere accesibilidad", "No requiere"],
-        datasets: [
-          {
-            data: [accesibles, noAccesibles],
-            backgroundColor: [COLOR_NARANJA, COLOR_AZUL_CLARO],
-          },
-        ],
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: { legend: { position: "bottom" } },
-      },
-    });
-
-    document.getElementById("kpi2-valor").textContent = `${porcentaje.toFixed(1)}%`;
-  }
-
   function renderReportesPorEspacio(reportes, mapaEspacios) {
     const conteo = {};
     for (const reporte of reportes) {
@@ -608,89 +543,6 @@
         maintainAspectRatio: false,
         plugins: { legend: { display: false } },
         scales: { x: { beginAtZero: true, ticks: { precision: 0 } } },
-      },
-    });
-  }
-
-  function renderTopFichas(eventos, mapaEspacios) {
-    const conteo = contarPorEntidad(eventos, "ficha_consultada");
-    const top5 = armarTopN(conteo, mapaEspacios, 5);
-
-    crearChart("chart-top-fichas", {
-      type: "bar",
-      data: {
-        labels: top5.map((d) => d.nombre),
-        datasets: [
-          {
-            label: "Fichas consultadas",
-            data: top5.map((d) => d.cantidad),
-            backgroundColor: COLOR_AZUL_CLARO,
-          },
-        ],
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: { legend: { display: false } },
-        scales: { y: { beginAtZero: true, ticks: { precision: 0 } } },
-      },
-    });
-  }
-
-  function renderReportesPorEstado(reportes) {
-    const categorias = ["PENDIENTE", "EN_REVISION", "RESUELTO"];
-    const etiquetas = ["Pendiente", "En revisión", "Resuelto"];
-    const colores = [COLOR_NARANJA, COLOR_AMARILLO, COLOR_VERDE];
-    const conteo = { PENDIENTE: 0, EN_REVISION: 0, RESUELTO: 0 };
-    for (const reporte of reportes) {
-      if (conteo.hasOwnProperty(reporte.estado)) conteo[reporte.estado]++;
-    }
-
-    crearChart("chart-reportes-estado", {
-      type: "doughnut",
-      data: {
-        labels: etiquetas,
-        datasets: [
-          {
-            data: categorias.map((c) => conteo[c]),
-            backgroundColor: colores,
-          },
-        ],
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: { legend: { position: "bottom" } },
-      },
-    });
-  }
-
-  function renderReportesPorTipo(reportes) {
-    const categorias = ["ACCESO_BLOQUEADO", "PROBLEMA_SENALETICA", "BARRERA_FISICA", "DIFICULTAD_ORIENTACION"];
-    const etiquetas = ["Acceso bloqueado", "Problema de señalética", "Barrera física", "Dificultad de orientación"];
-    const colores = [COLOR_AZUL, COLOR_AMARILLO, COLOR_NARANJA, COLOR_AZUL_CLARO];
-    const conteo = Object.fromEntries(categorias.map((c) => [c, 0]));
-    for (const reporte of reportes) {
-      if (conteo.hasOwnProperty(reporte.tipo)) conteo[reporte.tipo]++;
-    }
-
-    crearChart("chart-reportes-tipo", {
-      type: "bar",
-      data: {
-        labels: etiquetas,
-        datasets: [
-          {
-            label: "Reportes",
-            data: categorias.map((c) => conteo[c]),
-            backgroundColor: colores,
-          },
-        ],
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: { legend: { display: false } },
-        scales: { y: { beginAtZero: true, ticks: { precision: 0 } } },
       },
     });
   }
@@ -818,11 +670,7 @@
       sectorFiltro === "todos" ? puertas : puertas.filter((p) => p.sector === Number(sectorFiltro));
 
     renderTopBuscados(eventosFiltrados, mapaEspacios);
-    renderAccesibilidad(eventosFiltrados);
     renderReportesPorEspacio(reportesFiltrados, mapaEspacios);
-    renderTopFichas(eventosFiltrados, mapaEspacios);
-    renderReportesPorEstado(reportesFiltrados);
-    renderReportesPorTipo(reportesFiltrados);
     renderCompletitud(espaciosFiltrados, puertasFiltradas);
     // Las rutas exteriores no se filtran por sector: se muestra siempre el total global.
     renderRutasExteriores(rutas, sectorFiltro);
