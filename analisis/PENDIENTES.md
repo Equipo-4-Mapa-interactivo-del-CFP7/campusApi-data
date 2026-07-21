@@ -1,12 +1,12 @@
 # Pendientes - Data CFP7
-Estado de deuda tecnica del equipo de Data. Actualizado: 2026-06-17 (cierre Sprint 3).
+Estado de deuda tecnica del equipo de Data. Actualizado: 2026-07-21 (cierre pendiente de banos).
 
 ## No se medirá (3er relevamiento cancelado — 2026-07-17)
 1. Anclas GPS faltantes en `anclas_sectores.json`: Patio comunicante 2-3, Exterior entre sector 1 y 2, Cpf7 frente. → Quedan 2 anclas confirmadas (Sector 1; Sector 2 y 3). Las 3 faltantes quedan sin ancla GPS: fuera de alcance MVP (no bloquea el mapa indoor, que usa `sector_id`, no coordenada GPS).
 2. Medidas Ley 962 para confirmar `analisis_ley962.md`: → Derivadas del documento oficial ya relevado; no se remediran. Ver "Criterio de practicabilidad" en `RECONCILIACION_V5.md`.
    - Ancho real de pasillos angostos (Sector 1 ~1,75 m y Sector 3 ~1,62 m) medido en varios puntos. → Se toma el ancho oficial del documento institucional como definitivo; MagicPlan queda como cross-check, no se vuelve a medir.
    - Luz util de paso de puertas principales (minimo 0,80 m). → No se remide puerta por puerta; ya hay 3 puertas de Sector 4 detectadas bajo el minimo (0,64 / 0,65 / 0,68 m), se toma ese relevamiento como definitivo.
-   - Superficie de maniobra en banos (circulo libre de 1,50 m). → No se remide; se usa la clasificacion ya disponible por area (`s1_bano_chico` confirmado insuficiente, 3,05 m² / 1,62 x 1,88 m; el resto se toma como suficiente por area en `analisis_ley962.md`, sin verificar disposicion de artefactos).
+   - Superficie de maniobra en banos (circulo libre de 1,50 m). → No se remide; se usa la clasificacion ya disponible por area. `s1_bano_chico` (3,05 m² / 1,62 x 1,88 m) fue re-evaluado el 2026-07-21: radio de maniobra suficiente (corrige la evaluacion previa de insuficiente); el resto se toma como suficiente por area en `analisis_ley962.md`, sin verificar disposicion de artefactos.
    - Pendiente de rampas exteriores (rampa izquierda y central de entrada al centro). → No se remide; se mantiene el dato ya relevado (`anclas_sectores.json`: rampa izquierda accesible, rampa central con ripio no accesible).
    - Altura de desniveles y escalones. → No se remide; sin dato de altura exacta, fuera de alcance MVP (no bloquea el grafo de recorridos, que no modela el escalon - ver `RECONCILIACION_V5.md` b.3).
 
@@ -22,6 +22,10 @@ Estado de deuda tecnica del equipo de Data. Actualizado: 2026-06-17 (cierre Spri
 ## Coordinacion con Frontend
 8. Avisar que `anclas_sectores.json` esta disponible para montar los SVG indoor sobre el mapa.
 9. Avisar que los SVG por sector (MagicPlan) son el material para el mapa interactivo indoor.
+
+## Banos: genero y accesibilidad (cerrado 2026-07-21)
+10. ~~Asignar genero a banos de S1/S4~~ CERRADO: generos cargados a nivel de SECTOR en `datos/espacios_cfp7.json` (nuevo bloque `generos_banos_por_sector`: sector 1 `[caballeros, damas]`, sector 4 `[caballeros, damas, profesoras, profesores]`). No se reparte por recinto: la asignacion posicional a un bano especifico no esta relevada, no se asume. Accesibilidad de Sector 1 corregida a `true` en `s1_bano_grande` y `s1_bano_chico` (radio de maniobra interior re-evaluado como suficiente).
+11. Pendiente NO bloqueante: mapeo fino genero->recinto en S1 y S4 sin confirmar (no relevado, sin otra visita prevista; refinamiento opcional post-Demo, no bloquea MVP). Ver `mapeo_genero_recinto_confirmado: false` en `espacios_cfp7.json`.
 
 ## Notas
 - Las rutas de Dragones (izq/conexion) que figuraban "incompletas" en los nombres de archivo NO lo estaban: las entradas estan separadas por metros (garage grande) y se conectan via ruta de conexion CFP7. Ya corregido.

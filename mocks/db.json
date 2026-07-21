@@ -4,7 +4,8 @@
                   "fuente_espacios":  "espacios_cfp7.json (relevamiento 2026-06-12)",
                   "AMENDA_CONTRATO":  "tipo agrega \u0027taller\u0027 al enum. Broadcast a Back/Front/QA antes de mergear.",
                   "mapeo_tipos":  "taller-\u003etaller (NUEVO) | bano-\u003eservicio | laboratorio-\u003eaula | oficina-\u003eoficina | aula-\u003eaula",
-                  "ADVERTENCIA_accesible":  "accesible=null salvo los 6 confirmados por relevamiento de campo (s1_bano_chico y los 5 pasillos, todos false). El resto queda pendiente del 3er relevamiento (#169); NO se asume true ni false.",
+                  "ADVERTENCIA_accesible":  "accesible=null salvo los 7 confirmados por relevamiento de campo: los 2 banos de Sector 1 (s1_bano_grande, s1_bano_chico; true, radio de maniobra re-evaluado como suficiente 2026-07-21) y los 5 pasillos (todos false). El resto queda pendiente del 3er relevamiento (#169); NO se asume true ni false.",
+                  "cambios_2026_07_21":  "Correccion de accesibilidad Sector 1: s1_bano_grande y s1_bano_chico pasan de null/false a true (radio de maniobra interior re-evaluado como suficiente; no habra otra visita). Se agrego atributo 'generos' por recinto en datos/espacios_cfp7.json (no propagado a este mock ni a la API todavia). Sector 4 (s4_bano_grande, s4_bano_mediano) sin cambios: accesible sigue null, pendiente de relevamiento de radio interior.",
                   "eventos_telemetria_nota":  "DATOS SINTETICOS DEMO - generados 2026-07-14 para dashboard S10. NO son datos de campo.",
                   "cambios_2026_07_15":  "Se agrego columna sector a espacios (fuente: espacios_cfp7.json; acceso_frente sin sector confirmado). Se agregaron 5 pasillos como espacios punto_de_paso (accesible=false, dato real de relevamiento). Coleccion reportes reemplazada: 6 reportes reales de 02_seed_reportes.sql (barreras Ley 962 + bano s1_bano_chico) mas 3 reportes sinteticos [DEMO] de senaletica/orientacion, con estados variados (PENDIENTE/EN_REVISION/RESUELTO) para poblar el grafico de estados.",
                   "cambios_2026_07_16":  "Se agrego coleccion rutas_exteriores (atributos derivados de rutas_exterior.geojson, sin geometria: 11 accesibles, 2 no accesibles con barrera escalon/ripio). Se agrego coleccion puertas_a_revisar (fuente: espacios_cfp7.json, 3 puertas con ancho \u003c 0.80 m pendientes de resolucion) para que el dashboard las sume al detalle de completitud."
@@ -54,17 +55,17 @@
                          "id":  "s1_bano_grande",
                          "nombre":  "Bano Sector 1 (grande)",
                          "tipo":  "servicio",
-                         "descripcion":  "Bano Sector 1, 16.58 m2. Asignacion pendiente.",
+                         "descripcion":  "Bano Sector 1, 16.58 m2. Asignacion de genero pendiente.",
                          "sector":  1,
-                         "accesible":  null
+                         "accesible":  true
                      },
                      {
                          "id":  "s1_bano_chico",
                          "nombre":  "Bano Sector 1 (chico)",
                          "tipo":  "servicio",
-                         "descripcion":  "Bano chico Sector 1, 3.05 m2. Sin radio de giro: inviable accesible.",
+                         "descripcion":  "Bano chico Sector 1, 3.05 m2. Radio de maniobra re-evaluado como suficiente.",
                          "sector":  1,
-                         "accesible":  false
+                         "accesible":  true
                      },
                      {
                          "id":  "s2_carpinteria",

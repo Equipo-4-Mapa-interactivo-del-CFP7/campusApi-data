@@ -21,7 +21,7 @@
       "ruta_no_accesible": "escalon"
     },
     "pendiente": [
-      "Asignar cual bano S1/S4 es cual (Caballeros/Damas/Profesoras/Profesores)",
+      "Mapeo fino genero->recinto en S1 y S4 sin confirmar (no relevado; sin otra visita prevista; refinamiento opcional post-Demo, no bloqueante)",
       "Medir areas individuales de talleres S1 y aulas S4",
       "GPS de anclas faltantes"
     ],
@@ -70,8 +70,8 @@
       "area_m2": 16.58,
       "ancho_m": 4.64,
       "largo_m": 3.95,
-      "accesible_viable": "verificar",
-      "nota": "Doc medidas oficial: S1 tiene bano de Caballeros y de Damas (lado derecho, tras Climatizacion puerta 2, separados 0,80 m). Mapeo designacion->recinto pendiente de 3ra visita. Superficie suficiente."
+      "accesible_viable": true,
+      "nota": "Doc medidas oficial: S1 tiene bano de Caballeros y de Damas (lado derecho, tras Climatizacion puerta 2, separados 0,80 m). Genero a nivel de sector, ver 'generos_banos_por_sector'; asignacion por recinto no relevada. Superficie suficiente. Radio de maniobra re-evaluado como suficiente (2026-07-21): accesible."
     },
     {
       "id": "s1_bano_chico",
@@ -82,8 +82,8 @@
       "area_m2": 3.05,
       "ancho_m": 1.62,
       "largo_m": 1.88,
-      "accesible_viable": false,
-      "nota": "Inviable como accesible: sin radio de giro. Doc medidas: designaciones S1 son Caballeros y Damas; mapeo pendiente de 3ra visita."
+      "accesible_viable": true,
+      "nota": "Doc medidas: designaciones S1 son Caballeros y Damas. Genero a nivel de sector, ver 'generos_banos_por_sector'; asignacion por recinto no relevada. Radio de maniobra re-evaluado como suficiente (2026-07-21): accesible. Evaluacion previa (insuficiente) corregida."
     },
     {
       "id": "s2_carpinteria",
@@ -267,7 +267,7 @@
       "ancho_m": 5.93,
       "largo_m": 4.46,
       "accesible_viable": "verificar",
-      "nota": "Candidato fuerte a box accesible. Doc medidas oficial S4: Caballeros (pasillo principal) + Damas/Profesoras/Profesores (pasillo lateral lockers, puertas separadas 1 m y 0,80 m). Mapeo designacion->recinto pendiente de 3ra visita."
+      "nota": "Candidato fuerte a box accesible. Doc medidas oficial S4: Caballeros (pasillo principal) + Damas/Profesoras/Profesores (pasillo lateral lockers, puertas separadas 1 m y 0,80 m). Genero a nivel de sector, ver 'generos_banos_por_sector'; asignacion por recinto no relevada. Accesibilidad sin cambios: pendiente de relevamiento de radio interior."
     },
     {
       "id": "s4_bano_mediano",
@@ -279,7 +279,7 @@
       "ancho_m": 5.93,
       "largo_m": 3.48,
       "accesible_viable": "verificar",
-      "nota": "Doc medidas oficial S4: 4 designaciones (Caballeros/Damas/Profesoras/Profesores) en 2 recintos medidos. Mapeo pendiente de 3ra visita."
+      "nota": "Doc medidas oficial S4: 4 designaciones (Caballeros/Damas/Profesoras/Profesores) en 2 recintos medidos. Genero a nivel de sector, ver 'generos_banos_por_sector'; asignacion por recinto no relevada. Accesibilidad sin cambios: pendiente de relevamiento de radio interior."
     },
     {
       "id": "s4_buffet",
@@ -298,6 +298,20 @@
       "ubicacion": "interior",
       "area_m2": null,
       "origen": "confirmado por Data 2026-07-20, sin relevamiento de medidas"
+    }
+  ],
+  "generos_banos_por_sector": [
+    {
+      "sector": 1,
+      "generos": ["caballeros", "damas"],
+      "mapeo_genero_recinto_confirmado": false,
+      "nota": "Generos del doc oficial a nivel de sector. Asignacion posicional a s1_bano_grande/s1_bano_chico NO relevada; no se asume."
+    },
+    {
+      "sector": 4,
+      "generos": ["caballeros", "damas", "profesoras", "profesores"],
+      "mapeo_genero_recinto_confirmado": false,
+      "nota": "Generos del doc oficial a nivel de sector. Asignacion posicional a s4_bano_grande/s4_bano_mediano NO relevada; no se asume."
     }
   ],
   "pasillos": [

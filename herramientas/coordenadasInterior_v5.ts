@@ -7,9 +7,11 @@
 // slug: desde datos/mapeo_slug_id_v5.json; null para ids sin slug (30-35, 41-43 - no
 // modelados como espacio en el canonico).
 // coords: [coordenaday, coordenadax] (orden Y,X - el mismo que usa el mock de Front).
-// accesible: fix de s1_bano_chico (id 6) = false no aplica a este archivo porque ese
-// espacio no tiene coordenadas en el seed v5 (no aparece en esta lista). El resto
-// coincide con el criterio de practicabilidad (ver analisis/RECONCILIACION_V5.md).
+// accesible: s1_bano_chico (id 6) no aplica a este archivo porque ese espacio no
+// tiene coordenadas en el seed v5 (no aparece en esta lista; ver espaciosSinCoordenadas).
+// Corregido 2026-07-21 a accesible=true en el resto de archivos (radio de maniobra
+// re-evaluado como suficiente). El resto coincide con el criterio de practicabilidad
+// (ver analisis/RECONCILIACION_V5.md).
 
 export interface EspacioCoordenadaV5 {
   id: number;

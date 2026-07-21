@@ -27,14 +27,14 @@ Bajo norma Ley 962 (2,00 m) no implica no practicable: 1,08 m permite paso de si
 | Bano | Area | Lado | Observacion |
 |------|------|------|-------------|
 | Sector 1 (grande) | 16,58 m2 | 4,64 x 3,95 | Area suficiente; verificar circulo de maniobra de 1,50 m libre de artefactos |
-| Sector 1 (chico) | 3,05 m2 | 1,62 x 1,88 | Demasiado chico para giro de silla |
+| Sector 1 (chico) | 3,05 m2 | 1,62 x 1,88 | Radio de maniobra re-evaluado como suficiente (2026-07-21); evaluacion previa (demasiado chico) corregida |
 | Sector 4 (grande) | 23,47 m2 | 5,93 x 4,46 | Area amplia; verificar disposicion de artefactos |
 | Sector 4 (mediano) | 15,90 m2 | 5,93 x 3,48 | Area suficiente; verificar maniobra |
 Nota: el documento oficial lista 2 banos en Sector 1 (Caballeros/Damas) y 4 en Sector 4 (Caballeros/Damas/Profesoras/Profesores). MagicPlan solo midio 2 de Sector 4; la asignacion de cual area corresponde a cual bano queda pendiente. Un area grande NO garantiza accesibilidad: la norma exige el circulo de maniobra de 1,50 m libre Y la disposicion de artefactos (barras, alturas), que se mide in situ.
 ## No se medirá (3er relevamiento cancelado — 2026-07-17)
 1. Confirmar ancho de los pasillos en varios puntos (ya hay medida oficial de 5 pasillos; validar consistencia). → Se toma la medida oficial ya relevada como definitiva; no se vuelve a medir ni validar in situ.
 2. Luz util de paso de las puertas principales (minimo 0,80 m). Revisar puertas Sector 4 ya detectadas bajo 0,80 m (0,64 / 0,65 / 0,68 m). → Se toma como definitivo lo ya detectado (3 puertas de Sector 4 bajo el minimo); no se revisan mas puertas.
-3. Superficie de maniobra real en banos (circulo libre de 1,50 m) y asignacion Caballeros/Damas/Profesoras/Profesores. → Se toma la clasificacion por area ya disponible como definitiva (`s1_bano_chico` insuficiente); la asignacion exacta de recintos por genero queda sin resolver, fuera de alcance MVP.
+3. Superficie de maniobra real en banos (circulo libre de 1,50 m) y asignacion Caballeros/Damas/Profesoras/Profesores. → Se toma la clasificacion por area ya disponible como definitiva; `s1_bano_chico` fue re-evaluado el 2026-07-21 (radio de maniobra suficiente, corrige la evaluacion previa de insuficiente). Los generos de S1/S4 ya estan cargados por sector en `espacios_cfp7.json`; la asignacion fina de genero por recinto queda sin resolver, fuera de alcance MVP (no bloqueante).
 4. Pendiente de las rampas exteriores relevadas (rampa izquierda y central de la entrada al centro). → Se mantiene el dato ya relevado (rampa izquierda accesible, rampa central con ripio no accesible); no se remide.
 5. Altura de los desniveles y escalones (entrada porche, conexion Sector 1 con nivel elevado 2/3/4). → No se remide; sin dato de altura exacta, fuera de alcance MVP (el escalon no esta modelado en el grafo de recorridos - ver `RECONCILIACION_V5.md` b.3).
 6. Confirmar la barrera del track 13 (rampa central con ripio no transitable sin asistencia). → Se toma como confirmado el dato ya relevado (ripio no transitable sin asistencia, ver `anclas_sectores.json`); no se vuelve a verificar en campo.

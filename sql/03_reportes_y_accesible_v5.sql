@@ -8,9 +8,11 @@
 -- BLOQUE A: accesible en espacios (criterio de practicabilidad, ver analisis/RECONCILIACION_V5.md)
 -- Los 5 pasillos internos (ids 36-40) y el resto de espacios ya vienen accesible=1 en el seed v5;
 -- coinciden con el criterio de practicabilidad (ancho_m >= 0.90) y NO se tocan.
--- Unica excepcion: s1_bano_chico (id 6).
+-- s1_bano_chico (id 6): originalmente marcado accesible=0 por espacio de maniobra interior
+-- insuficiente (ver RECONCILIACION_V5.md, divergencia ahora resuelta). Corregido 2026-07-21:
+-- radio de maniobra re-evaluado como suficiente. Ya no hay excepciones a accesible=1 en este bloque.
 -- ==========================================
-UPDATE espacios SET accesible = 0 WHERE id = 6; -- slug: s1_bano_chico (espacio de maniobra interior insuficiente para giro de silla, no ancho de paso)
+UPDATE espacios SET accesible = 1 WHERE id = 6; -- slug: s1_bano_chico (correccion 2026-07-21: radio de maniobra re-evaluado como suficiente)
 
 -- ==========================================
 -- BLOQUE B: reportes de campo (traducidos de sql/02_seed_reportes.sql)

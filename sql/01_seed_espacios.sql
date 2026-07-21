@@ -4,7 +4,9 @@
 -- Generado: 2026-07-14 por Data. NO editar a mano: regenerar desde el JSON.
 -- Requiere: columna slug VARCHAR(50) UNIQUE NOT NULL en tabla espacio.
 -- accesible = NULL: pendiente 3er relevamiento (#169). NO asumir true.
--- Banos como BANIO_MIXTO provisorio: designacion pendiente de 3ra visita (ver _meta.pendiente).
+-- Banos como BANIO_MIXTO provisorio: mapeo fino genero->recinto sin confirmar, no bloqueante (ver _meta.pendiente).
+-- Correccion 2026-07-21: s1_bano_grande y s1_bano_chico -> accesible TRUE (radio de maniobra
+-- interior re-evaluado como suficiente; no habra otra visita). Sector 4 sin cambios (accesible NULL).
 -- ==========================================
 ALTER TABLE espacio ADD COLUMN IF NOT EXISTS slug VARCHAR(50) UNIQUE;
 ALTER TABLE espacio ADD COLUMN IF NOT EXISTS sector INT;
@@ -13,8 +15,8 @@ INSERT INTO espacio (slug, nombre, tipo, sector, accesible, activo) VALUES ('s1_
 INSERT INTO espacio (slug, nombre, tipo, sector, accesible, activo) VALUES ('s1_herreria', 'Herreria', 'TALLER', 1, NULL, TRUE);
 INSERT INTO espacio (slug, nombre, tipo, sector, accesible, activo) VALUES ('s1_climatizacion', 'Climatizacion', 'TALLER', 1, NULL, TRUE);
 INSERT INTO espacio (slug, nombre, tipo, sector, accesible, activo) VALUES ('s1_serigrafia', 'Serigrafia', 'TALLER', 1, NULL, TRUE);
-INSERT INTO espacio (slug, nombre, tipo, sector, accesible, activo) VALUES ('s1_bano_grande', 'Bano Sector 1 (grande)', 'BANIO_MIXTO', 1, NULL, TRUE);
-INSERT INTO espacio (slug, nombre, tipo, sector, accesible, activo) VALUES ('s1_bano_chico', 'Bano Sector 1 (chico)', 'BANIO_MIXTO', 1, FALSE, TRUE);
+INSERT INTO espacio (slug, nombre, tipo, sector, accesible, activo) VALUES ('s1_bano_grande', 'Bano Sector 1 (grande)', 'BANIO_MIXTO', 1, TRUE, TRUE);
+INSERT INTO espacio (slug, nombre, tipo, sector, accesible, activo) VALUES ('s1_bano_chico', 'Bano Sector 1 (chico)', 'BANIO_MIXTO', 1, TRUE, TRUE);
 INSERT INTO espacio (slug, nombre, tipo, sector, accesible, activo) VALUES ('s2_carpinteria', 'Carpinteria', 'TALLER', 2, NULL, TRUE);
 INSERT INTO espacio (slug, nombre, tipo, sector, accesible, activo) VALUES ('s2_taller_bicicletas', 'Taller de bicicleteria', 'TALLER', 2, NULL, TRUE);
 INSERT INTO espacio (slug, nombre, tipo, sector, accesible, activo) VALUES ('s3_informes_regencia', 'Informes - Regencia', 'OFICINA', 3, NULL, TRUE);
