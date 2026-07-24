@@ -1,5 +1,5 @@
 # Pendientes - Data CFP7
-Estado de deuda tecnica del equipo de Data. Actualizado: 2026-07-21 (cierre pendiente de banos).
+Estado de deuda tecnica del equipo de Data. Actualizado: 2026-07-24 (mapeo fino genero/rol de banos confirmado en vivo).
 
 ## No se medirá (3er relevamiento cancelado — 2026-07-17)
 1. Anclas GPS faltantes en `anclas_sectores.json`: Patio comunicante 2-3, Exterior entre sector 1 y 2, Cpf7 frente. → Quedan 2 anclas confirmadas (Sector 1; Sector 2 y 3). Las 3 faltantes quedan sin ancla GPS: fuera de alcance MVP (no bloquea el mapa indoor, que usa `sector_id`, no coordenada GPS).
@@ -25,7 +25,7 @@ Estado de deuda tecnica del equipo de Data. Actualizado: 2026-07-21 (cierre pend
 
 ## Banos: genero y accesibilidad (cerrado 2026-07-21)
 10. ~~Asignar genero a banos de S1/S4~~ CERRADO: generos cargados a nivel de SECTOR en `datos/espacios_cfp7.json` (nuevo bloque `generos_banos_por_sector`: sector 1 `[caballeros, damas]`, sector 4 `[caballeros, damas, profesoras, profesores]`). No se reparte por recinto: la asignacion posicional a un bano especifico no esta relevada, no se asume. Accesibilidad de Sector 1 corregida a `true` en `s1_bano_grande` y `s1_bano_chico` (radio de maniobra interior re-evaluado como suficiente).
-11. Pendiente NO bloqueante: mapeo fino genero->recinto en S1 y S4 sin confirmar (no relevado, sin otra visita prevista; refinamiento opcional post-Demo, no bloquea MVP). Ver `mapeo_genero_recinto_confirmado: false` en `espacios_cfp7.json`.
+11. ~~Mapeo fino genero/rol -> recinto en S1 y S4 sin confirmar~~ CERRADO (2026-07-24): confirmado en vivo por el equipo Front+Back+QA reunido armando el mapa. Sector 1 es por ROL (`s1_bano_grande`=docentes, `s1_bano_chico`=alumnos; el doc oficial mencionaba Caballeros/Damas pero el eje operativo real es rol). Sector 4 es por SEXO (`s4_bano_grande`=femenino, agrupa damas+profesoras; `s4_bano_mediano`=masculino, agrupa caballeros+profesores) — las 4 designaciones del doc oficial quedan resueltas en los 2 recintos, no falta ningun bano. Ver atributos `uso`/`genero` por recinto y `mapeo_genero_recinto_confirmado: true` en `espacios_cfp7.json`.
 
 ## Notas
 - Las rutas de Dragones (izq/conexion) que figuraban "incompletas" en los nombres de archivo NO lo estaban: las entradas estan separadas por metros (garage grande) y se conectan via ruta de conexion CFP7. Ya corregido.

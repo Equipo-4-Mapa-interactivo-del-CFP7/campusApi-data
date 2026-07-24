@@ -4,12 +4,20 @@
 -- Generado: 2026-07-14 por Data. NO editar a mano: regenerar desde el JSON.
 -- Requiere: columna slug VARCHAR(50) UNIQUE NOT NULL en tabla espacio.
 -- accesible = NULL: pendiente 3er relevamiento (#169). NO asumir true.
--- Banos como BANIO_MIXTO provisorio: mapeo fino genero->recinto sin confirmar, no bloqueante (ver _meta.pendiente).
+-- Banos como BANIO_MIXTO provisorio: tipo NO se cambia a BANIO_FEMENINO/MASCULINO (decision de
+-- contrato con Back pendiente); el genero/rol confirmado se carga como DATO, no como tipo (ver
+-- columnas uso/genero mas abajo y correccion 2026-07-24).
 -- Correccion 2026-07-21: s1_bano_grande y s1_bano_chico -> accesible TRUE (radio de maniobra
 -- interior re-evaluado como suficiente; no habra otra visita). Sector 4 sin cambios (accesible NULL).
+-- Correccion 2026-07-24: mapeo fino de asignacion por recinto CONFIRMADO EN VIVO (equipo
+-- Front+Back+QA reunido armando el mapa). Sector 1 es por ROL (columna uso); Sector 4 es por
+-- GENERO (columna genero). Pendiente residual no bloqueante: si profesoras/profesores del doc
+-- oficial tienen sub-espacio propio en S4 (ver espacios_cfp7.json _meta.pendiente).
 -- ==========================================
 ALTER TABLE espacio ADD COLUMN IF NOT EXISTS slug VARCHAR(50) UNIQUE;
 ALTER TABLE espacio ADD COLUMN IF NOT EXISTS sector INT;
+ALTER TABLE espacio ADD COLUMN IF NOT EXISTS uso VARCHAR(20);
+ALTER TABLE espacio ADD COLUMN IF NOT EXISTS genero VARCHAR(20);
 
 INSERT INTO espacio (slug, nombre, tipo, sector, accesible, activo) VALUES ('s1_electricidad', 'Electricidad', 'TALLER', 1, NULL, TRUE);
 INSERT INTO espacio (slug, nombre, tipo, sector, accesible, activo) VALUES ('s1_herreria', 'Herreria', 'TALLER', 1, NULL, TRUE);
@@ -40,3 +48,13 @@ INSERT INTO espacio (slug, nombre, tipo, sector, accesible, activo) VALUES ('s4_
 INSERT INTO espacio (slug, nombre, tipo, sector, accesible, activo) VALUES ('s4_eps_ifts', 'EPS - IFTS N5', 'OFICINA', 4, NULL, TRUE);
 INSERT INTO espacio (slug, nombre, tipo, sector, accesible, activo) VALUES ('s4_bano_grande', 'Bano Sector 4 (grande)', 'BANIO_MIXTO', 4, NULL, TRUE);
 INSERT INTO espacio (slug, nombre, tipo, sector, accesible, activo) VALUES ('s4_bano_mediano', 'Bano Sector 4 (mediano)', 'BANIO_MIXTO', 4, NULL, TRUE);
+
+-- ==========================================
+-- Mapeo fino de asignacion por recinto (CONFIRMADO EN VIVO 2026-07-24, equipo Front+Back+QA).
+-- Se carga como dato (uso/genero), NO se cambia el tipo BANIO_MIXTO: mismo criterio marcado a
+-- Back sobre no hornear el binario de genero en el enum (ver diagnostico data.sql).
+-- ==========================================
+UPDATE espacio SET uso = 'docentes' WHERE slug = 's1_bano_grande';
+UPDATE espacio SET uso = 'alumnos' WHERE slug = 's1_bano_chico';
+UPDATE espacio SET genero = 'femenino' WHERE slug = 's4_bano_grande';
+UPDATE espacio SET genero = 'masculino' WHERE slug = 's4_bano_mediano';

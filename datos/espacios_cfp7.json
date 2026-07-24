@@ -21,7 +21,6 @@
       "ruta_no_accesible": "escalon"
     },
     "pendiente": [
-      "Mapeo fino genero->recinto en S1 y S4 sin confirmar (no relevado; sin otra visita prevista; refinamiento opcional post-Demo, no bloqueante)",
       "Medir areas individuales de talleres S1 y aulas S4",
       "GPS de anclas faltantes"
     ],
@@ -71,7 +70,9 @@
       "ancho_m": 4.64,
       "largo_m": 3.95,
       "accesible_viable": true,
-      "nota": "Doc medidas oficial: S1 tiene bano de Caballeros y de Damas (lado derecho, tras Climatizacion puerta 2, separados 0,80 m). Genero a nivel de sector, ver 'generos_banos_por_sector'; asignacion por recinto no relevada. Superficie suficiente. Radio de maniobra re-evaluado como suficiente (2026-07-21): accesible."
+      "uso": "docentes",
+      "mapeo_genero_recinto_confirmado": true,
+      "nota": "Doc medidas oficial: S1 tiene bano de Caballeros y de Damas (lado derecho, tras Climatizacion puerta 2, separados 0,80 m) segun documento oficial. Mapeo fino CONFIRMADO EN VIVO 2026-07-24 (equipo Front+Back+QA reunido armando el mapa): el eje operativo real en Sector 1 es ROL, no genero; este recinto es de uso docentes. Superficie suficiente. Radio de maniobra re-evaluado como suficiente (2026-07-21): accesible."
     },
     {
       "id": "s1_bano_chico",
@@ -83,7 +84,9 @@
       "ancho_m": 1.62,
       "largo_m": 1.88,
       "accesible_viable": true,
-      "nota": "Doc medidas: designaciones S1 son Caballeros y Damas. Genero a nivel de sector, ver 'generos_banos_por_sector'; asignacion por recinto no relevada. Radio de maniobra re-evaluado como suficiente (2026-07-21): accesible. Evaluacion previa (insuficiente) corregida."
+      "uso": "alumnos",
+      "mapeo_genero_recinto_confirmado": true,
+      "nota": "Doc medidas: designaciones S1 son Caballeros y Damas segun documento oficial. Mapeo fino CONFIRMADO EN VIVO 2026-07-24 (equipo Front+Back+QA reunido armando el mapa): el eje operativo real en Sector 1 es ROL, no genero; este recinto es de uso alumnos. Radio de maniobra re-evaluado como suficiente (2026-07-21): accesible. Evaluacion previa (insuficiente) corregida."
     },
     {
       "id": "s2_carpinteria",
@@ -267,7 +270,9 @@
       "ancho_m": 5.93,
       "largo_m": 4.46,
       "accesible_viable": "verificar",
-      "nota": "Candidato fuerte a box accesible. Doc medidas oficial S4: Caballeros (pasillo principal) + Damas/Profesoras/Profesores (pasillo lateral lockers, puertas separadas 1 m y 0,80 m). Genero a nivel de sector, ver 'generos_banos_por_sector'; asignacion por recinto no relevada. Accesibilidad sin cambios: pendiente de relevamiento de radio interior."
+      "genero": "femenino",
+      "mapeo_genero_recinto_confirmado": true,
+      "nota": "Candidato fuerte a box accesible. Doc medidas oficial S4: Caballeros (pasillo principal) + Damas/Profesoras/Profesores (pasillo lateral lockers, puertas separadas 1 m y 0,80 m) — el documento oficial listaba 4 designaciones. Mapeo fino CONFIRMADO EN VIVO 2026-07-24 (equipo Front+Back+QA reunido armando el mapa): fisicamente son 2 recintos diferenciados por genero; este es femenino (mujeres). Confirmado en vivo 2026-07-24: agrupa damas + profesoras (el doc oficial lista ambas designaciones; ambas usan este recinto). Accesibilidad sin cambios: pendiente de relevamiento de radio interior."
     },
     {
       "id": "s4_bano_mediano",
@@ -279,7 +284,9 @@
       "ancho_m": 5.93,
       "largo_m": 3.48,
       "accesible_viable": "verificar",
-      "nota": "Doc medidas oficial S4: 4 designaciones (Caballeros/Damas/Profesoras/Profesores) en 2 recintos medidos. Genero a nivel de sector, ver 'generos_banos_por_sector'; asignacion por recinto no relevada. Accesibilidad sin cambios: pendiente de relevamiento de radio interior."
+      "genero": "masculino",
+      "mapeo_genero_recinto_confirmado": true,
+      "nota": "Doc medidas oficial S4: 4 designaciones (Caballeros/Damas/Profesoras/Profesores) en 2 recintos medidos — el documento oficial listaba 4 designaciones. Mapeo fino CONFIRMADO EN VIVO 2026-07-24 (equipo Front+Back+QA reunido armando el mapa): fisicamente son 2 recintos diferenciados por genero; este es masculino (hombres). Confirmado en vivo 2026-07-24: agrupa caballeros + profesores. Accesibilidad sin cambios: pendiente de relevamiento de radio interior."
     },
     {
       "id": "s4_buffet",
@@ -304,14 +311,14 @@
     {
       "sector": 1,
       "generos": ["caballeros", "damas"],
-      "mapeo_genero_recinto_confirmado": false,
-      "nota": "Generos del doc oficial a nivel de sector. Asignacion posicional a s1_bano_grande/s1_bano_chico NO relevada; no se asume."
+      "mapeo_genero_recinto_confirmado": true,
+      "nota": "Generos del doc oficial a nivel de sector (Caballeros/Damas). Mapeo fino CONFIRMADO EN VIVO 2026-07-24 (equipo Front+Back+QA reunido armando el mapa): el eje operativo real en Sector 1 es ROL, no genero. Ver atributo 'uso' por recinto: s1_bano_grande=docentes, s1_bano_chico=alumnos."
     },
     {
       "sector": 4,
       "generos": ["caballeros", "damas", "profesoras", "profesores"],
-      "mapeo_genero_recinto_confirmado": false,
-      "nota": "Generos del doc oficial a nivel de sector. Asignacion posicional a s4_bano_grande/s4_bano_mediano NO relevada; no se asume."
+      "mapeo_genero_recinto_confirmado": true,
+      "nota": "Generos del doc oficial a nivel de sector (4 designaciones). Mapeo fino CONFIRMADO EN VIVO 2026-07-24 (equipo Front+Back+QA reunido armando el mapa): las 4 designaciones quedan resueltas en 2 recintos por sexo. Ver atributo 'genero' por recinto: s4_bano_grande=femenino (damas+profesoras), s4_bano_mediano=masculino (caballeros+profesores). Ya no hay detalle sin resolver."
     }
   ],
   "pasillos": [
